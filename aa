@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Download BeamNG.drive Mobile - Experience realistic driving physics and crash simulation on your smartphone. Get it now on Android and iOS.">
+    <meta name="keywords" content="BeamNG.drive Mobile, modded games, mobile games, m4d.fun, download games">
+    <meta property="og:title" content="BeamNG.drive Mobile - m4d.fun">
+    <meta property="og:description" content="Download the latest modded version of BeamNG.drive Mobile. Experience realistic soft-body physics and vehicle simulation.">
+    <meta property="og:image" content="https://i.ibb.co/99bcw424/IMG-20250228-122052.jpg">
+    <meta property="og:url" content="https://www.m4d.fun/beamng-drive-mobile">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BeamNG.drive Mobile - m4d.fun">
+    <meta name="twitter:description" content="Download the latest modded version of BeamNG.drive Mobile. Experience realistic soft-body physics and vehicle simulation.">
+    <meta name="twitter:image" content="https://i.ibb.co/99bcw424/IMG-20250228-122052.jpg">
+    <meta name="author" content="m4d.fun">
+    <link rel="icon" href="https://i.ibb.co/gbsY945Q/Black-and-Green-Illustrative-E-Sports-Gaming-Logo-2-removebg.png">
+    <title>BeamNG.drive Mobile - m4d.fun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary: #00ffcc;
+            --secondary: #00ccff;
+            --dark: #121212;
+            --light: #1e1e1e;
+            --white: #ffffff;
+            --text: #e0e0e0;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--text);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Hide cookie consent elements */
+        #cookieConsent, .cookie-consent, .abm-cookie-consent {
+            display: none !important;
+        }
+
+        /* CPA Locker Styles */
+        .locker-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+        }
+        .locker-box {
+            width: 400px; padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -55%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        .offer { padding: 12px; margin: 8px 0; background: #ff9800; color: white; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .offer:hover { background: #e68900; transform: scale(1.05); transition: 0.2s; }
+        .timer { font-size: 18px; margin-top: 10px; display: flex; justify-content: center; align-items: center; }
+        .timer img { width: 50px; height: 50px; margin-right: 5px; }
+        .close-btn {
+            margin-top: 12px;
+            padding: 8px 20px;
+            background: #d32f2f;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close-btn:hover { background: #b71c1c; transform: scale(1.1); }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+        }
+        .download-btn:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="https://www.m4d.fun" class="back-icon">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Game Info Section -->
+        <div class="game-info">
+            <img src="https://avatars.githubusercontent.com/u/6404024?s=280&v=4" alt="BeamNG.drive Mobile Logo" class="game-icon">
+            <div class="game-details">
+                <h1>BeamNG.drive Mobile</h1>
+                <small>For Android and iOS</small>
+            </div>
+        </div>
+
+        <!-- Download Buttons -->
+        <div class="download-section">
+            <button onclick="openLocker('android')" class="download-btn">
+                <i class="fab fa-android"></i> Download for Android
+            </button>
+            <button onclick="openLocker('ios')" class="download-btn">
+                <i class="fab fa-apple"></i> Download for iOS
+            </button>
+        </div>
+
+        <!-- Specs Grid -->
+        <div class="specs-grid">
+            <div class="spec-item">
+                <h3>Size</h3>
+                <p>983.41MB (Installer) 8GB (Post-Download Cache)</p>
+            </div>
+            <div class="spec-item">
+                <h3>Price</h3>
+                <p>Free</p>
+            </div>
+            <div class="spec-item">
+                <h3>Android Compatible</h3>
+                <p>Qualcomm Snapdragon 845 and better, 4GB RAM</p>
+            </div>
+            <div class="spec-item">
+                <h3>iOS Devices Required</h3>
+                <p>iPhone XS Max or newer, iPad Pro 2018 or later</p>
+            </div>
+        </div>
+
+        <!-- Installation Guide -->
+        <div class="installation">
+            <h2>Installation Guide</h2>
+            <div class="install-tabs">
+                <div class="install-tab active" onclick="changeInstallTab(0)">Android</div>
+                <div class="install-tab" onclick="changeInstallTab(1)">iOS</div>
+            </div>
+            <div class="install-content">
+                <ul class="install-steps" id="android-steps">
+                    <li>Download the APK file using the Android download button above</li>
+                    <li>Go to Settings > Security > Enable "Unknown Sources"</li>
+                    <li>Locate the downloaded APK file in your file manager</li>
+                    <li>Tap to install and follow on-screen instructions</li>
+                    <li>After installation, download the additional game cache files</li>
+                    <li>Place cache files in Android/obb/ folder</li>
+                    <li>Launch the game and enjoy!</li>
+                </ul>
+                <ul class="install-steps" id="ios-steps" style="display:none">
+                    <li>Download the IPA file using the iOS download button</li>
+                    <li>Install AltStore on your computer (Windows/Mac required)</li>
+                    <li>Connect your iOS device and open AltStore</li>
+                    <li>Select "Install .ipa" and choose the downloaded file</li>
+                    <li>Enter your Apple ID when prompted</li>
+                    <li>Trust the developer in Settings > General > Device Management</li>
+                    <li>Launch the game and download additional resources</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <h2>Features</h2>
+            <ul class="feature-list">
+                <li>Advanced Physics: Realistic soft-body physics engine for authentic crashes</li>
+                <li>Vehicle Variety: 20+ detailed vehicles with realistic handling</li>
+                <li>Open World: Massive maps with dynamic terrain and obstacles</li>
+                <li>Damage System: Real-time deformation and part damage</li>
+                <li>Custom Scenarios: Create and share your own driving challenges</li>
+            </ul>
+        </div>
+
+        <!-- Screenshots Section -->
+        <div class="screenshots">
+            <h2>Screenshots</h2>
+            <div class="screenshot-grid">
+                <img src="https://i.ibb.co/60DvVQDN/c5.jpg" alt="BeamNG.drive Mobile Screenshot 1" class="screenshot">
+                <img src="https://i.ibb.co/nNJPCcgW/j70.jpg" alt="BeamNG.drive Mobile Screenshot 2" class="screenshot">
+                <img src="https://i.ibb.co/jvnps9wr/c2.jpg" alt="BeamNG.drive Mobile Screenshot 3" class="screenshot">
+            </div>
+        </div>
+    </div>
+
+    <!-- CPA Locker -->
+    <div class="locker-overlay" id="locker">
+        <div class="locker-box">
+            <img src="https://m.media-amazon.com/images/I/51sqOF2L+iL.jpg" alt="هدية" />
+            <h2>👑 أكمل عرضًا للحصول على الهدية 👑</h2>
+            <div id="offerContainer">جارٍ تحميل العروض...</div>
+            <div class="timer">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Analog_clock_animation.gif" alt="ساعة" />
+                <span id="countdown">03:00</span>
+            </div>
+            <button class="close-btn" onclick="closeLocker()">إغلاق</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for opening the CPA locker and countdown timer
+        let giftUrl = "";
+        let offerCompleted = false;
+
+        function openLocker(platform) {
+            giftUrl = platform;
+            document.getElementById('locker').style.display = 'block';
+            loadOffers();
+            startCountdown(180);
+        }
+
+        function closeLocker() {
+            document.getElementById('locker').style.display = 'none';
+        }
+
+        function loadOffers() {
+            fetch("https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=504359&api_key=3b17a09c1ca2bba2d52ffadab4894374&s1=&s2=")
+                .then(response => response.json())
+                .then(offers => {
+                    let html = '';
+                    offers.slice(0, 5).forEach(offer => {
+                        html += `<div class="offer" onclick="trackOffer('${offer.id}', '${offer.url}')">🔗 ${offer.anchor}</div>`;
+                    });
+                    document.getElementById("offerContainer").innerHTML = html;
+                })
+                .catch(() => {
+                    document.getElementById("offerContainer").innerHTML = '<p style="color:red;">⚠ حدث خطأ أثناء جلب العروض.</p>';
+                });
+        }
+
+        function trackOffer(offerId, offerUrl) {
+            if (offerUrl) {
+                window.open(offerUrl, "_blank");
+            } else {
+                alert("⚠ حدث خطأ، لم يتم العثور على رابط العرض.");
+            }
+        }
+
+        function startCountdown(duration) {
+            let timer = duration, minutes, seconds;
+            let interval = setInterval(function () {
+                minutes = Math.floor(timer / 60);
+                seconds = timer % 60;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                document.getElementById('countdown').textContent = minutes + ":" + seconds;
+                if (--timer < 0 || offerCompleted) {
+                    clearInterval(interval);
+                    if (!offerCompleted) {
+                        alert("⏳ انتهى الوقت! لم يتم تنفيذ أي عرض.");
+                        closeLocker();
+                    }
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
