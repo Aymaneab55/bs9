@@ -425,6 +425,320 @@
                 flex-direction: column;
             }
         }
+
+        /* LOCKER SYSTEM STYLES */
+        .locker-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.98);
+            z-index: 9999;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-y: auto;
+            padding: 10px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .locker-box {
+            width: 100%;
+            max-width: 400px;
+            background: linear-gradient(145deg, #1a1a1a, #121212);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            color: var(--text);
+            box-shadow: 0 0 30px rgba(0,255,204,0.3);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin: auto 0;
+        }
+
+        .locker-box h2 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+            text-shadow: 0 0 10px rgba(0,255,204,0.5);
+        }
+
+        .cta-strong {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .game-preview-locker {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            text-align: left;
+            background: rgba(0,0,0,0.3);
+            padding: 12px;
+            border-radius: 12px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .game-preview-locker img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .game-preview-content h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .file-info {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: #000;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .progress-container {
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #333;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,255,204,0.1) inset;
+            margin-bottom: 8px;
+        }
+
+        #progressFill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.4s ease;
+            border-radius: 6px;
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #statusMessage {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: var(--primary);
+            min-height: 20px;
+            line-height: 1.4;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            font-size: 22px;
+            color: #ff5555;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,85,85,0.2);
+            transform: scale(1.1);
+        }
+
+        /* Hidden sections until progress completes */
+        .tutorial-section, .offers-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .tutorial-section.visible, .offers-section.visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tutorial-steps {
+            text-align: left;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 12px 0;
+            background: rgba(0,0,0,0.3);
+            padding: 12px;
+            border-radius: 10px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .tutorial-steps ol {
+            padding-left: 18px;
+            margin-top: 6px;
+        }
+
+        .tutorial-steps li {
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .video-tutorial {
+            margin: 12px 0;
+        }
+
+        .video-tutorial iframe {
+            border-radius: 10px;
+            margin-bottom: 8px;
+            height: 120px;
+            width: 100%;
+            border: none;
+        }
+
+        .offers-section {
+            margin-top: 12px;
+        }
+
+        .offers-section h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        #offersList {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* Simple Offer Cards */
+        .offer-card {
+            background: rgba(30,30,30,0.9);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .offer-card:hover {
+            background: rgba(40,40,40,0.9);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,255,204,0.2);
+        }
+
+        .offer-number {
+            background: var(--primary);
+            color: #000;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .offer-content {
+            flex: 1;
+        }
+
+        .offer-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .offer-details {
+            display: flex;
+            gap: 12px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .offer-detail {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .offer-badge {
+            background: var(--accent);
+            color: #000;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Mobile-specific improvements */
+        @media (max-width: 480px) {
+            .locker-box {
+                padding: 15px;
+                max-width: 350px;
+            }
+            
+            .locker-box h2 {
+                font-size: 1.3rem;
+            }
+            
+            .game-preview-locker {
+                padding: 10px;
+            }
+            
+            .game-preview-locker img {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .game-preview-content h3 {
+                font-size: 0.95rem;
+            }
+            
+            .offer-card {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -462,10 +776,10 @@
 
         <!-- Download Buttons -->
         <div class="download-section">
-            <button onclick="showContentLocker('android')" class="download-btn">
+            <button onclick="openLocker('android')" class="download-btn">
                 <i class="fab fa-android"></i> Download for Android
             </button>
-            <button onclick="showContentLocker('ios')" class="download-btn">
+            <button onclick="openLocker('ios')" class="download-btn">
                 <i class="fab fa-apple"></i> Download for iOS
             </button>
         </div>
@@ -581,17 +895,67 @@
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2025 <a href="https://www.m4d.fun">m4d.fun</a>. All rights reserved. | Designed by <a href="https://www.youtube.com/@Modlify-Games" target="_blank">modxnet Games</a>
+            &copy; 2025 <a href="https://www.m4d.fun">m4d.fun</a>. All rights reserved. | Designed by <a href="https://www.youtube.com/@Modlify-Games" target="_blank">m4d Games</a>
         </div>
     </footer>
 
-    <!-- AdBlueMedia Script -->
-    <script type="text/javascript">
-        var oymYM_FAd_htLPDc={"it":4503431,"key":"82ef9"};
-    </script>
-    <script src="https://duw03nk63ml3f.cloudfront.net/1ec5809.js"></script>
-    
+    <!-- Locker Popup -->
+    <div id="locker" class="locker-overlay">
+        <div class="locker-box">
+            <span class="close-btn" onclick="closeLocker()">×</span>
+            <div class="game-preview-locker" id="gamePreviewLocker"></div>
+            
+            <h2>⚡ Download Verification</h2>
+            <p class="cta-strong" id="offerDescription">Complete one quick offer to unlock your game + bonus MOD pack!</p>
+            
+            <!-- Video Tutorial -->
+            <div class="video-tutorial">
+                <iframe src="https://www.youtube.com/embed/muoqqBxvW0E" title="How to Unlock MOD Game" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>Verifying...</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+            </div>
+            
+            <p id="statusMessage">🔄 Initializing download...</p>
+            
+            <!-- Step-by-step guide (Hidden until progress completes) -->
+            <div id="tutorialSection" class="tutorial-section">
+                <div class="tutorial-steps">
+                    <p><strong>How to Unlock Your Game:</strong></p>
+                    <ol>
+                        <li>Choose one of the offers below (takes 2-3 minutes)</li>
+                        <li>Complete the quick task/offer</li>
+                        <li>Return to this page and your download will start automatically</li>
+                        <li>Enjoy your unlocked MOD game!</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- Offers Section (Hidden until progress completes) -->
+            <div id="offersSection" class="offers-section">
+                <h3>🎁 Choose one option below:</h3>
+                <div id="offersList"></div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        const API_KEY="3b17a09c1ca2bba2d52ffadab4894374";
+        const USER_ID="504359";
+
+        // Current selection state
+        let currentPlatform = null;
+        let progressInterval;
+        let currentProgress = 0;
+
         // Prevent cookie consent from showing
         window.abmDisableCookieConsent = true;
         document.cookie = "abm-cookie-consent=accepted; max-age=31536000; path=/";
@@ -641,12 +1005,160 @@
             document.getElementById('ios-steps').style.display = tabIndex === 1 ? 'block' : 'none';
         }
 
-        // Download handler
-        function showContentLocker(platform) {
-            if (platform === 'android') {
-                _Pg();
-            } else if (platform === 'ios') {
-                _Pg();
+        // Locker functions
+        function openLocker(platform) {
+            currentPlatform = platform;
+            document.body.style.overflow = "hidden";
+            document.getElementById("locker").style.display = "flex";
+            
+            // Hide tutorial and offers sections initially
+            document.getElementById("tutorialSection").classList.remove("visible");
+            document.getElementById("offersSection").classList.remove("visible");
+            
+            const platformText = platform === 'android' ? '🤖 Android' : '🍎 iOS';
+            const platformBadge = `<div class="platform-badge">${platformText}</div>`;
+            
+            document.getElementById("gamePreviewLocker").innerHTML = `
+                <img src="https://avatars.githubusercontent.com/u/6404024?s=280&v=4" alt="BeamNG.drive Mobile" />
+                <div class="game-preview-content">
+                    <h3>BeamNG.drive Mobile</h3>
+                    <p class="file-info">📦 File Size: 983.41MB • ⏱ Last Updated: Today</p>
+                    ${platformBadge}
+                </div>`;
+                
+            document.getElementById("offerDescription").innerHTML = 
+                `Complete one quick offer to unlock <strong>BeamNG.drive Mobile</strong> for ${platformText} + bonus MOD pack!`;
+                
+            document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
+            document.getElementById("progressFill").style.width = "0%";
+            document.getElementById("progressPercent").textContent = "0%";
+            startProgressBar();
+        }
+
+        function startProgressBar(){
+            currentProgress = 0;
+            let fill = document.getElementById("progressFill");
+            let percent = document.getElementById("progressPercent");
+            let status = document.getElementById("statusMessage");
+            
+            const messages = [
+                "🔄 Analyzing device compatibility...",
+                "✅ Checking for viruses...",
+                "🔓 Preparing MOD files...",
+                "⚡ Optimizing download...",
+                "🎮 Almost ready..."
+            ];
+            
+            clearInterval(progressInterval);
+            progressInterval = setInterval(() => {
+                if(currentProgress >= 100){
+                    clearInterval(progressInterval);
+                    fill.style.width = "100%";
+                    percent.textContent = "100%";
+                    status.innerHTML = "✅ <strong>Verification Complete!</strong> Choose an offer to download...";
+                    
+                    // Show tutorial and offers sections when progress completes
+                    document.getElementById("tutorialSection").classList.add("visible");
+                    document.getElementById("offersSection").classList.add("visible");
+                    
+                    // Load offers after progress completes
+                    loadOffers();
+                } else {
+                    currentProgress += Math.random() * 4 + 1;
+                    if(currentProgress > 100) currentProgress = 100;
+                    fill.style.width = currentProgress + "%";
+                    percent.textContent = Math.round(currentProgress) + "%";
+                    
+                    // Show different messages at different progress points
+                    let msgIndex = Math.floor(currentProgress / 20);
+                    if(msgIndex < messages.length) {
+                        status.textContent = messages[msgIndex];
+                    }
+                }
+            }, 600);
+        }
+
+        function loadOffers() {
+            if (!currentPlatform) return;
+            
+            // Use platform-specific search term for better offers
+            const searchTerm = `BeamNG.drive Mobile ${currentPlatform}`;
+            
+            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=${encodeURIComponent(searchTerm)}`)
+            .then(res => res.json())
+            .then(offers => {
+                if(!offers || !Array.isArray(offers) || offers.length === 0){
+                    document.getElementById("offersList").innerHTML = "<p>No offers available right now. Please check back later.</p>";
+                    return;
+                }
+                
+                let html = "";
+                const badges = ["Easy", "Quick", "Popular", "Verified", "Hot"];
+                
+                offers.slice(0,5).forEach((offer, index) => {
+                    const timeEstimate = Math.floor(Math.random() * 3) + 2;
+                    const successRate = 85 + Math.floor(Math.random() * 10);
+                    
+                    html += `
+                    <div class="offer-card" onclick="selectOffer('${offer.url}', 'BeamNG.drive Mobile', '${currentPlatform}')">
+                        <div class="offer-number">${index + 1}</div>
+                        <div class="offer-content">
+                            <div class="offer-title">${offer.anchor || "Complete Quick Offer"}</div>
+                            <div class="offer-details">
+                                <div class="offer-detail">✅ ${successRate}% Success</div>
+                                <div class="offer-detail">⏱ ${timeEstimate} mins</div>
+                            </div>
+                        </div>
+                        <div class="offer-badge">${badges[index] || "Special"}</div>
+                    </div>`;
+                });
+                document.getElementById("offersList").innerHTML = html;
+            })
+            .catch(() => { 
+                document.getElementById("offersList").innerHTML = "<p>Error loading offers. Please try again.</p>"; 
+            });
+        }
+
+        function selectOffer(url, gameName, platform) {
+            // Track conversion
+            console.log(`Offer selected: ${gameName} for ${platform}`);
+            
+            // Open offer in new tab
+            window.open(url, '_blank');
+            
+            // Show completion message
+            document.getElementById("statusMessage").innerHTML = 
+                "✅ <strong>Offer Completed!</strong> Your download will start shortly...";
+            
+            // Simulate download starting after a delay
+            setTimeout(() => {
+                const platformText = platform === 'android' ? 'APK file' : 'IPA file';
+                alert(`🎉 Download for ${gameName} (${platformText}) is starting! Thank you for completing the offer.`);
+                closeLocker();
+            }, 3000);
+        }
+
+        function closeLocker(){
+            document.getElementById("locker").style.display = "none";
+            document.getElementById("progressFill").style.width = "0%";
+            document.getElementById("progressPercent").textContent = "0%";
+            document.body.style.overflow = "auto";
+            clearInterval(progressInterval);
+            currentPlatform = null;
+        }
+
+        // Exit intent popup
+        let mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseY = e.clientY;
+            if (mouseY <= 5) {
+                showExitOffer();
+            }
+        });
+
+        function showExitOffer() {
+            if (document.getElementById('locker').style.display !== 'flex') {
+                openLocker('android');
             }
         }
     </script>
