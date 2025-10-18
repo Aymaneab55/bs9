@@ -621,7 +621,7 @@
             transform: scale(1.1);
         }
 
-        /* IMPROVED OFFER BOXES */
+        /* IMPROVED OFFER BOXES - SIMPLIFIED AND BETTER COLORS */
         .offers-section {
             margin-top: 10px;
         }
@@ -642,10 +642,10 @@
             gap: 8px;
         }
 
-        /* Enhanced Offer Cards with better visibility */
+        /* Simplified Offer Cards with better colors */
         .offer-card {
-            background: linear-gradient(145deg, #2a2a2a, #222);
-            border: 1px solid #444;
+            background: linear-gradient(145deg, #2a3a3a, #1a2a2a);
+            border: 1px solid var(--primary);
             padding: 12px;
             border-radius: 10px;
             cursor: pointer;
@@ -655,7 +655,7 @@
             gap: 10px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 8px rgba(0,255,204,0.2);
         }
 
         .offer-card::before {
@@ -669,36 +669,22 @@
         }
 
         .offer-card:hover {
-            background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
-            border-color: var(--primary);
+            background: linear-gradient(145deg, #3a4a4a, #2a3a3a);
+            border-color: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,255,204,0.3);
-        }
-
-        .offer-number {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #000;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.75rem;
-            flex-shrink: 0;
-            box-shadow: 0 2px 6px rgba(0,255,204,0.3);
+            box-shadow: 0 4px 12px rgba(0,255,204,0.4);
         }
 
         .offer-content {
             flex: 1;
+            text-align: left;
         }
 
         .offer-title {
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             line-height: 1.3;
         }
 
@@ -1200,7 +1186,6 @@
                 
                 html += `
                 <div class="offer-card" onclick="selectOffer('${offer.url}', 'Euro Truck Simulator 2', '${currentPlatform}')">
-                    <div class="offer-number">${index + 1}</div>
                     <div class="offer-content">
                         <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
                         <div class="offer-details">
