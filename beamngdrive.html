@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="robots" content="index, follow">
-    <meta name="description" content="Download BeamNG.drive Mobile - Experience realistic driving physics and crash simulation on your smartphone. Get it now on Android and iOS.">
-    <meta name="keywords" content="BeamNG.drive Mobile, modded games, mobile games, m4d.fun, download games">
-    <meta property="og:title" content="BeamNG.drive Mobile - m4d.fun">
-    <meta property="og:description" content="Download the latest modded version of BeamNG.drive Mobile. Experience realistic soft-body physics and vehicle simulation.">
-    <meta property="og:image" content="https://i.ibb.co/99bcw424/IMG-20250228-122052.jpg">
-    <meta property="og:url" content="https://www.m4d.fun/beamng-drive-mobile">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="BeamNG.drive Mobile - m4d.fun">
-    <meta name="twitter:description" content="Download the latest modded version of BeamNG.drive Mobile. Experience realistic soft-body physics and vehicle simulation.">
-    <meta name="twitter:image" content="https://i.ibb.co/99bcw424/IMG-20250228-122052.jpg">
-    <meta name="author" content="m4d.fun">
-    <link rel="icon" href="https://i.ibb.co/gbsY945Q/Black-and-Green-Illustrative-E-Sports-Gaming-Logo-2-removebg.png">
-    <title>BeamNG.drive Mobile - m4d.fun</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Download BeamNG.drive Mobile - Experience realistic driving physics and crash simulation on your smartphone. Get it now on Android and iOS.">
+  <meta name="keywords" content="BeamNG.drive Mobile, modded games, mobile games, m4d.fun, download games">
+  <meta property="og:title" content="BeamNG.drive Mobile - m4d.fun">
+  <meta property="og:description" content="Download the latest modded version of BeamNG.drive Mobile. Experience realistic soft-body physics and vehicle simulation.">
+  <meta property="og:image" content="https://i.ibb.co/99bcw424/IMG-20250228-122052.jpg">
+  <meta property="og:url" content="https://www.m4d.fun/beamng-drive-mobile">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BeamNG.drive Mobile - m4d.fun">
+  <meta name="twitter:description" content="Download the latest modded version of BeamNG.drive Mobile. Experience realistic soft-body physics and vehicle simulation.">
+  <meta name="twitter:image" content="https://i.ibb.co/99bcw424/IMG-20250228-122052.jpg">
+  <meta name="author" content="m4d.fun">
+  <link rel="icon" href="https://i.ibb.co/gbsY945Q/Black-and-Green-Illustrative-E-Sports-Gaming-Logo-2-removebg.png">
+  <title>BeamNG.drive Mobile - m4d.fun</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <style>
         * {
             margin: 0;
             padding: 0;
@@ -37,6 +38,9 @@
             --white: #ffffff;
             --text: #e0e0e0;
             --accent: #ffcc00;
+            --offer-bg: #2a3a3a;
+            --offer-border: #444;
+            --offer-highlight: #3a4a4a;
         }
 
         body {
@@ -427,17 +431,17 @@
             }
         }
 
-        /* OPTIMIZED LOCKER SYSTEM STYLES */
+        /* IMPROVED LOCKER SYSTEM STYLES */
         .locker-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.98);
+            background: rgba(0,0,0,0.95);
             z-index: 9999;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             overflow-y: auto;
-            padding: 10px;
+            padding: 15px;
             animation: fadeIn 0.4s ease;
         }
 
@@ -448,7 +452,8 @@
 
         .locker-box {
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
+            max-height: 85vh;
             background: linear-gradient(145deg, #1a1a1a, #121212);
             padding: 20px;
             border-radius: 16px;
@@ -459,15 +464,15 @@
             display: flex;
             flex-direction: column;
             border: 1px solid rgba(255,255,255,0.1);
-            margin: auto 0;
+            overflow-y: auto;
         }
 
         .locker-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
@@ -477,24 +482,24 @@
             gap: 8px;
             font-weight: 700;
             color: var(--primary);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .locker-box h2 {
             color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
             text-shadow: 0 0 15px rgba(0,255,204,0.5);
         }
 
         .cta-strong {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--accent);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             line-height: 1.4;
             background: rgba(255,204,0,0.1);
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
             border-left: 3px solid var(--accent);
         }
@@ -502,31 +507,31 @@
         .game-preview-locker {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 12px;
             text-align: left;
             background: rgba(0,0,0,0.3);
-            padding: 12px;
+            padding: 10px;
             border-radius: 10px;
             border-left: 3px solid var(--primary);
         }
 
         .game-preview-locker img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .game-preview-content h3 {
             margin: 0;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text);
             line-height: 1.3;
         }
 
         .file-info {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             margin-top: 4px;
         }
@@ -537,34 +542,34 @@
             color: #000;
             padding: 3px 8px;
             border-radius: 15px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: bold;
             margin-top: 4px;
         }
 
         .progress-container {
-            margin: 15px 0;
+            margin: 12px 0;
             background: rgba(0,0,0,0.3);
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
+            margin-bottom: 6px;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
         .progress-bar {
             width: 100%;
-            height: 8px;
+            height: 6px;
             background: #333;
             border-radius: 6px;
             overflow: hidden;
             box-shadow: 0 0 10px rgba(0,255,204,0.1) inset;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         #progressFill {
@@ -576,34 +581,34 @@
         }
 
         .progress-text {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             display: flex;
             justify-content: space-between;
         }
 
         #statusMessage {
-            margin-top: 12px;
+            margin-top: 10px;
             font-weight: bold;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--primary);
             min-height: 20px;
             line-height: 1.4;
             background: rgba(0,255,204,0.1);
-            padding: 8px;
+            padding: 6px;
             border-radius: 6px;
         }
 
         .close-btn {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            font-size: 20px;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
             color: #ff5555;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -616,86 +621,41 @@
             transform: scale(1.1);
         }
 
-        /* Hidden sections until progress completes */
-        .tutorial-section, .offers-section {
-            display: none;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.5s ease;
-        }
-
-        .tutorial-section.visible, .offers-section.visible {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .tutorial-steps {
-            text-align: left;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin: 12px 0;
-            background: rgba(0,0,0,0.3);
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-        }
-
-        .tutorial-steps ol {
-            padding-left: 18px;
-            margin-top: 6px;
-        }
-
-        .tutorial-steps li {
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-
-        .video-tutorial {
-            margin: 12px 0;
-        }
-
-        .video-tutorial iframe {
-            border-radius: 10px;
-            margin-bottom: 8px;
-            height: 120px;
-            width: 100%;
-            border: none;
-        }
-
+        /* IMPROVED OFFER BOXES - SIMPLIFIED AND BETTER COLORS */
         .offers-section {
-            margin-top: 12px;
+            margin-top: 10px;
         }
 
         .offers-section h3 {
             color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             justify-content: center;
         }
 
         #offersList {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
-        /* Enhanced Offer Cards */
+        /* Simplified Offer Cards with better colors */
         .offer-card {
-            background: linear-gradient(145deg, rgba(30,30,30,0.9), rgba(20,20,20,0.9));
-            border: 1px solid rgba(255,255,255,0.15);
+            background: linear-gradient(145deg, #2a3a3a, #1a2a2a);
+            border: 1px solid var(--primary);
             padding: 12px;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,255,204,0.2);
         }
 
         .offer-card::before {
@@ -703,83 +663,69 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 3px;
+            width: 4px;
             height: 100%;
             background: linear-gradient(to bottom, var(--primary), var(--secondary));
         }
 
         .offer-card:hover {
-            background: linear-gradient(145deg, rgba(40,40,40,0.9), rgba(25,25,25,0.9));
-            border-color: var(--primary);
+            background: linear-gradient(145deg, #3a4a4a, #2a3a3a);
+            border-color: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,255,204,0.25);
-        }
-
-        .offer-number {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: #000;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 0.8rem;
-            flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0,255,204,0.3);
+            box-shadow: 0 4px 12px rgba(0,255,204,0.4);
         }
 
         .offer-content {
             flex: 1;
+            text-align: left;
         }
 
         .offer-title {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             line-height: 1.3;
         }
 
         .offer-details {
             display: flex;
-            gap: 12px;
-            font-size: 0.75rem;
+            gap: 10px;
+            font-size: 0.7rem;
             color: var(--text-muted);
         }
 
         .offer-detail {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
 
         .offer-badge {
             background: linear-gradient(135deg, var(--accent), #ff9900);
             color: #000;
-            padding: 4px 8px;
-            border-radius: 15px;
-            font-size: 0.7rem;
+            padding: 3px 6px;
+            border-radius: 12px;
+            font-size: 0.65rem;
             font-weight: bold;
             white-space: nowrap;
-            box-shadow: 0 2px 6px rgba(255,204,0,0.3);
+            box-shadow: 0 2px 4px rgba(255,204,0,0.3);
         }
 
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 15px;
-            padding-top: 12px;
+            gap: 10px;
+            margin-top: 12px;
+            padding-top: 10px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .trust-badge {
             display: flex;
             align-items: center;
-            gap: 4px;
-            font-size: 0.75rem;
+            gap: 3px;
+            font-size: 0.7rem;
             color: var(--text-muted);
         }
 
@@ -795,20 +741,20 @@
             }
             
             .locker-box h2 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
             .game-preview-locker {
-                padding: 10px;
+                padding: 8px;
             }
             
             .game-preview-locker img {
-                width: 45px;
-                height: 45px;
+                width: 40px;
+                height: 40px;
             }
             
             .game-preview-content h3 {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
             
             .offer-card {
@@ -817,242 +763,271 @@
             
             .trust-badges {
                 flex-direction: column;
-                gap: 6px;
+                gap: 5px;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav-container">
-            <a href="https://www.m4d.fun" class="back-icon">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
-            <div class="menu-icon" id="menuIcon">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Popular Apps</a></li>
-                <li><a href="#">New Releases</a></li>
-                <li><a href="#">Categories</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <div class="hero">
-        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/284160/capsule_616x353.jpg?t=1743607220" alt="BeamNG.drive Mobile Cover">
+  <header class="header">
+    <nav class="nav-container">
+      <a href="https://www.m4d.fun" class="back-icon">Back to
+      Home</a>
+      <div class="menu-icon" id="menuIcon"></div>
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">Popular Apps</a>
+        </li>
+        <li>
+          <a href="#">New Releases</a>
+        </li>
+        <li>
+          <a href="#">Categories</a>
+        </li>
+      </ul>
+    </nav>
+  </header><!-- Hero Section -->
+  <div class="hero"><img src=
+  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/284160/capsule_616x353.jpg?t=1743607220"
+  alt="BeamNG.drive Mobile Cover"></div><!-- Game Info Section -->
+  <div class="container">
+    <div class="game-info">
+      <img src=
+      "https://avatars.githubusercontent.com/u/6404024?s=280&amp;v=4"
+      alt="BeamNG.drive Mobile Logo" class="game-icon">
+      <div class="game-details">
+        <h1>BeamNG.drive Mobile</h1><small>For Android and
+        iOS</small>
+      </div>
+    </div><!-- Download Buttons -->
+    <div class="download-section">
+      <button onclick="openLocker('android')" class=
+      "download-btn">Download for Android</button> <button onclick=
+      "openLocker('ios')" class="download-btn"> Download for
+      iOS</button>
+    </div><!-- Specs Grid -->
+    <div class="specs-grid">
+      <div class="spec-item">
+        <h3>Size</h3>
+        <p>983.41MB (Installer) 8GB (Post-Download Cache)</p>
+      </div>
+      <div class="spec-item">
+        <h3>Price</h3>
+        <p>Free</p>
+      </div>
+      <div class="spec-item">
+        <h3>Android Compatible</h3>
+        <p>Qualcomm Snapdragon 845 and better, 4GB RAM</p>
+      </div>
+      <div class="spec-item">
+        <h3>iOS Devices Required</h3>
+        <p>iPhone XS Max or newer, iPad Pro 2018 or later</p>
+      </div>
+    </div><!-- Installation Guide -->
+    <div class="installation">
+      <h2>Installation Guide</h2>
+      <div class="install-tabs">
+        <div class="install-tab active" onclick=
+        "changeInstallTab(0)">
+          Android
+        </div>
+        <div class="install-tab" onclick="changeInstallTab(1)">
+          iOS
+        </div>
+      </div>
+      <div class="install-content">
+        <ul class="install-steps" id="android-steps">
+          <li>Download the APK file using the Android download
+          button above</li>
+          <li>Go to Settings &gt; Security &gt; Enable "Unknown
+          Sources"</li>
+          <li>Locate the downloaded APK file in your file
+          manager</li>
+          <li>Tap to install and follow on-screen instructions</li>
+          <li>After installation, download the additional game
+          cache files</li>
+          <li>Place cache files in Android/obb/ folder</li>
+          <li>Launch the game and enjoy!</li>
+        </ul>
+        <ul class="install-steps" id="ios-steps" style=
+        "display:none">
+          <li>Download the IPA file using the iOS download
+          button</li>
+          <li>Install AltStore on your computer (Windows/Mac
+          required)</li>
+          <li>Connect your iOS device and open AltStore</li>
+          <li>Select "Install .ipa" and choose the downloaded
+          file</li>
+          <li>Enter your Apple ID when prompted</li>
+          <li>Trust the developer in Settings &gt; General &gt;
+          Device Management</li>
+          <li>Launch the game and download additional
+          resources</li>
+        </ul>
+      </div>
+    </div><!-- Features Section -->
+    <div class="features">
+      <h2>Features</h2>
+      <ul class="feature-list">
+        <li>Advanced Physics: Realistic soft-body physics engine
+        for authentic crashes</li>
+        <li>Vehicle Variety: 20+ detailed vehicles with realistic
+        handling</li>
+        <li>Open World: Massive maps with dynamic terrain and
+        obstacles</li>
+        <li>Damage System: Real-time deformation and part
+        damage</li>
+        <li>Custom Scenarios: Create and share your own driving
+        challenges</li>
+      </ul>
+    </div><!-- Screenshots Section -->
+    <div class="screenshots">
+      <h2>Screenshots</h2>
+      <div class="screenshot-grid"><img src=
+      "https://i.ibb.co/60DvVQDN/c5.jpg" alt=
+      "BeamNG.drive Mobile Screenshot 1" class="screenshot">
+      <img src="https://i.ibb.co/nNJPCcgW/j70.jpg" alt=
+      "BeamNG.drive Mobile Screenshot 2" class="screenshot">
+      <img src="https://i.ibb.co/jvnps9wr/c2.jpg" alt=
+      "BeamNG.drive Mobile Screenshot 3" class="screenshot"></div>
     </div>
-
-    <!-- Game Info Section -->
-    <div class="container">
-        <div class="game-info">
-            <img src="https://avatars.githubusercontent.com/u/6404024?s=280&v=4" alt="BeamNG.drive Mobile Logo" class="game-icon">
-            <div class="game-details">
-                <h1>BeamNG.drive Mobile</h1>
-                <small>For Android and iOS</small>
-            </div>
+  </div><!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <ul class="footer-links">
+          <li>
+            <a href="#">Our Mission</a>
+          </li>
+          <li>
+            <a href="#">Team</a>
+          </li>
+          <li>
+            <a href="#">Careers</a>
+          </li>
+          <li>
+            <a href=
+            "https://www.instagram.com/m9dde?igsh=cW9uN3RvNWdnNDdq">
+            Contact Us</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Popular Apps</a>
+          </li>
+          <li>
+            <a href="#">New Releases</a>
+          </li>
+          <li>
+            <a href="#">Categories</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul class="footer-links">
+          <li>
+            <a href="#">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="#">Terms of Service</a>
+          </li>
+          <li>
+            <a href="#">Disclaimer</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href=
+          "https://www.tiktok.com/@danielmartinilo?_t=ZT-8xhD8lBA1Gg&amp;_r=1"
+          aria-label="TikTok"></a> <a href=
+          "https://www.instagram.com/m9dde?igsh=cW9uN3RvNWdnNDdq"
+          aria-label="Instagram"></a> <a href=
+          "https://youtube.com/@tilijo-m7u?si=1A_4zev8DmrbzgEe"
+          aria-label="YouTube"></a>
         </div>
-
-        <!-- Download Buttons -->
-        <div class="download-section">
-            <button onclick="openLocker('android')" class="download-btn">
-                <i class="fab fa-android"></i> Download for Android
-            </button>
-            <button onclick="openLocker('ios')" class="download-btn">
-                <i class="fab fa-apple"></i> Download for iOS
-            </button>
-        </div>
-
-        <!-- Specs Grid -->
-        <div class="specs-grid">
-            <div class="spec-item">
-                <h3>Size</h3>
-                <p>983.41MB (Installer) 8GB (Post-Download Cache)</p>
-            </div>
-            <div class="spec-item">
-                <h3>Price</h3>
-                <p>Free</p>
-            </div>
-            <div class="spec-item">
-                <h3>Android Compatible</h3>
-                <p>Qualcomm Snapdragon 845 and better, 4GB RAM</p>
-            </div>
-            <div class="spec-item">
-                <h3>iOS Devices Required</h3>
-                <p>iPhone XS Max or newer, iPad Pro 2018 or later</p>
-            </div>
-        </div>
-
-        <!-- Installation Guide -->
-        <div class="installation">
-            <h2>Installation Guide</h2>
-            <div class="install-tabs">
-                <div class="install-tab active" onclick="changeInstallTab(0)">Android</div>
-                <div class="install-tab" onclick="changeInstallTab(1)">iOS</div>
-            </div>
-            <div class="install-content">
-                <ul class="install-steps" id="android-steps">
-                    <li>Download the APK file using the Android download button above</li>
-                    <li>Go to Settings > Security > Enable "Unknown Sources"</li>
-                    <li>Locate the downloaded APK file in your file manager</li>
-                    <li>Tap to install and follow on-screen instructions</li>
-                    <li>After installation, download the additional game cache files</li>
-                    <li>Place cache files in Android/obb/ folder</li>
-                    <li>Launch the game and enjoy!</li>
-                </ul>
-                <ul class="install-steps" id="ios-steps" style="display:none">
-                    <li>Download the IPA file using the iOS download button</li>
-                    <li>Install AltStore on your computer (Windows/Mac required)</li>
-                    <li>Connect your iOS device and open AltStore</li>
-                    <li>Select "Install .ipa" and choose the downloaded file</li>
-                    <li>Enter your Apple ID when prompted</li>
-                    <li>Trust the developer in Settings > General > Device Management</li>
-                    <li>Launch the game and download additional resources</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Features Section -->
-        <div class="features">
-            <h2>Features</h2>
-            <ul class="feature-list">
-                <li>Advanced Physics: Realistic soft-body physics engine for authentic crashes</li>
-                <li>Vehicle Variety: 20+ detailed vehicles with realistic handling</li>
-                <li>Open World: Massive maps with dynamic terrain and obstacles</li>
-                <li>Damage System: Real-time deformation and part damage</li>
-                <li>Custom Scenarios: Create and share your own driving challenges</li>
-            </ul>
-        </div>
-
-        <!-- Screenshots Section -->
-        <div class="screenshots">
-            <h2>Screenshots</h2>
-            <div class="screenshot-grid">
-                <img src="https://i.ibb.co/60DvVQDN/c5.jpg" alt="BeamNG.drive Mobile Screenshot 1" class="screenshot">
-                <img src="https://i.ibb.co/nNJPCcgW/j70.jpg" alt="BeamNG.drive Mobile Screenshot 2" class="screenshot">
-                <img src="https://i.ibb.co/jvnps9wr/c2.jpg" alt="BeamNG.drive Mobile Screenshot 3" class="screenshot">
-            </div>
-        </div>
+      </div>
     </div>
-
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Our Mission</a></li>
-                    <li><a href="#">Team</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="*">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Popular Apps</a></li>
-                    <li><a href="#">New Releases</a></li>
-                    <li><a href="#">Categories</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Disclaimer</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="https://www.tiktok.com/@danielmartinilo?_t=ZT-8xhD8lBA1Gg&_r=1" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="*" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://youtube.com/@tilijo-m7u?si=1A_4zev8DmrbzgEe" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2025 <a href="https://www.m4d.fun">m4d.fun</a>. All rights reserved. | Designed by <a href="https://www.youtube.com/@Modlify-Games" target="_blank">m4d Games</a>
-        </div>
-    </footer>
-
-    <!-- OPTIMIZED Locker Popup -->
-    <div id="locker" class="locker-overlay">
-        <div class="locker-box">
-            <span class="close-btn" onclick="closeLocker()">×</span>
-            
-            <div class="locker-header">
-                <div class="locker-logo">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>m4d.fun Secure Download</span>
-                </div>
-            </div>
-            
-            <div class="game-preview-locker" id="gamePreviewLocker"></div>
-            
-            <h2>⚡ Download Verification</h2>
-            <p class="cta-strong">Complete one quick offer to unlock your download + exclusive bonus content!</p>
-            
-            <!-- Progress Bar - OPTIMIZED timing -->
-            <div class="progress-container">
-                <div class="progress-header">
-                    <span>Security Check</span>
-                    <span id="progressPercent">0%</span>
-                </div>
-                <div class="progress-bar">
-                    <div id="progressFill"></div>
-                </div>
-                <div class="progress-text">
-                    <span>Preparing your download...</span>
-                    <span>Secure</span>
-                </div>
-            </div>
-            
-            <p id="statusMessage">🔄 Initializing secure download...</p>
-            
-            <!-- Step-by-step guide (Shows after progress) -->
-            <div id="tutorialSection" class="tutorial-section">
-                <div class="tutorial-steps">
-                    <p><strong>🎯 Quick & Easy Process:</strong></p>
-                    <ol>
-                        <li><strong>Choose any offer below</strong> (1-3 minutes)</li>
-                        <li><strong>Complete the simple task</strong> - most are free trials or quick surveys</li>
-                        <li><strong>Return here automatically</strong> - download starts instantly</li>
-                        <li><strong>Enjoy your premium game</strong> + exclusive bonus content!</li>
-                    </ol>
-                </div>
-            </div>
-            
-            <!-- Offers Section (Shows after progress) -->
-            <div id="offersSection" class="offers-section">
-                <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
-                <div id="offersList">
-                    <!-- Offers will be loaded here -->
-                </div>
-                
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <i class="fas fa-shield-check"></i>
-                        <span>100% Secure</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i class="fas fa-clock"></i>
-                        <span>1-3 Minutes</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i class="fas fa-download"></i>
-                        <span>Instant Access</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="footer-bottom">
+      © 2025 <a href="https://www.m4d.fun">m4d.fun</a>. All
+      rights reserved. | Designed by <a href=
+      "https://www.youtube.com/@Modlify-Games" target=
+      "_blank">modxnet Games</a>
     </div>
+  </footer>
 
-    <script>
+  <!-- IMPROVED Locker Popup -->
+  <div id="locker" class="locker-overlay">
+    <div class="locker-box">
+      <span class="close-btn" onclick="closeLocker()">×</span>
+      
+      <div class="locker-header">
+        <div class="locker-logo">
+          <i class="fas fa-shield-alt"></i>
+          <span>m4d.fun Secure Download</span>
+        </div>
+      </div>
+      
+      <div class="game-preview-locker" id="gamePreviewLocker"></div>
+      
+      <h2>⚡ Download Verification</h2>
+      <p class="cta-strong">Complete one quick offer to unlock your download + exclusive bonus content!</p>
+      
+      <!-- Progress Bar - OPTIMIZED timing -->
+      <div class="progress-container">
+        <div class="progress-header">
+          <span>Security Check</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-bar">
+          <div id="progressFill"></div>
+        </div>
+        <div class="progress-text">
+          <span>Preparing your download...</span>
+          <span>Secure</span>
+        </div>
+      </div>
+      
+      <p id="statusMessage">🔄 Initializing secure download...</p>
+      
+      <!-- Offers Section (Shows after progress) -->
+      <div id="offersSection" class="offers-section">
+        <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
+        <div id="offersList">
+          <!-- Offers will be loaded here -->
+        </div>
+        
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <i class="fas fa-shield-check"></i>
+            <span>100% Secure</span>
+          </div>
+          <div class="trust-badge">
+            <i class="fas fa-clock"></i>
+            <span>1-3 Minutes</span>
+          </div>
+          <div class="trust-badge">
+            <i class="fas fa-download"></i>
+            <span>Instant Access</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
         const API_KEY="3b17a09c1ca2bba2d52ffadab4894374";
         const USER_ID="504359";
 
@@ -1073,32 +1048,30 @@
         const screenshotGrid = document.querySelector('.screenshot-grid');
         let isDragging = false, startX, scrollLeft;
 
-        if (screenshotGrid) {
-            screenshotGrid.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                startX = e.pageX - screenshotGrid.offsetLeft;
-                scrollLeft = screenshotGrid.scrollLeft;
-                screenshotGrid.style.cursor = 'grabbing';
-            });
+        screenshotGrid.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - screenshotGrid.offsetLeft;
+            scrollLeft = screenshotGrid.scrollLeft;
+            screenshotGrid.style.cursor = 'grabbing';
+        });
 
-            screenshotGrid.addEventListener('mouseleave', () => {
-                isDragging = false;
-                screenshotGrid.style.cursor = 'grab';
-            });
+        screenshotGrid.addEventListener('mouseleave', () => {
+            isDragging = false;
+            screenshotGrid.style.cursor = 'grab';
+        });
 
-            screenshotGrid.addEventListener('mouseup', () => {
-                isDragging = false;
-                screenshotGrid.style.cursor = 'grab';
-            });
+        screenshotGrid.addEventListener('mouseup', () => {
+            isDragging = false;
+            screenshotGrid.style.cursor = 'grab';
+        });
 
-            screenshotGrid.addEventListener('mousemove', (e) => {
-                if(!isDragging) return;
-                e.preventDefault();
-                const x = e.pageX - screenshotGrid.offsetLeft;
-                const walk = (x - startX) * 2;
-                screenshotGrid.scrollLeft = scrollLeft - walk;
-            });
-        }
+        screenshotGrid.addEventListener('mousemove', (e) => {
+            if(!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - screenshotGrid.offsetLeft;
+            const walk = (x - startX) * 2;
+            screenshotGrid.scrollLeft = scrollLeft - walk;
+        });
 
         // Installation tabs
         function changeInstallTab(tabIndex) {
@@ -1111,29 +1084,28 @@
             document.getElementById('ios-steps').style.display = tabIndex === 1 ? 'block' : 'none';
         }
 
-        // OPTIMIZED Locker functions
+        // IMPROVED Locker functions
         function openLocker(platform) {
             currentPlatform = platform;
             document.body.style.overflow = "hidden";
             document.getElementById("locker").style.display = "flex";
             
-            // Hide tutorial and offers sections initially
-            document.getElementById("tutorialSection").classList.remove("visible");
-            document.getElementById("offersSection").classList.remove("visible");
+            // Hide offers section initially
+            document.getElementById("offersSection").style.display = "none";
             
             const platformText = platform === 'android' ? '🤖 Android' : '🍎 iOS';
             const fileType = platform === 'android' ? 'APK + OBB Files' : 'IPA File';
             const platformBadge = `<div class="platform-badge">${platformText}</div>`;
             
             document.getElementById("gamePreviewLocker").innerHTML = `
-                <img src="https://avatars.githubusercontent.com/u/6404024?s=280&v=4" alt="BeamNG.drive Mobile" />
+                <img src="https://avatars.githubusercontent.com/u/6404024?s=280&amp;v=4" alt="BeamNG.drive Mobile" />
                 <div class="game-preview-content">
                     <h3>BeamNG.drive Mobile</h3>
                     <p class="file-info">📦 ${fileType} • 🕒 Updated: Today</p>
                     ${platformBadge}
                 </div>`;
                 
-            // Start OPTIMIZED progress bar
+            // Start IMPROVED progress bar
             startOptimizedProgressBar();
         }
 
@@ -1159,15 +1131,14 @@
                     percent.textContent = "100%";
                     status.innerHTML = "✅ <strong>Ready! Choose an offer to download</strong>";
                     
-                    // Show tutorial and offers sections when progress completes
-                    document.getElementById("tutorialSection").classList.add("visible");
-                    document.getElementById("offersSection").classList.add("visible");
+                    // Show offers section when progress completes
+                    document.getElementById("offersSection").style.display = "block";
                     
                     // Load offers after progress completes
                     loadOffers();
                 } else {
-                    // OPTIMIZED progress - completes in 4-5 seconds (perfect balance)
-                    currentProgress += 3 + Math.random() * 4;
+                    // OPTIMIZED progress - completes in 3-4 seconds
+                    currentProgress += 4 + Math.random() * 5;
                     if(currentProgress > 100) currentProgress = 100;
                     fill.style.width = currentProgress + "%";
                     percent.textContent = Math.round(currentProgress) + "%";
@@ -1178,14 +1149,14 @@
                         status.textContent = messages[msgIndex];
                     }
                 }
-            }, 150); // Balanced interval
+            }, 120); // Faster interval
         }
 
         function loadOffers() {
             if (!currentPlatform) return;
             
             // Use platform-specific search term for better offers
-            const searchTerm = `mobile game ${currentPlatform}`;
+            const searchTerm = `physics game ${currentPlatform}`;
             
             // Show loading state
             document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
@@ -1255,7 +1226,6 @@
                 
                 html += `
                 <div class="offer-card" onclick="selectOffer('${offer.url}', 'BeamNG.drive Mobile', '${currentPlatform}')">
-                    <div class="offer-number">${index + 1}</div>
                     <div class="offer-content">
                         <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
                         <div class="offer-details">
@@ -1311,6 +1281,6 @@
                     "⚠️ <strong>Complete an offer to download the game for free!</strong>";
             }
         });
-    </script>
+  </script>
 </body>
 </html>
