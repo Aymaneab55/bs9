@@ -38,6 +38,9 @@
             --white: #ffffff;
             --text: #e0e0e0;
             --accent: #ffcc00;
+            --offer-bg: #2a2a2a;
+            --offer-border: #444;
+            --offer-highlight: #3a3a3a;
         }
 
         body {
@@ -428,17 +431,17 @@
             }
         }
 
-        /* OPTIMIZED LOCKER SYSTEM STYLES */
+        /* IMPROVED LOCKER SYSTEM STYLES */
         .locker-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.98);
+            background: rgba(0,0,0,0.95);
             z-index: 9999;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             overflow-y: auto;
-            padding: 10px;
+            padding: 15px;
             animation: fadeIn 0.4s ease;
         }
 
@@ -449,7 +452,8 @@
 
         .locker-box {
             width: 100%;
-            max-width: 450px;
+            max-width: 420px;
+            max-height: 85vh;
             background: linear-gradient(145deg, #1a1a1a, #121212);
             padding: 20px;
             border-radius: 16px;
@@ -460,15 +464,15 @@
             display: flex;
             flex-direction: column;
             border: 1px solid rgba(255,255,255,0.1);
-            margin: auto 0;
+            overflow-y: auto;
         }
 
         .locker-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
@@ -478,24 +482,24 @@
             gap: 8px;
             font-weight: 700;
             color: var(--primary);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .locker-box h2 {
             color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
             text-shadow: 0 0 15px rgba(0,255,204,0.5);
         }
 
         .cta-strong {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--accent);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             line-height: 1.4;
             background: rgba(255,204,0,0.1);
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
             border-left: 3px solid var(--accent);
         }
@@ -503,31 +507,31 @@
         .game-preview-locker {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 12px;
             text-align: left;
             background: rgba(0,0,0,0.3);
-            padding: 12px;
+            padding: 10px;
             border-radius: 10px;
             border-left: 3px solid var(--primary);
         }
 
         .game-preview-locker img {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .game-preview-content h3 {
             margin: 0;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text);
             line-height: 1.3;
         }
 
         .file-info {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             margin-top: 4px;
         }
@@ -538,34 +542,34 @@
             color: #000;
             padding: 3px 8px;
             border-radius: 15px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: bold;
             margin-top: 4px;
         }
 
         .progress-container {
-            margin: 15px 0;
+            margin: 12px 0;
             background: rgba(0,0,0,0.3);
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.85rem;
+            margin-bottom: 6px;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
         .progress-bar {
             width: 100%;
-            height: 8px;
+            height: 6px;
             background: #333;
             border-radius: 6px;
             overflow: hidden;
             box-shadow: 0 0 10px rgba(0,255,204,0.1) inset;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         #progressFill {
@@ -577,34 +581,34 @@
         }
 
         .progress-text {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             display: flex;
             justify-content: space-between;
         }
 
         #statusMessage {
-            margin-top: 12px;
+            margin-top: 10px;
             font-weight: bold;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--primary);
             min-height: 20px;
             line-height: 1.4;
             background: rgba(0,255,204,0.1);
-            padding: 8px;
+            padding: 6px;
             border-radius: 6px;
         }
 
         .close-btn {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            font-size: 20px;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
             color: #ff5555;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -617,74 +621,41 @@
             transform: scale(1.1);
         }
 
-        /* Hidden sections until progress completes */
-        .tutorial-section, .offers-section {
-            display: none;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.5s ease;
-        }
-
-        .tutorial-section.visible, .offers-section.visible {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .tutorial-steps {
-            text-align: left;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin: 12px 0;
-            background: rgba(0,0,0,0.3);
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 3px solid var(--accent);
-        }
-
-        .tutorial-steps ol {
-            padding-left: 18px;
-            margin-top: 6px;
-        }
-
-        .tutorial-steps li {
-            margin-bottom: 6px;
-            line-height: 1.4;
-        }
-
+        /* IMPROVED OFFER BOXES */
         .offers-section {
-            margin-top: 12px;
+            margin-top: 10px;
         }
 
         .offers-section h3 {
             color: var(--primary);
-            margin-bottom: 12px;
-            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             justify-content: center;
         }
 
         #offersList {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
-        /* Enhanced Offer Cards */
+        /* Enhanced Offer Cards with better visibility */
         .offer-card {
-            background: linear-gradient(145deg, rgba(30,30,30,0.9), rgba(20,20,20,0.9));
-            border: 1px solid rgba(255,255,255,0.15);
+            background: linear-gradient(145deg, #2a2a2a, #222);
+            border: 1px solid #444;
             padding: 12px;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
         .offer-card::before {
@@ -692,31 +663,31 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 3px;
+            width: 4px;
             height: 100%;
             background: linear-gradient(to bottom, var(--primary), var(--secondary));
         }
 
         .offer-card:hover {
-            background: linear-gradient(145deg, rgba(40,40,40,0.9), rgba(25,25,25,0.9));
+            background: linear-gradient(145deg, #3a3a3a, #2a2a2a);
             border-color: var(--primary);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0,255,204,0.25);
+            box-shadow: 0 4px 12px rgba(0,255,204,0.3);
         }
 
         .offer-number {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: #000;
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0,255,204,0.3);
+            box-shadow: 0 2px 6px rgba(0,255,204,0.3);
         }
 
         .offer-content {
@@ -724,51 +695,51 @@
         }
 
         .offer-title {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             line-height: 1.3;
         }
 
         .offer-details {
             display: flex;
-            gap: 12px;
-            font-size: 0.75rem;
+            gap: 10px;
+            font-size: 0.7rem;
             color: var(--text-muted);
         }
 
         .offer-detail {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
 
         .offer-badge {
             background: linear-gradient(135deg, var(--accent), #ff9900);
             color: #000;
-            padding: 4px 8px;
-            border-radius: 15px;
-            font-size: 0.7rem;
+            padding: 3px 6px;
+            border-radius: 12px;
+            font-size: 0.65rem;
             font-weight: bold;
             white-space: nowrap;
-            box-shadow: 0 2px 6px rgba(255,204,0,0.3);
+            box-shadow: 0 2px 4px rgba(255,204,0,0.3);
         }
 
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 15px;
-            padding-top: 12px;
+            gap: 10px;
+            margin-top: 12px;
+            padding-top: 10px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .trust-badge {
             display: flex;
             align-items: center;
-            gap: 4px;
-            font-size: 0.75rem;
+            gap: 3px;
+            font-size: 0.7rem;
             color: var(--text-muted);
         }
 
@@ -784,20 +755,20 @@
             }
             
             .locker-box h2 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
             .game-preview-locker {
-                padding: 10px;
+                padding: 8px;
             }
             
             .game-preview-locker img {
-                width: 45px;
-                height: 45px;
+                width: 40px;
+                height: 40px;
             }
             
             .game-preview-content h3 {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
             
             .offer-card {
@@ -806,7 +777,7 @@
             
             .trust-badges {
                 flex-direction: column;
-                gap: 6px;
+                gap: 5px;
             }
         }
     </style>
@@ -969,7 +940,7 @@
         </div>
     </footer>
 
-    <!-- OPTIMIZED Locker Popup -->
+    <!-- IMPROVED Locker Popup -->
     <div id="locker" class="locker-overlay">
         <div class="locker-box">
             <span class="close-btn" onclick="closeLocker()">×</span>
@@ -1002,19 +973,6 @@
             </div>
             
             <p id="statusMessage">🔄 Initializing secure download...</p>
-            
-            <!-- Step-by-step guide (Shows after progress) -->
-            <div id="tutorialSection" class="tutorial-section">
-                <div class="tutorial-steps">
-                    <p><strong>🎯 Quick & Easy Process:</strong></p>
-                    <ol>
-                        <li><strong>Choose any offer below</strong> (1-3 minutes)</li>
-                        <li><strong>Complete the simple task</strong> - most are free trials or quick surveys</li>
-                        <li><strong>Return here automatically</strong> - download starts instantly</li>
-                        <li><strong>Enjoy your premium game</strong> + exclusive bonus content!</li>
-                    </ol>
-                </div>
-            </div>
             
             <!-- Offers Section (Shows after progress) -->
             <div id="offersSection" class="offers-section">
@@ -1100,15 +1058,14 @@
             document.getElementById('ios-steps').style.display = tabIndex === 1 ? 'block' : 'none';
         }
 
-        // OPTIMIZED Locker functions
+        // IMPROVED Locker functions
         function openLocker(platform) {
             currentPlatform = platform;
             document.body.style.overflow = "hidden";
             document.getElementById("locker").style.display = "flex";
             
-            // Hide tutorial and offers sections initially
-            document.getElementById("tutorialSection").classList.remove("visible");
-            document.getElementById("offersSection").classList.remove("visible");
+            // Hide offers section initially
+            document.getElementById("offersSection").style.display = "none";
             
             const platformText = platform === 'android' ? '🤖 Android' : '🍎 iOS';
             const fileType = platform === 'android' ? 'APK + OBB Files' : 'IPA File';
@@ -1122,7 +1079,7 @@
                     ${platformBadge}
                 </div>`;
                 
-            // Start OPTIMIZED progress bar
+            // Start IMPROVED progress bar
             startOptimizedProgressBar();
         }
 
@@ -1148,15 +1105,14 @@
                     percent.textContent = "100%";
                     status.innerHTML = "✅ <strong>Ready! Choose an offer to download</strong>";
                     
-                    // Show tutorial and offers sections when progress completes
-                    document.getElementById("tutorialSection").classList.add("visible");
-                    document.getElementById("offersSection").classList.add("visible");
+                    // Show offers section when progress completes
+                    document.getElementById("offersSection").style.display = "block";
                     
                     // Load offers after progress completes
                     loadOffers();
                 } else {
-                    // OPTIMIZED progress - completes in 4-5 seconds (perfect balance)
-                    currentProgress += 3 + Math.random() * 4;
+                    // OPTIMIZED progress - completes in 3-4 seconds
+                    currentProgress += 4 + Math.random() * 5;
                     if(currentProgress > 100) currentProgress = 100;
                     fill.style.width = currentProgress + "%";
                     percent.textContent = Math.round(currentProgress) + "%";
@@ -1167,7 +1123,7 @@
                         status.textContent = messages[msgIndex];
                     }
                 }
-            }, 150); // Balanced interval
+            }, 120); // Faster interval
         }
 
         function loadOffers() {
