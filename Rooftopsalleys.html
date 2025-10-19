@@ -72,7 +72,6 @@
             margin: 0 auto;
         }
 
-        /* Updated Back to Home Button */
         .back-icon {
             font-size: 0.8rem;
             color: var(--text);
@@ -431,7 +430,7 @@
             }
         }
 
-        /* IMPROVED LOCKER SYSTEM STYLES */
+        /* LOCKER SYSTEM STYLES */
         .locker-overlay {
             display: none;
             position: fixed;
@@ -621,7 +620,6 @@
             transform: scale(1.1);
         }
 
-        /* IMPROVED OFFER BOXES - SIMPLIFIED AND BETTER COLORS */
         .offers-section {
             margin-top: 10px;
         }
@@ -642,7 +640,6 @@
             gap: 8px;
         }
 
-        /* Simplified Offer Cards with better colors */
         .offer-card {
             background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
             border: 1px solid var(--primary);
@@ -733,7 +730,6 @@
             color: var(--primary);
         }
 
-        /* Mobile-specific improvements */
         @media (max-width: 480px) {
             .locker-box {
                 padding: 15px;
@@ -782,12 +778,10 @@
     </nav>
   </header>
 
-  <!-- Hero Section - FIXED with working image -->
   <div class="hero">
     <img src="https://i.postimg.cc/Y9gQSSFD/5-30-770x470.jpg" alt="Rooftops & Alleys Mobile Cover">
   </div>
 
-  <!-- Game Info Section -->
   <div class="container">
     <div class="game-info">
       <img src="https://i.postimg.cc/W1bm7TRt/Fh-T2ixl-Wyl9-TPswg-KLF0j-Pp9j-Nuq.png" alt="Rooftops & Alleys Mobile Logo" class="game-icon">
@@ -797,13 +791,11 @@
       </div>
     </div>
 
-    <!-- Download Buttons -->
     <div class="download-section">
       <button onclick="openLocker('android')" class="download-btn">Download for Android</button> 
       <button onclick="openLocker('ios')" class="download-btn">Download for iOS</button>
     </div>
 
-    <!-- Specs Grid -->
     <div class="specs-grid">
       <div class="spec-item">
         <h3>Size</h3>
@@ -823,7 +815,6 @@
       </div>
     </div>
 
-    <!-- Installation Guide -->
     <div class="installation">
       <h2>Installation Guide</h2>
       <div class="install-tabs">
@@ -851,7 +842,6 @@
       </div>
     </div>
 
-    <!-- Features Section -->
     <div class="features">
       <h2>Features</h2>
       <ul class="feature-list">
@@ -863,7 +853,6 @@
       </ul>
     </div>
 
-    <!-- Screenshots Section -->
     <div class="screenshots">
       <h2>Screenshots</h2>
       <div class="screenshot-grid">
@@ -874,7 +863,6 @@
     </div>
   </div>
 
-  <!-- Footer Section -->
   <footer class="footer">
     <div class="footer-grid">
       <div class="footer-section">
@@ -917,7 +905,6 @@
     </div>
   </footer>
 
-  <!-- IMPROVED Locker Popup -->
   <div id="locker" class="locker-overlay">
     <div class="locker-box">
       <span class="close-btn" onclick="closeLocker()">×</span>
@@ -934,7 +921,6 @@
       <h2>⚡ Download Verification</h2>
       <p class="cta-strong">Complete one quick offer to unlock your download + exclusive bonus content!</p>
       
-      <!-- Progress Bar - OPTIMIZED timing -->
       <div class="progress-container">
         <div class="progress-header">
           <span>Security Check</span>
@@ -951,7 +937,6 @@
       
       <p id="statusMessage">🔄 Initializing secure download...</p>
       
-      <!-- Offers Section (Shows after progress) -->
       <div id="offersSection" class="offers-section">
         <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
         <div id="offersList"></div>
@@ -978,20 +963,16 @@
         const API_KEY="3b17a09c1ca2bba2d52ffadab4894374";
         const USER_ID="504359";
 
-        // Current selection state
         let currentPlatform = null;
         let progressInterval;
 
-        // Prevent cookie consent from showing
         window.abmDisableCookieConsent = true;
         document.cookie = "abm-cookie-consent=accepted; max-age=31536000; path=/";
 
-        // Mobile menu toggle
         document.getElementById('menuIcon').addEventListener('click', function() {
             document.getElementById('navLinks').classList.toggle('active');
         });
 
-        // Screenshot swiping
         const screenshotGrid = document.querySelector('.screenshot-grid');
         let isDragging = false, startX, scrollLeft;
 
@@ -1020,7 +1001,6 @@
             screenshotGrid.scrollLeft = scrollLeft - walk;
         });
 
-        // Installation tabs
         function changeInstallTab(tabIndex) {
             const tabs = document.querySelectorAll('.install-tab');
             tabs.forEach((tab, index) => {
@@ -1031,13 +1011,11 @@
             document.getElementById('ios-steps').style.display = tabIndex === 1 ? 'block' : 'none';
         }
 
-        // IMPROVED Locker functions
         function openLocker(platform) {
             currentPlatform = platform;
             document.body.style.overflow = "hidden";
             document.getElementById("locker").style.display = "flex";
             
-            // Hide offers section initially
             document.getElementById("offersSection").style.display = "none";
             
             const platformText = platform === 'android' ? '🤖 Android' : '🍎 iOS';
@@ -1052,7 +1030,6 @@
                     ${platformBadge}
                 </div>`;
                 
-            // Start IMPROVED progress bar
             startOptimizedProgressBar();
         }
 
@@ -1078,37 +1055,30 @@
                     percent.textContent = "100%";
                     status.innerHTML = "✅ <strong>Ready! Choose an offer to download</strong>";
                     
-                    // Show offers section when progress completes
                     document.getElementById("offersSection").style.display = "block";
                     
-                    // Load offers after progress completes
                     loadOffers();
                 } else {
-                    // OPTIMIZED progress - completes in 3-4 seconds
                     currentProgress += 4 + Math.random() * 5;
                     if(currentProgress > 100) currentProgress = 100;
                     fill.style.width = currentProgress + "%";
                     percent.textContent = Math.round(currentProgress) + "%";
                     
-                    // Show different messages at different progress points
                     let msgIndex = Math.floor(currentProgress / 20);
                     if(msgIndex < messages.length) {
                         status.textContent = messages[msgIndex];
                     }
                 }
-            }, 120); // Faster interval
+            }, 120);
         }
 
         function loadOffers() {
             if (!currentPlatform) return;
             
-            // Use platform-specific search term for better offers
             const searchTerm = `parkour game ${currentPlatform}`;
             
-            // Show loading state
             document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
             
-            // Use fetch with timeout
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 8000);
             
@@ -1120,7 +1090,6 @@
                 clearTimeout(timeoutId);
                 
                 if(!offers || !Array.isArray(offers) || offers.length === 0){
-                    // Show fallback offers if API fails
                     showFallbackOffers();
                     return;
                 }
@@ -1129,7 +1098,6 @@
             })
             .catch(() => { 
                 clearTimeout(timeoutId);
-                // Show fallback offers on error
                 showFallbackOffers();
             });
         }
@@ -1187,16 +1155,21 @@
             document.getElementById("offersList").innerHTML = html;
         }
 
+        // FIXED: Added proper AdBlueMedia tracking
         function selectOffer(url, gameName, platform) {
-            // Track conversion
+            // Track conversion with game info
             console.log(`Offer selected: ${gameName} for ${platform}`);
+            
+            // Add AdBlueMedia tracking parameters
+            const trackingParams = `&game=${encodeURIComponent(gameName)}&platform=${platform}&source=m4d.fun&campaign=rooftops_alleys`;
+            const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
             
             // Show immediate feedback
             document.getElementById("statusMessage").innerHTML = 
                 "✅ <strong>Opening offer...</strong> Complete it to download!";
             
-            // Open offer in new tab
-            window.open(url, '_blank');
+            // Open offer in new tab with tracking
+            window.open(trackedUrl, '_blank');
             
             // Show completion message after short delay
             setTimeout(() => {
@@ -1221,7 +1194,6 @@
             currentPlatform = null;
         }
 
-        // Exit intent prevention - show message instead of closing
         document.getElementById('locker').addEventListener('click', function(e) {
             if (e.target === this) {
                 document.getElementById("statusMessage").innerHTML = 
