@@ -31,16 +31,16 @@
         }
 
         :root {
-            --primary: #00ffcc;
-            --secondary: #00ccff;
+            --primary: #ff6b35;
+            --secondary: #ff8e53;
             --dark: #121212;
             --light: #1e1e1e;
             --white: #ffffff;
             --text: #e0e0e0;
-            --accent: #ffcc00;
-            --offer-bg: #2a3a3a;
+            --accent: #00e5ff;
+            --offer-bg: #3a2a2a;
             --offer-border: #444;
-            --offer-highlight: #3a4a4a;
+            --offer-highlight: #4a3a3a;
         }
 
         body {
@@ -459,7 +459,7 @@
             border-radius: 16px;
             text-align: center;
             color: var(--text);
-            box-shadow: 0 0 40px rgba(0,255,204,0.4);
+            box-shadow: 0 0 40px rgba(255,107,53,0.4);
             position: relative;
             display: flex;
             flex-direction: column;
@@ -489,7 +489,7 @@
             color: var(--primary);
             margin-bottom: 10px;
             font-size: 1.2rem;
-            text-shadow: 0 0 15px rgba(0,255,204,0.5);
+            text-shadow: 0 0 15px rgba(255,107,53,0.5);
         }
 
         .cta-strong {
@@ -498,7 +498,7 @@
             color: var(--accent);
             margin-bottom: 12px;
             line-height: 1.4;
-            background: rgba(255,204,0,0.1);
+            background: rgba(0,229,255,0.1);
             padding: 8px;
             border-radius: 8px;
             border-left: 3px solid var(--accent);
@@ -568,7 +568,7 @@
             background: #333;
             border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,255,204,0.1) inset;
+            box-shadow: 0 0 10px rgba(255,107,53,0.1) inset;
             margin-bottom: 6px;
         }
 
@@ -594,7 +594,7 @@
             color: var(--primary);
             min-height: 20px;
             line-height: 1.4;
-            background: rgba(0,255,204,0.1);
+            background: rgba(255,107,53,0.1);
             padding: 6px;
             border-radius: 6px;
         }
@@ -621,7 +621,7 @@
             transform: scale(1.1);
         }
 
-        /* IMPROVED OFFER BOXES - SIMPLIFIED AND BETTER COLORS */
+        /* IMPROVED OFFER BOXES */
         .offers-section {
             margin-top: 10px;
         }
@@ -642,9 +642,8 @@
             gap: 8px;
         }
 
-        /* Simplified Offer Cards with better colors */
         .offer-card {
-            background: linear-gradient(145deg, #2a3a3a, #1a2a2a);
+            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
             border: 1px solid var(--primary);
             padding: 12px;
             border-radius: 10px;
@@ -655,7 +654,7 @@
             gap: 10px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,255,204,0.2);
+            box-shadow: 0 2px 8px rgba(255,107,53,0.2);
         }
 
         .offer-card::before {
@@ -669,10 +668,10 @@
         }
 
         .offer-card:hover {
-            background: linear-gradient(145deg, #3a4a4a, #2a3a3a);
+            background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
             border-color: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,255,204,0.4);
+            box-shadow: 0 4px 12px rgba(255,107,53,0.4);
         }
 
         .offer-content {
@@ -702,14 +701,14 @@
         }
 
         .offer-badge {
-            background: linear-gradient(135deg, var(--accent), #ff9900);
+            background: linear-gradient(135deg, var(--accent), #0099ff);
             color: #000;
             padding: 3px 6px;
             border-radius: 12px;
             font-size: 0.65rem;
             font-weight: bold;
             white-space: nowrap;
-            box-shadow: 0 2px 4px rgba(255,204,0,0.3);
+            box-shadow: 0 2px 4px rgba(0,229,255,0.3);
         }
 
         .trust-badges {
@@ -771,44 +770,39 @@
 <body>
   <header class="header">
     <nav class="nav-container">
-      <a href="https://www.m4d.fun" class="back-icon">Back to
-      Home</a>
-      <div class="menu-icon" id="menuIcon"></div>
+      <a href="../index.html" class="back-icon">← Back to Home</a>
+      <div class="menu-icon" id="menuIcon">☰</div>
       <ul class="nav-links" id="navLinks">
-        <li>
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="#">Popular Apps</a>
-        </li>
-        <li>
-          <a href="#">New Releases</a>
-        </li>
-        <li>
-          <a href="#">Categories</a>
-        </li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">Popular Apps</a></li>
+        <li><a href="#">New Releases</a></li>
+        <li><a href="#">Categories</a></li>
       </ul>
     </nav>
-  </header><!-- Hero Section -->
-  <div class="hero"><img src=
-  "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/284160/capsule_616x353.jpg?t=1743607220"
-  alt="BeamNG.drive Mobile Cover"></div><!-- Game Info Section -->
+  </header>
+  
+  <!-- Hero Section -->
+  <div class="hero">
+    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/284160/capsule_616x353.jpg?t=1743607220" alt="BeamNG.drive Mobile Cover">
+  </div>
+  
+  <!-- Game Info Section -->
   <div class="container">
     <div class="game-info">
-      <img src=
-      "https://avatars.githubusercontent.com/u/6404024?s=280&amp;v=4"
-      alt="BeamNG.drive Mobile Logo" class="game-icon">
+      <img src="https://avatars.githubusercontent.com/u/6404024?s=280&amp;v=4" alt="BeamNG.drive Mobile Logo" class="game-icon">
       <div class="game-details">
-        <h1>BeamNG.drive Mobile</h1><small>For Android and
-        iOS</small>
+        <h1>BeamNG.drive Mobile</h1>
+        <small>For Android and iOS</small>
       </div>
-    </div><!-- Download Buttons -->
+    </div>
+    
+    <!-- Download Buttons -->
     <div class="download-section">
-      <button onclick="openLocker('android')" class=
-      "download-btn">Download for Android</button> <button onclick=
-      "openLocker('ios')" class="download-btn"> Download for
-      iOS</button>
-    </div><!-- Specs Grid -->
+      <button onclick="openLocker('android')" class="download-btn">Download for Android</button> 
+      <button onclick="openLocker('ios')" class="download-btn">Download for iOS</button>
+    </div>
+    
+    <!-- Specs Grid -->
     <div class="specs-grid">
       <div class="spec-item">
         <h3>Size</h3>
@@ -826,145 +820,100 @@
         <h3>iOS Devices Required</h3>
         <p>iPhone XS Max or newer, iPad Pro 2018 or later</p>
       </div>
-    </div><!-- Installation Guide -->
+    </div>
+    
+    <!-- Installation Guide -->
     <div class="installation">
       <h2>Installation Guide</h2>
       <div class="install-tabs">
-        <div class="install-tab active" onclick=
-        "changeInstallTab(0)">
-          Android
-        </div>
-        <div class="install-tab" onclick="changeInstallTab(1)">
-          iOS
-        </div>
+        <div class="install-tab active" onclick="changeInstallTab(0)">Android</div>
+        <div class="install-tab" onclick="changeInstallTab(1)">iOS</div>
       </div>
       <div class="install-content">
         <ul class="install-steps" id="android-steps">
-          <li>Download the APK file using the Android download
-          button above</li>
-          <li>Go to Settings &gt; Security &gt; Enable "Unknown
-          Sources"</li>
-          <li>Locate the downloaded APK file in your file
-          manager</li>
+          <li>Download the APK file using the Android download button above</li>
+          <li>Go to Settings &gt; Security &gt; Enable "Unknown Sources"</li>
+          <li>Locate the downloaded APK file in your file manager</li>
           <li>Tap to install and follow on-screen instructions</li>
-          <li>After installation, download the additional game
-          cache files</li>
+          <li>After installation, download the additional game cache files</li>
           <li>Place cache files in Android/obb/ folder</li>
           <li>Launch the game and enjoy!</li>
         </ul>
-        <ul class="install-steps" id="ios-steps" style=
-        "display:none">
-          <li>Download the IPA file using the iOS download
-          button</li>
-          <li>Install AltStore on your computer (Windows/Mac
-          required)</li>
+        <ul class="install-steps" id="ios-steps" style="display:none">
+          <li>Download the IPA file using the iOS download button</li>
+          <li>Install AltStore on your computer (Windows/Mac required)</li>
           <li>Connect your iOS device and open AltStore</li>
-          <li>Select "Install .ipa" and choose the downloaded
-          file</li>
+          <li>Select "Install .ipa" and choose the downloaded file</li>
           <li>Enter your Apple ID when prompted</li>
-          <li>Trust the developer in Settings &gt; General &gt;
-          Device Management</li>
-          <li>Launch the game and download additional
-          resources</li>
+          <li>Trust the developer in Settings &gt; General &gt; Device Management</li>
+          <li>Launch the game and download additional resources</li>
         </ul>
       </div>
-    </div><!-- Features Section -->
+    </div>
+    
+    <!-- Features Section -->
     <div class="features">
       <h2>Features</h2>
       <ul class="feature-list">
-        <li>Advanced Physics: Realistic soft-body physics engine
-        for authentic crashes</li>
-        <li>Vehicle Variety: 20+ detailed vehicles with realistic
-        handling</li>
-        <li>Open World: Massive maps with dynamic terrain and
-        obstacles</li>
-        <li>Damage System: Real-time deformation and part
-        damage</li>
-        <li>Custom Scenarios: Create and share your own driving
-        challenges</li>
+        <li>Advanced Physics: Realistic soft-body physics engine for authentic crashes</li>
+        <li>Vehicle Variety: 20+ detailed vehicles with realistic handling</li>
+        <li>Open World: Massive maps with dynamic terrain and obstacles</li>
+        <li>Damage System: Real-time deformation and part damage</li>
+        <li>Custom Scenarios: Create and share your own driving challenges</li>
       </ul>
-    </div><!-- Screenshots Section -->
+    </div>
+    
+    <!-- Screenshots Section -->
     <div class="screenshots">
       <h2>Screenshots</h2>
-      <div class="screenshot-grid"><img src=
-      "https://i.ibb.co/60DvVQDN/c5.jpg" alt=
-      "BeamNG.drive Mobile Screenshot 1" class="screenshot">
-      <img src="https://i.ibb.co/nNJPCcgW/j70.jpg" alt=
-      "BeamNG.drive Mobile Screenshot 2" class="screenshot">
-      <img src="https://i.ibb.co/jvnps9wr/c2.jpg" alt=
-      "BeamNG.drive Mobile Screenshot 3" class="screenshot"></div>
+      <div class="screenshot-grid">
+        <img src="https://i.ibb.co/60DvVQDN/c5.jpg" alt="BeamNG.drive Mobile Screenshot 1" class="screenshot">
+        <img src="https://i.ibb.co/nNJPCcgW/j70.jpg" alt="BeamNG.drive Mobile Screenshot 2" class="screenshot">
+        <img src="https://i.ibb.co/jvnps9wr/c2.jpg" alt="BeamNG.drive Mobile Screenshot 3" class="screenshot">
+      </div>
     </div>
-  </div><!-- Footer Section -->
+  </div>
+  
+  <!-- Footer Section -->
   <footer class="footer">
     <div class="footer-grid">
       <div class="footer-section">
         <h3>About Us</h3>
         <ul class="footer-links">
-          <li>
-            <a href="#">Our Mission</a>
-          </li>
-          <li>
-            <a href="#">Team</a>
-          </li>
-          <li>
-            <a href="#">Careers</a>
-          </li>
-          <li>
-            <a href=
-            "https://www.instagram.com/m9dde?igsh=cW9uN3RvNWdnNDdq">
-            Contact Us</a>
-          </li>
+          <li><a href="https://www.instagram.com/m9dde?igsh=cW9uN3RvNWdnNDdq">Our Mission</a></li>
+          <li><a href="https://www.instagram.com/m9dde?igsh=cW9uN3RvNWdnNDdq">Team</a></li>
+          <li><a href="https://www.instagram.com/m9dde?igsh=cW9uN3RvNWdnNDdq">Careers</a></li>
+          <li><a href="https://www.instagram.com/m9dde?igsh=cW9uN3RvNWdnNDdq">Contact Us</a></li>
         </ul>
       </div>
       <div class="footer-section">
         <h3>Quick Links</h3>
         <ul class="footer-links">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">Popular Apps</a>
-          </li>
-          <li>
-            <a href="#">New Releases</a>
-          </li>
-          <li>
-            <a href="#">Categories</a>
-          </li>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="#">Popular Apps</a></li>
+          <li><a href="#">New Releases</a></li>
+          <li><a href="#">Categories</a></li>
         </ul>
       </div>
       <div class="footer-section">
         <h3>Legal</h3>
         <ul class="footer-links">
-          <li>
-            <a href="#">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="#">Terms of Service</a>
-          </li>
-          <li>
-            <a href="#">Disclaimer</a>
-          </li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Disclaimer</a></li>
         </ul>
       </div>
       <div class="footer-section">
         <h3>Follow Us</h3>
         <div class="social-links">
-          <a href=
-          "https://www.tiktok.com/@danielmartinilo?_t=ZT-8xhD8lBA1Gg&amp;_r=1"
-          aria-label="TikTok"></a> <a href=
-          "https://www.instagram.com/m9dde?igsh=cW9uN3RvNWdnNDdq"
-          aria-label="Instagram"></a> <a href=
-          "https://youtube.com/@tilijo-m7u?si=1A_4zev8DmrbzgEe"
-          aria-label="YouTube"></a>
+          <a href="https://www.tiktok.com/@danielmartinilo?_t=ZT-8xhD8lBA1Gg&amp;_r=1" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://www.instagram.com/m9dde?igsh=cW9uN3RvNWdnNDdq" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@tilijo-m7u?si=1A_4zev8DmrbzgEe" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      © 2025 <a href="https://www.m4d.fun">m4d.fun</a>. All
-      rights reserved. | Designed by <a href=
-      "https://www.youtube.com/@Modlify-Games" target=
-      "_blank">modxnet Games</a>
+      © 2025 <a href="https://www.m4d.fun">m4d.fun</a>. All rights reserved. | Designed by <a href="https://www.youtube.com/@Modlify-Games" target="_blank">Modlify Games</a>
     </div>
   </footer>
 
@@ -985,7 +934,7 @@
       <h2>⚡ Download Verification</h2>
       <p class="cta-strong">Complete one quick offer to unlock your download + exclusive bonus content!</p>
       
-      <!-- Progress Bar - OPTIMIZED timing -->
+      <!-- Progress Bar -->
       <div class="progress-container">
         <div class="progress-header">
           <span>Security Check</span>
@@ -1002,12 +951,10 @@
       
       <p id="statusMessage">🔄 Initializing secure download...</p>
       
-      <!-- Offers Section (Shows after progress) -->
+      <!-- Offers Section -->
       <div id="offersSection" class="offers-section">
         <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
-        <div id="offersList">
-          <!-- Offers will be loaded here -->
-        </div>
+        <div id="offersList"></div>
         
         <div class="trust-badges">
           <div class="trust-badge">
@@ -1035,6 +982,74 @@
         let currentPlatform = null;
         let progressInterval;
 
+        // ENHANCED AdBlueMedia Lead Tracking
+        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
+            // Create conversion tracking for AdBlueMedia dashboard
+            const conversionData = {
+                user_id: USER_ID,
+                api_key: API_KEY,
+                game: gameName,
+                platform: platform,
+                offer_type: offerType,
+                offer_title: offerTitle,
+                source: 'm4d.fun',
+                campaign: 'beamng_drive_mobile',
+                conversion_type: 'lead',
+                timestamp: Date.now(),
+                revenue: 0.15
+            };
+
+            // Send conversion to AdBlueMedia
+            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(conversionData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('✅ AdBlueMedia Conversion Tracked:', data);
+                console.log('🎮 Game: BeamNG.drive Mobile');
+                console.log('📱 Platform:', platform);
+                console.log('💰 This lead will show in your AdBlueMedia dashboard');
+            })
+            .catch(error => {
+                console.log('⚠️ AdBlueMedia tracking failed, using fallback:', error);
+                trackFallbackConversion(gameName, platform, offerType);
+            });
+        }
+
+        function trackFallbackConversion(gameName, platform, offerType) {
+            // Fallback conversion tracking
+            const pixelUrl = `https://d3k0q5ez56odtk.cloudfront.net/public/conversion/pixel.gif?user_id=${USER_ID}&api_key=${API_KEY}&game=${encodeURIComponent(gameName)}&platform=${platform}&offer_type=${offerType}&conversion=lead`;
+            
+            const img = new Image();
+            img.src = pixelUrl;
+            img.style.display = 'none';
+            document.body.appendChild(img);
+            
+            console.log('🔄 Fallback conversion tracked for: BeamNG.drive Mobile', platform, offerType);
+        }
+
+        // Track initial page view
+        function trackPageView() {
+            const pageViewData = {
+                user_id: USER_ID,
+                api_key: API_KEY,
+                page: 'beamng_drive_mobile_landing',
+                game: 'BeamNG.drive Mobile',
+                source: document.referrer || 'direct',
+                timestamp: Date.now()
+            };
+
+            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/analytics/pageview.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(pageViewData)
+            }).catch(() => console.log('Page view tracking failed'));
+        }
+
         // Prevent cookie consent from showing
         window.abmDisableCookieConsent = true;
         document.cookie = "abm-cookie-consent=accepted; max-age=31536000; path=/";
@@ -1042,35 +1057,6 @@
         // Mobile menu toggle
         document.getElementById('menuIcon').addEventListener('click', function() {
             document.getElementById('navLinks').classList.toggle('active');
-        });
-
-        // Screenshot swiping
-        const screenshotGrid = document.querySelector('.screenshot-grid');
-        let isDragging = false, startX, scrollLeft;
-
-        screenshotGrid.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.pageX - screenshotGrid.offsetLeft;
-            scrollLeft = screenshotGrid.scrollLeft;
-            screenshotGrid.style.cursor = 'grabbing';
-        });
-
-        screenshotGrid.addEventListener('mouseleave', () => {
-            isDragging = false;
-            screenshotGrid.style.cursor = 'grab';
-        });
-
-        screenshotGrid.addEventListener('mouseup', () => {
-            isDragging = false;
-            screenshotGrid.style.cursor = 'grab';
-        });
-
-        screenshotGrid.addEventListener('mousemove', (e) => {
-            if(!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - screenshotGrid.offsetLeft;
-            const walk = (x - startX) * 2;
-            screenshotGrid.scrollLeft = scrollLeft - walk;
         });
 
         // Installation tabs
@@ -1084,7 +1070,7 @@
             document.getElementById('ios-steps').style.display = tabIndex === 1 ? 'block' : 'none';
         }
 
-        // IMPROVED Locker functions
+        // IMPROVED Locker functions with enhanced tracking
         function openLocker(platform) {
             currentPlatform = platform;
             document.body.style.overflow = "hidden";
@@ -1120,7 +1106,7 @@
                 "✅ Scanning for security threats...",
                 "🔐 Verifying file integrity...",
                 "⚡ Optimizing download speed...",
-                "🎮 Preparing bonus content..."
+                "🚗 Preparing physics content..."
             ];
             
             clearInterval(progressInterval);
@@ -1191,23 +1177,28 @@
             const fallbackOffers = [
                 {
                     anchor: "Complete Quick Survey (1-2 minutes)",
-                    url: "https://example.com/survey1"
+                    url: "https://example.com/survey1",
+                    type: "survey"
                 },
                 {
                     anchor: "Watch Short Video Ad (45-60 seconds)", 
-                    url: "https://example.com/video1"
+                    url: "https://example.com/video1",
+                    type: "video"
                 },
                 {
                     anchor: "Free App Trial (2-3 minutes)",
-                    url: "https://example.com/trial1"
+                    url: "https://example.com/trial1",
+                    type: "trial"
                 },
                 {
                     anchor: "Quick Registration (1-2 minutes)",
-                    url: "https://example.com/register1"
+                    url: "https://example.com/register1",
+                    type: "registration"
                 },
                 {
                     anchor: "Simple Quiz (1-2 minutes)",
-                    url: "https://example.com/quiz1"
+                    url: "https://example.com/quiz1",
+                    type: "quiz"
                 }
             ];
             
@@ -1223,9 +1214,10 @@
                 const timeEstimate = timeOptions[index] || 120;
                 const successRate = 85 + Math.floor(Math.random() * 10);
                 const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
+                const offerType = offer.type || ['survey', 'video', 'trial', 'registration', 'quiz'][index];
                 
                 html += `
-                <div class="offer-card" onclick="selectOffer('${offer.url}', 'BeamNG.drive Mobile', '${currentPlatform}')">
+                <div class="offer-card" onclick="selectOffer('${offer.url}', 'BeamNG.drive Mobile', '${currentPlatform}', '${offerType}', '${offer.anchor || "Quick Task"}')">
                     <div class="offer-content">
                         <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
                         <div class="offer-details">
@@ -1240,16 +1232,23 @@
             document.getElementById("offersList").innerHTML = html;
         }
 
-        function selectOffer(url, gameName, platform) {
-            // Track conversion
-            console.log(`Offer selected: ${gameName} for ${platform}`);
+        // ENHANCED: AdBlueMedia conversion tracking
+        function selectOffer(url, gameName, platform, offerType, offerTitle) {
+            console.log(`🎯 LEAD CAPTURED: BeamNG.drive Mobile - ${platform} - ${offerType} - "${offerTitle}"`);
+            
+            // TRACK CONVERSION IN ADBLUEMEDIA DASHBOARD
+            trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
+            
+            // Add tracking parameters for the offer URL
+            const trackingParams = `&subid=${USER_ID}_beamng_${platform}&game=BeamNG_Drive_Mobile&platform=${platform}&offer_type=${offerType}&source=m4d.fun`;
+            const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
             
             // Show immediate feedback
             document.getElementById("statusMessage").innerHTML = 
                 "✅ <strong>Opening offer...</strong> Complete it to download!";
             
-            // Open offer in new tab
-            window.open(url, '_blank');
+            // Open offer in new tab with tracking
+            window.open(trackedUrl, '_blank');
             
             // Show completion message after short delay
             setTimeout(() => {
@@ -1259,7 +1258,7 @@
                 // Auto-close after 3 seconds
                 setTimeout(() => {
                     const platformText = platform === 'android' ? 'APK file' : 'IPA file';
-                    alert(`🎉 Download for ${gameName} Premium (${platformText})  will start when you finish completing the offer`);
+                    alert(`🎉 Download for BeamNG.drive Mobile Premium (${platformText}) will start when you finish completing the offer`);
                     closeLocker();
                 }, 3000);
             }, 1500);
@@ -1274,12 +1273,17 @@
             currentPlatform = null;
         }
 
-        // Exit intent prevention - show message instead of closing
+        // Exit intent prevention
         document.getElementById('locker').addEventListener('click', function(e) {
             if (e.target === this) {
                 document.getElementById("statusMessage").innerHTML = 
                     "⚠️ <strong>Complete an offer to download the game for free!</strong>";
             }
+        });
+
+        // Track page view on load
+        window.addEventListener('load', function() {
+            trackPageView();
         });
   </script>
 </body>
