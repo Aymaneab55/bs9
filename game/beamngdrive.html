@@ -1286,5 +1286,94 @@
             trackPageView();
         });
   </script>
+  <script>
+// ===================================================
+// AUTOMATIC POSTBACK TRACKING FOR ADBLUEMEDIA
+// This connects your CPA offers to InfinityFree database
+// ===================================================
+
+// Override the selectOffer function to add postback tracking
+const originalSelectOffer = window.selectOffer;
+window.selectOffer = function(url, gameName, platform, offerType, offerTitle) {
+    console.log('🎯 ENHANCED TRACKING: Adding postback support...');
+    
+    // Generate unique tracking ID for postback
+    const timestamp = Date.now();
+    const randomId = Math.random().toString(36).substr(2, 8);
+    const trackingId = `beamng_${platform}_${timestamp}_${randomId}`;
+    
+    console.log('📊 Generated Tracking ID:', trackingId);
+    
+    // Add tracking parameters to the offer URL
+    let trackedUrl = url;
+    if (trackedUrl.includes('?')) {
+        trackedUrl += '&subid=' + trackingId;
+    } else {
+        trackedUrl += '?subid=' + trackingId;
+    }
+    
+    // Also add other tracking parameters
+    trackedUrl += '&game=BeamNG_Drive_Mobile&platform=' + platform + '&offer_type=' + offerType;
+    
+    console.log('🔗 Tracked URL:', trackedUrl);
+    
+    // Save click to localStorage for reference
+    try {
+        let trackData = JSON.parse(localStorage.getItem('postback_tracking') || '{}');
+        trackData[trackingId] = {
+            game: gameName,
+            platform: platform,
+            offerType: offerType,
+            timestamp: new Date().toISOString(),
+            status: 'clicked'
+        };
+        localStorage.setItem('postback_tracking', JSON.stringify(trackData));
+    } catch (e) {
+        console.log('Could not save to localStorage');
+    }
+    
+    // Call the original function with the tracked URL
+    if (originalSelectOffer) {
+        originalSelectOffer(trackedUrl, gameName, platform, offerType, offerTitle);
+    } else {
+        // Fallback if original function doesn't exist
+        window.open(trackedUrl, '_blank');
+    }
+};
+
+// Enhanced conversion tracking with postback support
+const originalTrackConversion = window.trackAdBlueMediaConversion;
+window.trackAdBlueMediaConversion = function(gameName, platform, offerType, offerTitle) {
+    console.log('💰 ENHANCED CONVERSION: Adding postback tracking...');
+    
+    // Call the original conversion tracking
+    if (originalTrackConversion) {
+        originalTrackConversion(gameName, platform, offerType, offerTitle);
+    }
+    
+    // Send test postback to your InfinityFree server
+    sendTestPostback(gameName, platform, offerType);
+};
+
+// Function to test postback connection
+function sendTestPostback(gameName, platform, offerType) {
+    const testSubid = 'test_beamng_' + Date.now();
+    const postbackUrl = `http://m4dfu.free.nf/postback.php?subid=${testSubid}&payout=1.50&status=1&game=${encodeURIComponent(gameName)}&platform=${platform}&offer_type=${offerType}`;
+    
+    console.log('🔄 Testing postback to:', postbackUrl);
+    
+    // Send the postback
+    fetch(postbackUrl)
+        .then(response => response.text())
+        .then(data => {
+            console.log('✅ Postback test successful:', data);
+        })
+        .catch(error => {
+            console.log('❌ Postback test failed:', error);
+        });
+}
+
+console.log('🚀 Automatic postback tracking loaded for BeamNG.drive Mobile');
+</script>
 </body>
 </html>
