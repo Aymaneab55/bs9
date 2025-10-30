@@ -1,195 +1,1028 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content=
-  "width=device-width, initial-scale=1.0">
-  <title>Redirecting to M4D...</title>
-  <link rel="icon" href=
-  "https://sf-tb-sg.ibytedtos.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png"
-  type="image/x-icon">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>APKMOD – Free MOD Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(rgba(240, 240, 240, 0.9), rgba(224, 224, 224, 0.9)), 
-                        url('https://i.postimg.cc/T3XxytS0/photo-2025-10-18-21-55-08.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: url('https://i.postimg.cc/RZgrXGRD/4k-gaming-background-bud9k5ffqi3r2ds9.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: -1;
+    }
+    header {
+      padding: 2rem 1rem;
+      text-align: center;
+      background: linear-gradient(135deg,#0e0e0e,#1a1a1a);
+      border-bottom: 2px solid #00ffcc55;
+      box-shadow: 0 0 25px rgba(0,255,204,0.2);
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: #00ffcc;
+      text-shadow: 0 0 12px #00ffcc;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      color: #ccc;
+      font-size: 1.1rem;
+    }
+    .cta-btn {
+      margin-top: 1.5rem;
+      background: linear-gradient(90deg,#00ffcc,#00b3ff);
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #000;
+      box-shadow: 0 0 12px #00ffccaa;
+      transition: all 0.3s ease;
+    }
+    .cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffcc;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
 
-        #logo {
-            width: 300px;
-            margin-bottom: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
+    /* Search Bar */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+    }
 
-        .redirect-text {
-            font-size: 22px;
-            color: #2c3e50;
-            opacity: 0;
-            animation: fadeIn 0.5s ease-in-out forwards;
-            text-align: center;
-            margin: 15px 0;
-            line-height: 1.4;
-            max-width: 500px;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+    #searchInput {
+      padding: 10px;
+      font-size: 16px;
+      width: 250px;
+      border-radius: 5px;
+      border: 1px solid #00ffcc;
+      background: #333;
+      color: white;
+    }
 
-        .highlight {
-            color: #e74c3c;
-            font-weight: bold;
-        }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #00ffcc;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
 
-        .play-protect-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(46, 204, 113, 0.15); /* Light green background */
-            padding: 10px 15px;
-            border-radius: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin: 20px 0;
-            gap: 6px;
-            font-size: 14px;
-            border: 1px solid #2ecc71; /* Green border */
-            backdrop-filter: blur(5px);
-        }
+    button:hover {
+      background-color: #00b3ff;
+    }
 
-        .play-protect-badge svg {
-            width: 18px;
-            height: 18px;
-        }
+    /* Games Grid */
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1rem;
+      padding: 2rem 1rem;
+    }
+    .game-card {
+      background: #121212;
+      border-radius: 16px;
+      padding: 0.8rem;
+      text-align: center;
+      box-shadow: 0 0 12px #00ffcc33;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+    .game-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 20px #00ffcc66;
+      cursor: pointer;
+    }
+    .game-card img {
+      width: 100%;
+      max-width: 120px;
+      border-radius: 14px;
+      margin-bottom: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+    .game-card:hover img {
+      transform: scale(1.08);
+    }
+    .game-card h3 {
+      font-size: 1rem;
+      margin: 0;
+    }
+    .stats {
+      font-size: 0.75rem;
+      color: #aaa;
+      margin: 0.4rem 0;
+    }
+    .download-btn {
+      margin-top: 0.5rem;
+      background: linear-gradient(90deg,#00ffcc,#00b3ff);
+      border: none;
+      padding: 0.4rem 0.9rem;
+      color: #000;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.85rem;
+      box-shadow: 0 0 10px #00ffcc55;
+      transition: all 0.3s ease;
+    }
+    .download-btn:hover {
+      box-shadow: 0 0 15px #00ffcc;
+      transform: scale(1.05);
+    }
 
-        .secure-text {
-            color: #2ecc71;
-            font-weight: bold;
-        }
+    /* Platform Selection Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
 
-        .dot {
-            color: #2ecc71; /* Green dot */
-        }
+    .platform-modal {
+      background: linear-gradient(145deg, #1a1a1a, #121212);
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      border: 2px solid #00ffcc;
+      box-shadow: 0 0 30px rgba(0,255,204,0.3);
+    }
 
-        .verified-text {
-            color: #27ae60; /* Darker green text */
-            font-weight: bold;
-        }
+    .platform-modal img {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      border: 2px solid #00ffcc;
+    }
 
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .platform-modal h2 {
+      color: #00ffcc;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
+    .platform-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
 
-        .pulse {
-            animation: pulse 2s infinite;
-            margin: 15px 0;
-        }
+    .platform-btn {
+      background: linear-gradient(90deg, #00ffcc, #00b3ff);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .platform-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00ffcc;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: #ff5555;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* LOCKER SYSTEM STYLES */
+    .locker-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      overflow-y: auto;
+      padding: 15px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .locker-box {
+      width: 100%;
+      max-width: 420px;
+      max-height: 85vh;
+      background: linear-gradient(145deg, #1a1a1a, #121212);
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      color: #e0e0e0;
+      box-shadow: 0 0 40px rgba(0,255,204,0.4);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0,255,204,0.3);
+      overflow-y: auto;
+    }
+
+    .locker-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(0,255,204,0.2);
+    }
+
+    .locker-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      color: #00ffcc;
+      font-size: 1rem;
+    }
+
+    .locker-box h2 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      text-shadow: 0 0 15px rgba(0,255,204,0.5);
+    }
+
+    .cta-strong {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #00b3ff;
+      margin-bottom: 12px;
+      line-height: 1.4;
+      background: rgba(0,179,255,0.1);
+      padding: 8px;
+      border-radius: 8px;
+      border-left: 3px solid #00b3ff;
+    }
+
+    .game-preview-locker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      text-align: left;
+      background: rgba(0,0,0,0.3);
+      padding: 10px;
+      border-radius: 10px;
+      border-left: 3px solid #00ffcc;
+    }
+
+    .game-preview-locker img {
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .game-preview-content h3 {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #e0e0e0;
+      line-height: 1.3;
+    }
+
+    .file-info {
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-top: 4px;
+    }
+
+    .platform-badge {
+      display: inline-block;
+      background: #00ffcc;
+      color: #000;
+      padding: 3px 8px;
+      border-radius: 15px;
+      font-size: 0.65rem;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .progress-container {
+      margin: 12px 0;
+      background: rgba(0,0,0,0.3);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #333;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,255,204,0.1) inset;
+      margin-bottom: 6px;
+    }
+
+    #progressFill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #00ffcc, #00b3ff);
+      transition: width 0.4s ease;
+      border-radius: 6px;
+    }
+
+    .progress-text {
+      font-size: 0.75rem;
+      color: #aaa;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    #statusMessage {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 0.8rem;
+      color: #00ffcc;
+      min-height: 20px;
+      line-height: 1.4;
+      background: rgba(0,255,204,0.1);
+      padding: 6px;
+      border-radius: 6px;
+    }
+
+    .locker-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      color: #ff5555;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      z-index: 10;
+    }
+
+    .locker-close-btn:hover {
+      background: rgba(255,85,85,0.2);
+      transform: scale(1.1);
+    }
+
+    .offers-section {
+      margin-top: 10px;
+    }
+
+    .offers-section h3 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    #offersList {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .offer-card {
+      background: linear-gradient(145deg, #1a3a2a, #0a2a1a);
+      border: 1px solid #00ffcc;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,255,204,0.2);
+    }
+
+    .offer-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #00ffcc, #00b3ff);
+    }
+
+    .offer-card:hover {
+      background: linear-gradient(145deg, #2a4a3a, #1a3a2a);
+      border-color: #00b3ff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,255,204,0.4);
+    }
+
+    .offer-content {
+      flex: 1;
+      text-align: left;
+    }
+
+    .offer-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #e0e0e0;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .offer-details {
+      display: flex;
+      gap: 10px;
+      font-size: 0.7rem;
+      color: #aaa;
+    }
+
+    .offer-detail {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .offer-badge {
+      background: linear-gradient(135deg, #00b3ff, #0099ff);
+      color: #000;
+      padding: 3px 6px;
+      border-radius: 12px;
+      font-size: 0.65rem;
+      font-weight: bold;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px rgba(0,179,255,0.3);
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.7rem;
+      color: #aaa;
+    }
+
+    .trust-badge i {
+      color: #00ffcc;
+    }
+
+    @media (max-width: 768px) {
+      .games-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .game-card img {
+        max-width: 90px;
+      }
+      .game-card h3 {
+        font-size: 0.9rem;
+      }
+      .cta-btn {
+        font-size: 1.1rem;
+      }
+      .platform-buttons {
+        flex-direction: column;
+      }
+    }
   </style>
-  <link rel="me" href=
-  "https://www.blogger.com/profile/06702754152944598869">
-  <meta name='google-adsense-platform-account' content=
-  'ca-host-pub-1556223355139109'>
-  <meta name='google-adsense-platform-domain' content=
-  'blogspot.com'>
-  <meta name='google-adsense-platform-account' content=
-  'ca-host-pub-1556223355139109'>
-  <meta name='google-adsense-platform-domain' content=
-  'blogspot.com'>
-  <link rel="me" href=
-  "https://www.blogger.com/profile/08548647737062209221">
-  <meta name='google-adsense-platform-account' content=
-  'ca-host-pub-1556223355139109'>
-  <meta name='google-adsense-platform-domain' content=
-  'blogspot.com'>
-  <script type="text/javascript" language="javascript">
-  // Supply ads personalization default for EEA readers
-  // See https://www.blogger.com/go/adspersonalization
-  adsbygoogle = window.adsbygoogle || [];
-  if (typeof adsbygoogle.requestNonPersonalizedAds === 'undefined') {
-    adsbygoogle.requestNonPersonalizedAds = 1;
-  }
-  </script>
 </head>
 <body>
-  <img id="logo" src=
-  "https://i.postimg.cc/prxtwygW/ezgif-16baba29ec0963.webp" alt=
-  "Website Logo">
-  <p class="redirect-text"><strong>Please Click On The Three Dots
-  At The Top And Open in Browser To Be Able Downloding the
-  Games</strong></p><!-- Play Protect Verified Badge Code -->
-  <div class="play-protect-badge">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-    viewbox="0 0 24 24" fill="none" stroke="#2ECC71" stroke-width=
-    "2">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z">
-    </path></svg> <span class="secure-text">Secure</span>
-    <span class="dot">•</span> <span class="verified-text">Verified
-    by Play Protect</span>
+
+<header>
+  <h1>APKMOD</h1>
+  <p>Unlock Premium Games & MODs – Free & Safe</p>
+  
+  <!-- Search Bar -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search for games..." oninput="searchGames()">
+    <button onclick="searchGames()">Search</button>
   </div>
-  <script>
-        function openLinkBasedOnDevice(url) {
-            var userAgent = navigator.userAgent;
 
-            if (/(android)/i.test(userAgent)) {
-                // If the device is Android, open the link in Chrome
-                window.location.href = 'intent://' + url.substring(url.indexOf("://") + 3) + '#Intent;scheme=http;package=com.android.chrome;end;';
-            } else if (/(iphone|ipad|ipod)/i.test(userAgent)) {
-                // If the device is iOS, open the link in Safari
-                window.location.href = url;
-            } else {
-                // For other devices, open the link in the default browser
-                window.location.href = url;
-            }
-        }
+  <button class="cta-btn" onclick="document.getElementById('games').scrollIntoView({behavior:'smooth'})">Browse MODDED GAMES</button>
+</header>
 
-        // Automatically execute the function after a 0.1-second delay
-        setTimeout(function () {
-            var url = 'https://bs9.online';
-            openLinkBasedOnDevice(url);
-        }, 100); // 100 milliseconds = 0.1 second
-  </script> 
-  <!-- 'Il est de votre ressort d\x27informer les visiteurs à propos des cookies utilisés et des données collectées sur votre blog. Blogger met à votre disposition une notification standard que vous pouvez personnaliser, remplacer ou afficher telle quelle sur votre blog. Rendez-vous sur http://www.blogger.com/go/cookiechoices pour obtenir de plus amples informations.' -->
-  <script src="/js/cookienotice.js" defer></script> 
-  <script>
+<main id="games">
+  <div class="games-grid" id="gamesGrid"></div>
+</main>
 
-  document.addEventListener('DOMContentLoaded', function(event) {
-    window.cookieChoices && cookieChoices.showCookieConsentBar && cookieChoices.showCookieConsentBar(
-        (window.cookieOptions && cookieOptions.msg) || 'Ce site utilise des cookies provenant de Google pour fournir ses services et analyser le trafic. Votre adresse IP et votre user-agent, ainsi que des statistiques relatives aux performances et à la sécurité, sont transmis à Google afin d\x27assurer un service de qualité, de générer des statistiques d\x27utilisation, et de détecter et de résoudre les problèmes d\x27abus.',
-        (window.cookieOptions && cookieOptions.close) || 'OK !',
-        (window.cookieOptions && cookieOptions.learn) || 'En savoir plus',
-        (window.cookieOptions && cookieOptions.link) || 'https://www.blogger.com/go/blogspot-cookies');
+<!-- Platform Selection Modal -->
+<div id="platformModal" class="modal-overlay">
+  <div class="platform-modal">
+    <button class="close-btn" onclick="closePlatformModal()">×</button>
+    <img id="modalGameImg" src="" alt="Game Icon">
+    <h2 id="modalGameTitle">Select Platform</h2>
+    <p>Choose your device platform to continue</p>
+    <div class="platform-buttons">
+      <button class="platform-btn" id="androidBtn">
+        <i class="fab fa-android"></i> Android
+      </button>
+      <button class="platform-btn" id="iosBtn">
+        <i class="fab fa-apple"></i> iOS
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Locker System -->
+<div id="locker" class="locker-overlay">
+  <div class="locker-box">
+    <span class="locker-close-btn" onclick="closeLocker()">×</span>
+    
+    <div class="locker-header">
+      <div class="locker-logo">
+        <i class="fas fa-shield-alt"></i>
+        <span>APKMOD Secure Download</span>
+      </div>
+    </div>
+    
+    <div class="game-preview-locker" id="gamePreviewLocker"></div>
+    
+    <h2>⚡ Download Verification</h2>
+    <p class="cta-strong">Complete one quick offer to unlock your download + exclusive bonus content!</p>
+    
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-header">
+        <span>Security Check</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+      <div class="progress-text">
+        <span>Preparing your download...</span>
+        <span>Secure</span>
+      </div>
+    </div>
+    
+    <p id="statusMessage">🔄 Initializing secure download...</p>
+    
+    <!-- Offers Section -->
+    <div id="offersSection" class="offers-section">
+      <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
+      <div id="offersList"></div>
+      
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <i class="fas fa-shield-check"></i>
+          <span>100% Secure</span>
+        </div>
+        <div class="trust-badge">
+          <i class="fas fa-clock"></i>
+          <span>1-3 Minutes</span>
+        </div>
+        <div class="trust-badge">
+          <i class="fas fa-download"></i>
+          <span>Instant Access</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // API Configuration - YOUR ADBLUEMEDIA CREDENTIALS
+  const API_KEY = "3b17a09c1ca2bba2d52ffadab4894374";
+  const USER_ID = "504359";
+  const API_BASE_URL = "https://dbj3fg9om9jaj.cloudfront.net/public/offers/feed.php";
+
+  // Game data
+  const games = [
+    {title:"Forza Horizon Mobile", img:"https://i.postimg.cc/nr3HwWyr/forzahorizon5-keyart-vert-rgb-final-16297203531.jpg", downloads:"12,500", file:"54 MB"},
+    {title:"GTA 5 Mobile : Premium Edition", img:"https://i.pinimg.com/474x/9a/7b/ba/9a7bbae3f5ef777e542288942c00e7ff.jpg", downloads:"14,200", file:"2.3 GB"},
+    {title:"Euro Truck Simulator 2 Mobile", img:"https://i.postimg.cc/RFfbxH6t/ets-2-mobile-icon.avif", downloads:"13,200", file:"1.5GB"},
+    {title:"Hitman: Absolution Mobile", img:"https://play-lh.googleusercontent.com/sZ2vcnPx2dGILYDxX4e6VIFZq1lWdBvekVFSGphJa2Lnreo7ghXsaP11nIKq77Rl775JN6zgf7v9whOmKwpWMoY", downloads:"12,500", file:"544 MB"},
+    {title:"Backyard Baseball '01", img:"https://i.postimg.cc/d08XNdvw/download.jpg", downloads:"12,500", file:"544 MB"},
+    {title:"Gorilla Tag for Android/iOS", img:"https://i.postimg.cc/XJjMZw2X/da0669cd4eae4556154a8f4d903b08e5.webp", downloads:"12,500", file:"54 MB"},
+    {title:"Rooftops & Alleys: The Parkour Game", img:"https://image.api.playstation.com/vulcan/ap/rnd/202504/0811/1257de996c9d625bd6d16e683576218ea55a04e4ff97982b.png", downloads:"14,200", file:"2.3 GB"},
+    {title:"Fortnite", img:"https://upload.wikimedia.org/wikipedia/commons/7/7c/Fortnite_F_lettermark_logo.png", downloads:"14,200", file:"2.3 GB"},
+    {title:"WWE 2K25: Netflix Edition", img:"https://play-lh.googleusercontent.com/uD9hXMYt6fqwiSnTd6vqj0pi5JfTvIHbZR9OFllSPcuG_V1iGwNOJ26wwXd1b0z89zp-=w240-h480-rw", downloads:"14,200", file:"2.3 GB"},
+    {title:"Highway Racer Pro MOD", img:"https://i.postimg.cc/QNPgGnSS/highway-racer-pro-mod-apk.webp", downloads:"14,200", file:"93 MB"},
+    {title:"CarX Street MOD", img:"https://i.postimg.cc/SR25n5N5/unnamed-1.png", downloads:"9,870", file:"102 MB"},
+    {title:"Baseball 9 MOD", img:"https://i.postimg.cc/mZXQP2QD/Design-sans-titre.png", downloads:"8,540", file:"145 MB"},
+    {title:"BeamNG Drive Mobile", img:"https://i.postimg.cc/63gHHyKj/beamng-drive-mobile-logo.avif", downloads:"11,430", file:"512 MB"},
+    {title:"Hollow Knight Mobile", img:"https://i.postimg.cc/Vvj4G8nC/icon.webp", downloads:"6,300", file:"72 MB"},
+    {title:"Speed Stars MOD", img:"https://i.postimg.cc/x8vnrmz9/unnamed.png", downloads:"5,900", file:"48 MB"},
+    {title:"Assetto Corsa Mobile", img:"https://i.postimg.cc/DyHhKcYy/assetto-corsa-mobile-logo.avif", downloads:"7,600", file:"430 MB"},
+    {title:"Lamar Idle Vlogger", img:"https://i.postimg.cc/RFv1XQFq/Lamar-Idle-Vlogger-Mod-APK.webp", downloads:"10,800", file:"96 MB"},
+    {title:"Snake Clash MOD", img:"https://i.postimg.cc/ZqFX5FJT/71dded537746e75207450ca40f71d089ff02df7c47300f91f5a7522ec910bdc3-200.webp", downloads:"4,750", file:"38 MB"}
+  ];
+
+  // Current selection state
+  let currentGame = null;
+  let currentPlatform = null;
+  let progressInterval;
+
+  // Initialize everything when page loads
+  document.addEventListener('DOMContentLoaded', function() {
+    initializeGames();
+    setupEventListeners();
+    console.log('APKMOD Games loaded successfully!');
+    console.log('AdBlueMedia API Connected - User ID:', USER_ID);
   });
-  </script>
+
+  // Initialize games grid
+  function initializeGames() {
+    const grid = document.getElementById("gamesGrid");
+    grid.innerHTML = '';
+    
+    games.forEach((game, index) => {
+      const gameCard = document.createElement('div');
+      gameCard.className = 'game-card';
+      gameCard.innerHTML = `
+        <img src="${game.img}" alt="${game.title}" loading="lazy"/>
+        <h3>${game.title}</h3>
+        <div class="stats">Updated Today • ${game.downloads} downloads</div>
+        <button class="download-btn" data-game-index="${index}">Install</button>
+      `;
+      grid.appendChild(gameCard);
+    });
+  }
+
+  // Setup event listeners
+  function setupEventListeners() {
+    // Game download buttons
+    document.getElementById('gamesGrid').addEventListener('click', function(e) {
+      if (e.target.classList.contains('download-btn')) {
+        const gameIndex = e.target.getAttribute('data-game-index');
+        openPlatformModal(gameIndex);
+      }
+    });
+
+    // Platform selection buttons
+    document.getElementById('androidBtn').addEventListener('click', function() {
+      selectPlatform('android');
+    });
+
+    document.getElementById('iosBtn').addEventListener('click', function() {
+      selectPlatform('ios');
+    });
+
+    // Locker overlay click
+    document.getElementById('locker').addEventListener('click', function(e) {
+      if (e.target === this) {
+        document.getElementById("statusMessage").innerHTML = 
+          "⚠️ <strong>Complete an offer to download the game for free!</strong>";
+      }
+    });
+  }
+
+  // Search function
+  function searchGames() {
+    const searchInput = document.getElementById("searchInput").value.toLowerCase();
+    const gameCards = document.querySelectorAll(".game-card");
+
+    gameCards.forEach(card => {
+      const gameTitle = card.querySelector("h3").textContent.toLowerCase();
+      if (gameTitle.includes(searchInput)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+
+  // Platform Selection Modal
+  function openPlatformModal(gameIndex) {
+    const game = games[gameIndex];
+    console.log("Opening platform modal for:", game.title);
+    
+    currentGame = game;
+    document.getElementById('modalGameImg').src = game.img;
+    document.getElementById('modalGameTitle').textContent = game.title;
+    document.getElementById('platformModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePlatformModal() {
+    document.getElementById('platformModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  function selectPlatform(platform) {
+    console.log("Platform selected:", platform);
+    currentPlatform = platform;
+    closePlatformModal();
+    openLocker();
+  }
+
+  // LOCKER FUNCTIONS
+  function openLocker() {
+    console.log("Opening locker for:", currentGame?.title, "Platform:", currentPlatform);
+    
+    if (!currentGame || !currentPlatform) {
+      console.error("No game or platform selected!");
+      return;
+    }
+    
+    document.body.style.overflow = "hidden";
+    document.getElementById("locker").style.display = "flex";
+    
+    // Hide offers section initially
+    document.getElementById("offersSection").style.display = "none";
+    
+    const platformText = currentPlatform === 'android' ? '🤖 Android' : '🍎 iOS';
+    const fileType = currentPlatform === 'android' ? 'APK + OBB Files' : 'IPA File';
+    const platformBadge = `<div class="platform-badge">${platformText}</div>`;
+    
+    document.getElementById("gamePreviewLocker").innerHTML = `
+      <img src="${currentGame.img}" alt="${currentGame.title}" />
+      <div class="game-preview-content">
+        <h3>${currentGame.title}</h3>
+        <p class="file-info">📦 ${fileType} • ${currentGame.file} • 🕒 Updated: Today</p>
+        ${platformBadge}
+      </div>`;
+      
+    // Start progress bar
+    startOptimizedProgressBar();
+  }
+
+  function startOptimizedProgressBar(){
+    let currentProgress = 0;
+    let fill = document.getElementById("progressFill");
+    let percent = document.getElementById("progressPercent");
+    let status = document.getElementById("statusMessage");
+    
+    const messages = [
+      "🔄 Checking device compatibility...",
+      "✅ Scanning for security threats...",
+      "🔐 Verifying file integrity...",
+      "⚡ Optimizing download speed...",
+      "🏁 Preparing game content..."
+    ];
+    
+    clearInterval(progressInterval);
+    progressInterval = setInterval(() => {
+      if(currentProgress >= 100){
+        clearInterval(progressInterval);
+        fill.style.width = "100%";
+        percent.textContent = "100%";
+        status.innerHTML = "✅ <strong>Ready! Choose an offer to download</strong>";
+        
+        // Show offers section when progress completes
+        document.getElementById("offersSection").style.display = "block";
+        
+        // Load offers after progress completes
+        loadOffers();
+      } else {
+        currentProgress += 4 + Math.random() * 5;
+        if(currentProgress > 100) currentProgress = 100;
+        fill.style.width = currentProgress + "%";
+        percent.textContent = Math.round(currentProgress) + "%";
+        
+        let msgIndex = Math.floor(currentProgress / 20);
+        if(msgIndex < messages.length) {
+          status.textContent = messages[msgIndex];
+        }
+      }
+    }, 120);
+  }
+
+  // LOAD OFFERS FROM YOUR ADBLUEMEDIA ACCOUNT
+  function loadOffers() {
+    if (!currentGame || !currentPlatform) return;
+    
+    const searchTerm = `${currentGame.title} ${currentPlatform}`;
+    console.log("Loading offers for:", searchTerm);
+    
+    document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
+    
+    // Build the API URL with your credentials
+    const apiUrl = `${API_BASE_URL}?user_id=${USER_ID}&api_key=${API_KEY}&s1=${encodeURIComponent(searchTerm)}&s2=${encodeURIComponent(currentPlatform)}`;
+    
+    console.log("API Request:", apiUrl);
+    
+    // Fetch offers from AdBlueMedia
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(offers => {
+        console.log("AdBlueMedia API Response:", offers);
+        
+        if (!offers || !Array.isArray(offers) || offers.length === 0) {
+          console.log("No offers received from AdBlueMedia, using fallback");
+          showFallbackOffers();
+          return;
+        }
+        
+        displayOffers(offers);
+      })
+      .catch(error => {
+        console.error("AdBlueMedia API Error:", error);
+        console.log("Using fallback offers due to API error");
+        showFallbackOffers();
+      });
+  }
+
+  function showFallbackOffers() {
+    const fallbackOffers = [
+      {
+        anchor: "Complete Quick Survey (1-2 minutes)",
+        url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=${USER_ID}&api_key=${API_KEY}&offer_id=survey1`,
+        type: "survey"
+      },
+      {
+        anchor: "Watch Short Video Ad (45-60 seconds)", 
+        url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=${USER_ID}&api_key=${API_KEY}&offer_id=video1`,
+        type: "video"
+      },
+      {
+        anchor: "Free App Trial (2-3 minutes)",
+        url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=${USER_ID}&api_key=${API_KEY}&offer_id=trial1`,
+        type: "trial"
+      },
+      {
+        anchor: "Quick Registration (1-2 minutes)",
+        url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=${USER_ID}&api_key=${API_KEY}&offer_id=register1`,
+        type: "registration"
+      },
+      {
+        anchor: "Simple Quiz (1-2 minutes)",
+        url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=${USER_ID}&api_key=${API_KEY}&offer_id=quiz1`,
+        type: "quiz"
+      }
+    ];
+    
+    displayOffers(fallbackOffers);
+  }
+
+  function displayOffers(offers) {
+    let html = "";
+    const badges = ["Recommended", "Easy", "Popular", "Quick", "Best Value"];
+    
+    offers.slice(0,5).forEach((offer, index) => {
+      const timeOptions = [60, 90, 120, 150, 180];
+      const timeEstimate = timeOptions[index] || 120;
+      const successRate = 85 + Math.floor(Math.random() * 10);
+      const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
+      const offerType = offer.type || ['survey', 'video', 'trial', 'registration', 'quiz'][index];
+      
+      // Use the actual offer URL from AdBlueMedia or fallback
+      const offerUrl = offer.url || `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=${USER_ID}&api_key=${API_KEY}&offer_id=${offer.id || 'default'}`;
+      
+      html += `
+      <div class="offer-card" onclick="selectOffer('${offerUrl}', '${currentGame.title.replace(/'/g, "\\'")}', '${currentPlatform}', '${offerType}', '${offer.anchor || "Quick Task"}')">
+        <div class="offer-content">
+          <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
+          <div class="offer-details">
+            <div class="offer-detail">✅ ${successRate}% Success</div>
+            <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
+            <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
+          </div>
+        </div>
+        <div class="offer-badge">${badges[index] || "Special"}</div>
+      </div>`;
+    });
+    document.getElementById("offersList").innerHTML = html;
+  }
+
+  function selectOffer(url, gameName, platform, offerType, offerTitle) {
+    console.log(`🎯 LEAD CAPTURED: ${gameName} - ${platform} - ${offerType} - "${offerTitle}"`);
+    
+    // Track conversion to YOUR AdBlueMedia account
+    trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
+    
+    // Add tracking parameters for your account
+    const trackingParams = `&subid=${USER_ID}_${gameName.replace(/\s+/g, '_')}_${platform}&game=${encodeURIComponent(gameName)}&platform=${platform}&offer_type=${offerType}&source=apkmod`;
+    const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
+    
+    document.getElementById("statusMessage").innerHTML = 
+      "✅ <strong>Opening offer...</strong> Complete it to download!";
+    
+    window.open(trackedUrl, '_blank');
+    
+    setTimeout(() => {
+      document.getElementById("statusMessage").innerHTML = 
+        "✅ <strong>Offer completed!</strong> Your download is starting...";
+      
+      setTimeout(() => {
+        const platformText = platform === 'android' ? 'APK file' : 'IPA file';
+        alert(`🎉 Download for ${gameName} Premium (${platformText}) will start when you finish completing the offer`);
+        closeLocker();
+      }, 3000);
+    }, 1500);
+  }
+
+  function closeLocker(){
+    document.getElementById("locker").style.display = "none";
+    document.getElementById("progressFill").style.width = "0%";
+    document.getElementById("progressPercent").textContent = "0%";
+    document.body.style.overflow = "auto";
+    clearInterval(progressInterval);
+    currentGame = null;
+    currentPlatform = null;
+  }
+
+  // AdBlueMedia Tracking - NOW LINKED TO YOUR ACCOUNT
+  function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
+    const conversionData = {
+      user_id: USER_ID,
+      api_key: API_KEY,
+      game: gameName,
+      platform: platform,
+      offer_type: offerType,
+      offer_title: offerTitle,
+      source: 'apkmod',
+      campaign: 'game_download',
+      conversion_type: 'lead',
+      timestamp: Date.now(),
+      revenue: 0.15
+    };
+
+    console.log('📊 Tracking conversion to YOUR AdBlueMedia account:', conversionData);
+    
+    // Track conversion using YOUR AdBlueMedia pixel
+    const trackingPixel = `https://dbj3fg9om9jaj.cloudfront.net/public/conversion/pixel.gif?user_id=${USER_ID}&api_key=${API_KEY}&game=${encodeURIComponent(gameName)}&platform=${platform}&offer_type=${offerType}&conversion=lead&revenue=0.15`;
+    const img = new Image();
+    img.src = trackingPixel;
+    
+    // Also send conversion data via POST
+    fetch('https://dbj3fg9om9jaj.cloudfront.net/public/conversion/track.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(conversionData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('✅ Conversion tracked in YOUR AdBlueMedia dashboard:', data);
+    })
+    .catch(error => {
+      console.log('⚠️ Conversion tracking failed, but pixel was sent:', error);
+    });
+  }
+</script>
+
 </body>
 </html>
