@@ -966,7 +966,7 @@
     
     <p id="statusMessage">🔄 Initializing secure download...</p>
     
-    <!-- Offers Section -->
+    <!-- Offers Section - NOW SHOWS ONLY 4 OFFERS -->
     <div id="offersSection" class="offers-section">
       <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
       <div id="offersList"></div>
@@ -1340,7 +1340,7 @@
     }, 120);
   }
 
-  // LOAD OFFERS FROM YOUR ADBLUEMEDIA ACCOUNT
+  // LOAD OFFERS FROM YOUR ADBLUEMEDIA ACCOUNT - NOW SHOWS ONLY 4 OFFERS
   function loadOffers() {
     if (!currentGame || !currentPlatform) return;
     
@@ -1401,12 +1401,8 @@
         anchor: "Quick Registration (1-2 minutes)",
         url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=${USER_ID}&api_key=${API_KEY}&offer_id=register1`,
         type: "registration"
-      },
-      {
-        anchor: "Simple Quiz (1-2 minutes)",
-        url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=${USER_ID}&api_key=${API_KEY}&offer_id=quiz1`,
-        type: "quiz"
       }
+      // Removed the 5th offer to only show 4
     ];
     
     displayOffers(fallbackOffers);
@@ -1414,14 +1410,15 @@
 
   function displayOffers(offers) {
     let html = "";
-    const badges = ["Recommended", "Easy", "Popular", "Quick", "Best Value"];
+    const badges = ["Recommended", "Easy", "Popular", "Quick"]; // Only 4 badges now
     
-    offers.slice(0,5).forEach((offer, index) => {
-      const timeOptions = [60, 90, 120, 150, 180];
+    // Show only 4 offers instead of 5
+    offers.slice(0,4).forEach((offer, index) => {
+      const timeOptions = [60, 90, 120, 150];
       const timeEstimate = timeOptions[index] || 120;
       const successRate = 85 + Math.floor(Math.random() * 10);
       const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
-      const offerType = offer.type || ['survey', 'video', 'trial', 'registration', 'quiz'][index];
+      const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index]; // Only 4 types
       
       // Use the actual offer URL from AdBlueMedia or fallback
       const offerUrl = offer.url || `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=${USER_ID}&api_key=${API_KEY}&offer_id=${offer.id || 'default'}`;
