@@ -72,7 +72,6 @@
             margin: 0 auto;
         }
 
-        /* Updated Back to Home Button */
         .back-icon {
             font-size: 0.8rem;
             color: var(--text);
@@ -621,7 +620,7 @@
             transform: scale(1.1);
         }
 
-        /* IMPROVED OFFER BOXES */
+        /* MOBILE-OPTIMIZED OFFER BOXES */
         .offers-section {
             margin-top: 10px;
         }
@@ -645,16 +644,17 @@
         .offer-card {
             background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
             border: 1px solid var(--primary);
-            padding: 12px;
-            border-radius: 10px;
+            padding: 10px; /* Reduced padding for mobile */
+            border-radius: 8px; /* Slightly smaller radius */
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px; /* Reduced gap */
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(255,107,53,0.2);
+            box-shadow: 0 2px 6px rgba(255,107,53,0.2);
+            min-height: 60px; /* Consistent height */
         }
 
         .offer-card::before {
@@ -662,7 +662,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
+            width: 3px; /* Thinner accent line */
             height: 100%;
             background: linear-gradient(to bottom, var(--primary), var(--secondary));
         }
@@ -670,53 +670,61 @@
         .offer-card:hover {
             background: linear-gradient(145deg, #4a3a3a, #3a2a3a);
             border-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255,107,53,0.4);
+            transform: translateY(-1px); /* Subtler hover effect */
+            box-shadow: 0 3px 8px rgba(255,107,53,0.3);
         }
 
         .offer-content {
             flex: 1;
             text-align: left;
+            min-width: 0; /* Prevent overflow */
         }
 
         .offer-title {
-            font-size: 0.85rem;
+            font-size: 0.8rem; /* Slightly smaller font */
             font-weight: 600;
             color: var(--text);
-            margin-bottom: 6px;
-            line-height: 1.3;
+            margin-bottom: 4px; /* Reduced margin */
+            line-height: 1.2; /* Tighter line height */
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Limit to 2 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .offer-details {
             display: flex;
-            gap: 10px;
-            font-size: 0.7rem;
+            gap: 6px; /* Reduced gap */
+            font-size: 0.65rem; /* Smaller font */
             color: var(--text-muted);
+            flex-wrap: wrap; /* Wrap on very small screens */
         }
 
         .offer-detail {
             display: flex;
             align-items: center;
-            gap: 3px;
+            gap: 2px; /* Tighter gap */
+            white-space: nowrap;
         }
 
         .offer-badge {
             background: linear-gradient(135deg, var(--accent), #0099ff);
             color: #000;
-            padding: 3px 6px;
-            border-radius: 12px;
-            font-size: 0.65rem;
+            padding: 2px 5px; /* Smaller padding */
+            border-radius: 10px; /* Smaller radius */
+            font-size: 0.6rem; /* Smaller font */
             font-weight: bold;
             white-space: nowrap;
-            box-shadow: 0 2px 4px rgba(0,229,255,0.3);
+            box-shadow: 0 1px 3px rgba(0,229,255,0.3);
+            flex-shrink: 0; /* Prevent badge from shrinking */
         }
 
         .trust-badges {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 12px;
-            padding-top: 10px;
+            gap: 8px; /* Reduced gap */
+            margin-top: 10px;
+            padding-top: 8px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
@@ -724,7 +732,7 @@
             display: flex;
             align-items: center;
             gap: 3px;
-            font-size: 0.7rem;
+            font-size: 0.65rem; /* Smaller font */
             color: var(--text-muted);
         }
 
@@ -732,19 +740,22 @@
             color: var(--primary);
         }
 
-        /* Mobile-specific improvements */
+        /* Enhanced Mobile-specific improvements */
         @media (max-width: 480px) {
             .locker-box {
-                padding: 15px;
-                max-width: 350px;
+                padding: 12px; /* Reduced padding */
+                max-width: 95%; /* Use more screen width */
+                margin: 10px;
             }
             
             .locker-box h2 {
                 font-size: 1.1rem;
+                margin-bottom: 8px;
             }
             
             .game-preview-locker {
                 padding: 8px;
+                gap: 8px;
             }
             
             .game-preview-locker img {
@@ -757,12 +768,48 @@
             }
             
             .offer-card {
-                padding: 10px;
+                padding: 8px; /* Even tighter padding */
+                gap: 6px;
+                min-height: 55px; /* Slightly smaller on mobile */
+            }
+            
+            .offer-title {
+                font-size: 0.75rem; /* Smaller on mobile */
+                -webkit-line-clamp: 2; /* Ensure 2 lines max */
+            }
+            
+            .offer-details {
+                font-size: 0.6rem; /* Even smaller on mobile */
+                gap: 4px;
             }
             
             .trust-badges {
-                flex-direction: column;
-                gap: 5px;
+                flex-direction: row; /* Keep horizontal on mobile */
+                gap: 6px;
+                flex-wrap: wrap; /* Wrap if needed */
+                justify-content: space-around;
+            }
+            
+            .trust-badge {
+                font-size: 0.6rem;
+            }
+            
+            .cta-strong {
+                font-size: 0.8rem;
+                padding: 6px;
+                margin-bottom: 8px;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .offer-details {
+                flex-direction: column; /* Stack details vertically */
+                gap: 2px;
+            }
+            
+            .offer-detail {
+                font-size: 0.55rem;
             }
         }
   </style>
@@ -917,7 +964,7 @@
     </div>
   </footer>
 
-  <!-- IMPROVED Locker Popup -->
+  <!-- SECURE Locker Popup -->
   <div id="locker" class="locker-overlay">
     <div class="locker-box">
       <span class="close-btn" onclick="closeLocker()">×</span>
@@ -982,7 +1029,7 @@
         let currentPlatform = null;
         let progressInterval;
 
-        // ENHANCED AdBlueMedia Lead Tracking
+        // SECURE AdBlueMedia Lead Tracking
         function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
             // Create conversion tracking for AdBlueMedia dashboard
             const conversionData = {
@@ -1015,21 +1062,8 @@
                 console.log('💰 This lead will show in your AdBlueMedia dashboard');
             })
             .catch(error => {
-                console.log('⚠️ AdBlueMedia tracking failed, using fallback:', error);
-                trackFallbackConversion(gameName, platform, offerType);
+                console.log('⚠️ AdBlueMedia tracking failed:', error);
             });
-        }
-
-        function trackFallbackConversion(gameName, platform, offerType) {
-            // Fallback conversion tracking
-            const pixelUrl = `https://d3k0q5ez56odtk.cloudfront.net/public/conversion/pixel.gif?user_id=${USER_ID}&api_key=${API_KEY}&game=${encodeURIComponent(gameName)}&platform=${platform}&offer_type=${offerType}&conversion=lead`;
-            
-            const img = new Image();
-            img.src = pixelUrl;
-            img.style.display = 'none';
-            document.body.appendChild(img);
-            
-            console.log('🔄 Fallback conversion tracked for: Hollow Knight Mobile', platform, offerType);
         }
 
         // Track initial page view
@@ -1070,7 +1104,7 @@
             document.getElementById('ios-steps').style.display = tabIndex === 1 ? 'block' : 'none';
         }
 
-        // IMPROVED Locker functions with enhanced tracking
+        // SECURE Locker functions
         function openLocker(platform) {
             currentPlatform = platform;
             document.body.style.overflow = "hidden";
@@ -1091,7 +1125,7 @@
                     ${platformBadge}
                 </div>`;
                 
-            // Start IMPROVED progress bar
+            // Start progress bar
             startOptimizedProgressBar();
         }
 
@@ -1135,7 +1169,7 @@
                         status.textContent = messages[msgIndex];
                     }
                 }
-            }, 120); // Faster interval
+            }, 120);
         }
 
         function loadOffers() {
@@ -1174,6 +1208,7 @@
         }
 
         function showFallbackOffers() {
+            // ONLY 4 OFFERS AS REQUESTED
             const fallbackOffers = [
                 {
                     anchor: "Complete Quick Survey (1-2 minutes)",
@@ -1194,12 +1229,8 @@
                     anchor: "Quick Registration (1-2 minutes)",
                     url: "https://example.com/register1",
                     type: "registration"
-                },
-                {
-                    anchor: "Simple Quiz (1-2 minutes)",
-                    url: "https://example.com/quiz1",
-                    type: "quiz"
                 }
+                // REMOVED 5th offer - ONLY 4 OFFERS
             ];
             
             displayOffers(fallbackOffers);
@@ -1207,14 +1238,15 @@
 
         function displayOffers(offers) {
             let html = "";
-            const badges = ["Recommended", "Easy", "Popular", "Quick", "Best Value"];
+            const badges = ["Recommended", "Easy", "Popular", "Quick"]; // Only 4 badges
             
-            offers.slice(0,5).forEach((offer, index) => {
-                const timeOptions = [60, 90, 120, 150, 180];
+            // ONLY SHOW FIRST 4 OFFERS
+            offers.slice(0,4).forEach((offer, index) => {
+                const timeOptions = [60, 90, 120, 150];
                 const timeEstimate = timeOptions[index] || 120;
                 const successRate = 85 + Math.floor(Math.random() * 10);
                 const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
-                const offerType = offer.type || ['survey', 'video', 'trial', 'registration', 'quiz'][index];
+                const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
                 
                 html += `
                 <div class="offer-card" onclick="selectOffer('${offer.url}', 'Hollow Knight Mobile', '${currentPlatform}', '${offerType}', '${offer.anchor || "Quick Task"}')">
@@ -1232,7 +1264,7 @@
             document.getElementById("offersList").innerHTML = html;
         }
 
-        // ENHANCED: AdBlueMedia conversion tracking
+        // SECURE: AdBlueMedia conversion tracking
         function selectOffer(url, gameName, platform, offerType, offerTitle) {
             console.log(`🎯 LEAD CAPTURED: Hollow Knight Mobile - ${platform} - ${offerType} - "${offerTitle}"`);
             
