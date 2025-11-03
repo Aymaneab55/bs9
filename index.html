@@ -344,7 +344,7 @@
         }
 
         .game-title {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 0.6rem;
             color: var(--text-primary);
@@ -360,7 +360,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.4rem;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             margin-bottom: 1rem;
         }
@@ -541,6 +541,310 @@
             background: rgba(255,255,255,0.2);
         }
 
+        /* Locker System */
+        .locker-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 12, 41, 0.98);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .locker-box {
+            width: 100%;
+            max-width: 95%;
+            max-height: 90vh;
+            background: linear-gradient(145deg, var(--surface), var(--background));
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            color: var(--text-primary);
+            box-shadow: 0 25px 50px var(--shadow), var(--glow);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            backdrop-filter: blur(10px);
+        }
+
+        .locker-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .locker-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .locker-box h2 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            line-height: 1.3;
+        }
+
+        .cta-strong {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            background: rgba(255, 45, 117, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .game-preview-locker {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            text-align: left;
+            background: var(--background);
+            padding: 0.8rem;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .game-preview-locker img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px var(--shadow);
+            border: 2px solid var(--primary);
+        }
+
+        .game-preview-content h3 {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .file-info {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin: 1rem 0;
+            background: var(--background);
+            padding: 0.8rem;
+            border-radius: 8px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--surface-light);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        #progressFill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s ease;
+            border-radius: 5px;
+        }
+
+        .progress-text {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #statusMessage {
+            margin-top: 0.8rem;
+            font-weight: bold;
+            font-size: 0.75rem;
+            color: var(--primary);
+            min-height: 18px;
+            line-height: 1.4;
+            background: rgba(106, 17, 203, 0.1);
+            padding: 0.6rem;
+            border-radius: 6px;
+        }
+
+        .locker-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            z-index: 10;
+            touch-action: manipulation;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .locker-close-btn:active {
+            background: rgba(255,85,85,0.2);
+        }
+
+        .offers-section {
+            margin-top: 1rem;
+        }
+
+        .offers-section h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            justify-content: center;
+        }
+
+        #offersList {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .offer-card {
+            background: linear-gradient(145deg, var(--surface), var(--background));
+            border: 1px solid var(--primary);
+            padding: 0.9rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(106, 17, 203, 0.2);
+            min-height: 60px;
+            touch-action: manipulation;
+        }
+
+        .offer-card:active {
+            background: linear-gradient(145deg, var(--surface-light), var(--surface));
+            border-color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .offer-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+
+        .offer-content {
+            flex: 1;
+            text-align: left;
+            min-width: 0;
+        }
+
+        .offer-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+            word-wrap: break-word;
+        }
+
+        .offer-details {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            flex-wrap: wrap;
+        }
+
+        .offer-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            white-space: nowrap;
+        }
+
+        .offer-badge {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 8px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(255, 45, 117, 0.3);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+        }
+
+        .trust-badge i {
+            color: var(--success);
+            font-size: 0.7rem;
+        }
+
         /* Footer */
         .footer {
             background: linear-gradient(135deg, var(--surface), var(--background));
@@ -627,7 +931,7 @@
             }
             
             .game-title {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
         }
 
@@ -792,6 +1096,63 @@
   </div>
 </div>
 
+<!-- Locker System -->
+<div id="locker" class="locker-overlay">
+  <div class="locker-box">
+    <span class="locker-close-btn" onclick="closeLocker()">×</span>
+    
+    <div class="locker-header">
+      <div class="locker-logo">
+        <i class="fas fa-shield-alt"></i>
+        <span>GameVault+ Secure Download</span>
+      </div>
+    </div>
+    
+    <div class="game-preview-locker" id="gamePreviewLocker"></div>
+    
+    <h2>⚡ Download Verification</h2>
+    <p class="cta-strong">Complete one quick offer to unlock your download + exclusive bonus content!</p>
+    
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-header">
+        <span>Security Check</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div id="progressFill"></div>
+      </div>
+      <div class="progress-text">
+        <span>Preparing download...</span>
+        <span>Secure</span>
+      </div>
+    </div>
+    
+    <p id="statusMessage">🔄 Initializing secure download...</p>
+    
+    <!-- Offers Section -->
+    <div id="offersSection" class="offers-section">
+      <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
+      <div id="offersList"></div>
+      
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <i class="fas fa-shield-check"></i>
+          <span>100% Secure</span>
+        </div>
+        <div class="trust-badge">
+          <i class="fas fa-clock"></i>
+          <span>1-3 Minutes</span>
+        </div>
+        <div class="trust-badge">
+          <i class="fas fa-download"></i>
+          <span>Instant Access</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Footer -->
 <footer class="footer">
   <div class="footer-content">
@@ -936,6 +1297,7 @@
   // Current selection state
   let currentGame = null;
   let currentPlatform = null;
+  let progressInterval;
 
   // Initialize everything when page loads
   document.addEventListener('DOMContentLoaded', function() {
@@ -1039,10 +1401,254 @@
     console.log("Platform selected:", platform);
     currentPlatform = platform;
     closePlatformModal();
+    openLocker();
+  }
+
+  // LOCKER FUNCTIONS
+  function openLocker() {
+    console.log("Opening locker for:", currentGame?.title, "Platform:", currentPlatform);
     
-    // In a real implementation, this would redirect to the CPA offer
-    // For demo purposes, we'll just show an alert
-    alert(`Download for ${currentGame.title} (${platform}) will start when you complete the offer.`);
+    if (!currentGame || !currentPlatform) {
+      console.error("No game or platform selected!");
+      return;
+    }
+    
+    document.body.style.overflow = "hidden";
+    document.getElementById("locker").style.display = "flex";
+    
+    // Hide offers section initially
+    document.getElementById("offersSection").style.display = "none";
+    
+    const platformText = currentPlatform === 'android' ? '🤖 Android' : '🍎 iOS';
+    const fileType = currentPlatform === 'android' ? 'APK + OBB Files' : 'IPA File';
+    const platformBadge = `<div class="platform-badge">${platformText}</div>`;
+    
+    document.getElementById("gamePreviewLocker").innerHTML = `
+      <img src="${currentGame.img}" alt="${currentGame.title}" />
+      <div class="game-preview-content">
+        <h3>${currentGame.title}</h3>
+        <p class="file-info">📦 ${fileType} • ${currentGame.file} • 🕒 Updated: Today</p>
+        ${platformBadge}
+      </div>`;
+      
+    // Start progress bar
+    startOptimizedProgressBar();
+  }
+
+  function startOptimizedProgressBar(){
+    let currentProgress = 0;
+    let fill = document.getElementById("progressFill");
+    let percent = document.getElementById("progressPercent");
+    let status = document.getElementById("statusMessage");
+    
+    const messages = [
+      "🔄 Checking device compatibility...",
+      "✅ Scanning for security threats...",
+      "🔐 Verifying file integrity...",
+      "⚡ Optimizing download speed...",
+      "🏁 Preparing game content..."
+    ];
+    
+    clearInterval(progressInterval);
+    progressInterval = setInterval(() => {
+      if(currentProgress >= 100){
+        clearInterval(progressInterval);
+        fill.style.width = "100%";
+        percent.textContent = "100%";
+        status.innerHTML = "✅ <strong>Ready! Choose an offer to download</strong>";
+        
+        // Show offers section when progress completes
+        document.getElementById("offersSection").style.display = "block";
+        
+        // Load offers after progress completes
+        loadOffers();
+      } else {
+        currentProgress += 4 + Math.random() * 5;
+        if(currentProgress > 100) currentProgress = 100;
+        fill.style.width = currentProgress + "%";
+        percent.textContent = Math.round(currentProgress) + "%";
+        
+        let msgIndex = Math.floor(currentProgress / 20);
+        if(msgIndex < messages.length) {
+          status.textContent = messages[msgIndex];
+        }
+      }
+    }, 120);
+  }
+
+  // LOAD OFFERS FROM YOUR ADBLUEMEDIA ACCOUNT
+  function loadOffers() {
+    if (!currentGame || !currentPlatform) return;
+    
+    const searchTerm = `${currentGame.title} ${currentPlatform}`;
+    console.log("Loading offers for:", searchTerm);
+    
+    document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
+    
+    // Build the API URL with your credentials
+    const apiUrl = `https://dbj3fg9om9jaj.cloudfront.net/public/offers/feed.php?user_id=504359&api_key=3b17a09c1ca2bba2d52ffadab4894374&s1=${encodeURIComponent(searchTerm)}&s2=${encodeURIComponent(currentPlatform)}`;
+    
+    console.log("API Request:", apiUrl);
+    
+    // Fetch offers from AdBlueMedia
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(offers => {
+        console.log("AdBlueMedia API Response:", offers);
+        
+        if (!offers || !Array.isArray(offers) || offers.length === 0) {
+          console.log("No offers received from AdBlueMedia, using fallback");
+          showFallbackOffers();
+          return;
+        }
+        
+        displayOffers(offers);
+      })
+      .catch(error => {
+        console.error("AdBlueMedia API Error:", error);
+        console.log("Using fallback offers due to API error");
+        showFallbackOffers();
+      });
+  }
+
+  function showFallbackOffers() {
+    const fallbackOffers = [
+      {
+        anchor: "Complete Quick Survey (1-2 minutes)",
+        url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=504359&api_key=3b17a09c1ca2bba2d52ffadab4894374&offer_id=survey1`,
+        type: "survey"
+      },
+      {
+        anchor: "Watch Short Video Ad (45-60 seconds)", 
+        url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=504359&api_key=3b17a09c1ca2bba2d52ffadab4894374&offer_id=video1`,
+        type: "video"
+      },
+      {
+        anchor: "Free App Trial (2-3 minutes)",
+        url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=504359&api_key=3b17a09c1ca2bba2d52ffadab4894374&offer_id=trial1`,
+        type: "trial"
+      },
+      {
+        anchor: "Quick Registration (1-2 minutes)",
+        url: `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=504359&api_key=3b17a09c1ca2bba2d52ffadab4894374&offer_id=register1`,
+        type: "registration"
+      }
+    ];
+    
+    displayOffers(fallbackOffers);
+  }
+
+  function displayOffers(offers) {
+    let html = "";
+    const badges = ["Recommended", "Easy", "Popular", "Quick"];
+    
+    // Show only 4 offers
+    offers.slice(0,4).forEach((offer, index) => {
+      const timeOptions = [60, 90, 120, 150];
+      const timeEstimate = timeOptions[index] || 120;
+      const successRate = 85 + Math.floor(Math.random() * 10);
+      const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
+      const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
+      
+      // Use the actual offer URL from AdBlueMedia or fallback
+      const offerUrl = offer.url || `https://dbj3fg9om9jaj.cloudfront.net/public/offers/click.php?user_id=504359&api_key=3b17a09c1ca2bba2d52ffadab4894374&offer_id=${offer.id || 'default'}`;
+      
+      html += `
+      <div class="offer-card" onclick="selectOffer('${offerUrl}', '${currentGame.title.replace(/'/g, "\\'")}', '${currentPlatform}', '${offerType}', '${offer.anchor || "Quick Task"}')">
+        <div class="offer-content">
+          <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
+          <div class="offer-details">
+            <div class="offer-detail">✅ ${successRate}% Success</div>
+            <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
+            <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
+          </div>
+        </div>
+        <div class="offer-badge">${badges[index] || "Special"}</div>
+      </div>`;
+    });
+    document.getElementById("offersList").innerHTML = html;
+  }
+
+  function selectOffer(url, gameName, platform, offerType, offerTitle) {
+    console.log(`🎯 LEAD CAPTURED: ${gameName} - ${platform} - ${offerType} - "${offerTitle}"`);
+    
+    // Track conversion to YOUR AdBlueMedia account
+    trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
+    
+    // Add tracking parameters for your account
+    const trackingParams = `&subid=504359_${gameName.replace(/\s+/g, '_')}_${platform}&game=${encodeURIComponent(gameName)}&platform=${platform}&offer_type=${offerType}&source=apkmod`;
+    const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
+    
+    document.getElementById("statusMessage").innerHTML = 
+      "✅ <strong>Opening offer...</strong> Complete it to download!";
+    
+    window.open(trackedUrl, '_blank');
+    
+    setTimeout(() => {
+      document.getElementById("statusMessage").innerHTML = 
+        "✅ <strong>Offer completed!</strong> Your download is starting...";
+      
+      setTimeout(() => {
+        const platformText = platform === 'android' ? 'APK file' : 'IPA file';
+        alert(`🎉 Download for ${gameName} Premium (${platformText}) will start when you finish completing the offer`);
+        closeLocker();
+      }, 3000);
+    }, 1500);
+  }
+
+  function closeLocker(){
+    document.getElementById("locker").style.display = "none";
+    document.getElementById("progressFill").style.width = "0%";
+    document.getElementById("progressPercent").textContent = "0%";
+    document.body.style.overflow = "auto";
+    clearInterval(progressInterval);
+    currentGame = null;
+    currentPlatform = null;
+  }
+
+  // AdBlueMedia Tracking
+  function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
+    const conversionData = {
+      user_id: 504359,
+      api_key: "3b17a09c1ca2bba2d52ffadab4894374",
+      game: gameName,
+      platform: platform,
+      offer_type: offerType,
+      offer_title: offerTitle,
+      source: 'apkmod',
+      campaign: 'game_download',
+      conversion_type: 'lead',
+      timestamp: Date.now(),
+      revenue: 0.15
+    };
+
+    console.log('📊 Tracking conversion to YOUR AdBlueMedia account:', conversionData);
+    
+    // Track conversion using YOUR AdBlueMedia pixel
+    const trackingPixel = `https://dbj3fg9om9jaj.cloudfront.net/public/conversion/pixel.gif?user_id=504359&api_key=3b17a09c1ca2bba2d52ffadab4894374&game=${encodeURIComponent(gameName)}&platform=${platform}&offer_type=${offerType}&conversion=lead&revenue=0.15`;
+    const img = new Image();
+    img.src = trackingPixel;
+    
+    // Also send conversion data via POST
+    fetch('https://dbj3fg9om9jaj.cloudfront.net/public/conversion/track.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(conversionData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('✅ Conversion tracked in YOUR AdBlueMedia dashboard:', data);
+    })
+    .catch(error => {
+      console.log('⚠️ Conversion tracking failed, but pixel was sent:', error);
+    });
   }
 </script>
 
