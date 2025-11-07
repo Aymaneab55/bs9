@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MLB The Show 25 Stubs Generator | Free Stubs & Packs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* MLB The Show Theme - Blue/Red/Gold */
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
+            font-family: 'Cairo', Arial, sans-serif;
+            position: relative;
+            overflow-x: hidden;
+            text-align: left;
+            background: linear-gradient(135deg, #0A2A5E 0%, #1A3A6A 50%, #002D72 100%);
+            padding-bottom: 100px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .logo-container {
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        .logo-container img {
+            max-width: 180px;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-bar {
+            width: 100vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            box-sizing: border-box;
+            padding: 16px 0 0 0;
+            margin-bottom: 8px;
+        }
+
+        .active-users-box {
+            background: #D50032;
+            border: 2.3px solid #FFD700;
+            border-radius: 13px;
+            padding: 13px 18px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5em;
+            min-width: 220px;
+            max-width: 70vw;
+            margin: 0;
+            box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.09);
+            font-weight: 900;
+            font-family: 'Cairo', Arial, sans-serif;
+            height: 54px;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.17s cubic-bezier(.17, .67, .83, .67);
+            will-change: transform;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .active-users-box:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .active-users-box:hover:after {
+            left: 100%;
+        }
+
+        .active-users-box:active {
+            transform: scale(1.09) rotate(-2deg);
+            box-shadow: 0 0 0 6px #fff5, 0 2px 6px #0003;
+            z-index: 2;
+            filter: brightness(1.08);
+            background: #B3002B;
+        }
+
+        .active-users-box span:first-child {
+            color: #fff;
+            margin-right: 8px;
+            font-weight: 900;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        .active-users-count {
+            font-weight: 900;
+            font-family: 'Orbitron', 'Cairo', Arial, sans-serif;
+            margin-left: 8px;
+            font-size: 1.15em;
+            color: #FFD700;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+        }
+
+        .select-title {
+            margin: 30px 0 10px 0;
+            text-align: center;
+            font-size: 1.7em;
+            color: #fff;
+            font-family: 'Cairo', Arial, sans-serif;
+            letter-spacing: .4px;
+            font-weight: 900;
+            text-shadow: 0 1px 5px #2225;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .select-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ffd700, transparent);
+        }
+
+        .items-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 26px;
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+        }
+
+        .items-row {
+            display: flex;
+            gap: 22px;
+            width: 100%;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .item-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #0002;
+            padding: 10px 8px 8px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 170px;
+            min-width: 100px;
+            max-width: 31vw;
+            border: 2px solid #eee;
+            margin: 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            will-change: transform;
+            overflow: hidden;
+            touch-action: manipulation;
+        }
+
+        .item-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .item-card:active {
+            transform: scale(1.09) rotate(-2deg);
+            box-shadow: 0 0 0 6px #ffd70033, 0 2px 12px #0003;
+            z-index: 2;
+            filter: brightness(1.08);
+        }
+
+        .item-card.selected {
+            background: linear-gradient(135deg, #ffd700, #ffbf00);
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            animation: goldenGlow 1.5s infinite alternate;
+        }
+
+        @keyframes goldenGlow {
+            from {
+                box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            }
+            to {
+                box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+            }
+        }
+
+        .item-img {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #eaeaea;
+            margin-bottom: 10px;
+            border: none;
+            image-rendering: pixelated;
+            box-shadow: 0 0 13px #0001;
+            transition: box-shadow 0.12s, filter 0.12s;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .item-card.selected .item-img {
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            filter: brightness(1.05) contrast(1.1);
+        }
+
+        .item-name {
+            font-size: 1.08em;
+            color: #333;
+            font-family: 'Cairo', Arial, sans-serif;
+            text-align: center;
+            font-weight: 900;
+            letter-spacing: .2px;
+            margin-bottom: 0;
+            line-height: 1.2;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            background: none;
+            border-radius: 0;
+            border: none;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            min-height: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .item-card.selected .item-name {
+            color: #8b7500;
+            text-shadow: 0 0 2px rgba(255, 215, 0, 0.5);
+        }
+
+        .stubs-amount {
+            font-size: 1.3em;
+            color: #D50032;
+            font-weight: 900;
+            margin-top: 5px;
+        }
+
+        .selection-controls {
+            text-align: center;
+            padding: 5px 0 20px 0;
+            min-height: 25px;
+        }
+
+        #continue-btn {
+            display: none;
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1001;
+            padding: 15px 40px;
+            font-size: 1.4em;
+            font-weight: 900;
+            font-family: 'Cairo', Arial, sans-serif;
+            color: white;
+            background: #D50032;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            touch-action: manipulation;
+        }
+
+        #continue-btn:hover {
+            background: #B3002B;
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        #continue-btn:active {
+            background: #990025;
+            transform: translateX(-50%) translateY(1px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        #selection-limit-message {
+            display: none;
+            color: #ff4d4d;
+            font-weight: bold;
+            font-size: 1em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .cliameds {
+            position: fixed;
+            bottom: 65px;
+            left: 15px;
+            z-index: 9999;
+        }
+
+        .message {
+            background-color: rgba(13, 71, 161, 0.85);
+            display: flex;
+            font-size: .8rem;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 2px solid rgba(255, 215, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .message:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(30deg);
+            transition: all 0.5s;
+        }
+
+        .message:hover:after {
+            left: 120%;
+        }
+
+        .message .img {
+            padding-right: 10px;
+            z-index: 2;
+        }
+
+        .message .img img {
+            width: 50px;
+            background: #fff;
+            border-radius: 50%;
+            height: 50px;
+            border: 2px solid #FFD700;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .message .more {
+            z-index: 2;
+        }
+
+        .message .more div:first-child {
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .message .more div:last-child {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* Purchase popup styles */
+        .purchase-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .popup-content {
+            background: linear-gradient(135deg, #0A2A5E 0%, #1A3A6A 100%);
+            padding: 25px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 380px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            color: white;
+            margin: auto;
+            position: relative;
+            border: 2px solid #FFD700;
+        }
+
+        .popup-header {
+            position: relative;
+            padding-bottom: 20px;
+            margin-bottom: 15px;
+        }
+
+        .popup-header h3 {
+            font-size: 24px;
+            margin: 0;
+            color: #FFD700;
+            font-weight: 700;
+        }
+
+        .popup-header:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background-color: #FFD700;
+        }
+
+        .selected-images-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 15px auto;
+            flex-wrap: wrap;
+        }
+
+        .item-popup-image-small {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid #FFD700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .item-confirm {
+            font-size: 18px;
+            margin: 0.3cm 0;
+            color: white;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: none;
+        }
+
+        .input-group input {
+            width: 92%;
+            padding: 15px 12px;
+            background-color: white;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .input-group input::placeholder {
+            color: #999;
+            font-weight: 700;
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .cancel-btn {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            flex: 1;
+            font-size: 15px;
+            touch-action: manipulation;
+        }
+
+        .free-btn {
+            background-color: #FFD700;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            touch-action: manipulation;
+        }
+
+        .free-btn .free-badge {
+            color: #333;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        /* Searching state styles */
+        .searching-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .folding {
+            margin: 20px auto;
+            width: 70px;
+            height: 70px;
+            position: relative;
+            transform: rotateZ(45deg);
+        }
+
+        .folding .sk-cube {
+            float: left;
+            width: 50%;
+            height: 50%;
+            position: relative;
+            transform: scale(1.1);
+        }
+
+        .folding .sk-cube:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FFD700;
+            animation: sk-foldCubeAngle 2.4s infinite linear both;
+            transform-origin: 100% 100%;
+        }
+
+        .folding .sk-cube2 {
+            transform: scale(1.1) rotateZ(90deg);
+        }
+
+        .folding .sk-cube3 {
+            transform: scale(1.1) rotateZ(180deg);
+        }
+
+        .folding .sk-cube4 {
+            transform: scale(1.1) rotateZ(270deg);
+        }
+
+        .folding .sk-cube2:before {
+            animation-delay: 0.3s;
+        }
+
+        .folding .sk-cube3:before {
+            animation-delay: 0.6s;
+        }
+
+        .folding .sk-cube4:before {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes sk-foldCubeAngle {
+            0%, 10% {
+                transform: perspective(140px) rotateX(-180deg);
+                opacity: 0;
+            }
+            25%, 75% {
+                transform: perspective(140px) rotateX(0deg);
+                opacity: 1;
+            }
+            90%, 100% {
+                transform: perspective(140px) rotateY(180deg);
+                opacity: 0;
+            }
+        }
+
+        .searching-text {
+            color: white;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        /* Success state styles */
+        .result-username {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .get-item-now-btn {
+            background-color: #FFD700;
+            color: #333;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: all 0.3s;
+            touch-action: manipulation;
+        }
+
+        .get-item-now-btn:hover {
+            background-color: #ffed4a;
+        }
+
+        .d-none {
+            display: none !important;
+        }
+
+        .user-error {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        /* EXACT SAME LOCKER STYLES FROM YOUR BEAMNG PAGE */
+        .locker-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 15px;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .locker-box {
+            width: 100%;
+            max-width: 420px;
+            max-height: 85vh;
+            background: linear-gradient(145deg, #1a1a1a, #121212);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            color: #e0e0e0;
+            box-shadow: 0 0 40px rgba(255,107,53,0.4);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow-y: auto;
+        }
+
+        .locker-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .locker-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: #ff6b35;
+            font-size: 1rem;
+        }
+
+        .locker-box h2 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            text-shadow: 0 0 15px rgba(255,107,53,0.5);
+        }
+
+        .cta-strong {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #00e5ff;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            background: rgba(0,229,255,0.1);
+            padding: 8px;
+            border-radius: 8px;
+            border-left: 3px solid #00e5ff;
+        }
+
+        .game-preview-locker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            text-align: left;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 10px;
+            border-left: 3px solid #ff6b35;
+        }
+
+        .game-preview-locker img {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .game-preview-content h3 {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            line-height: 1.3;
+        }
+
+        .file-info {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            background: #ff6b35;
+            color: #000;
+            padding: 3px 8px;
+            border-radius: 15px;
+            font-size: 0.65rem;
+            font-weight: bold;
+            margin-top: 4px;
+        }
+
+        .progress-container {
+            margin: 12px 0;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #333;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255,107,53,0.1) inset;
+            margin-bottom: 6px;
+        }
+
+        #progressFill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b35, #ff8e53);
+            transition: width 0.4s ease;
+            border-radius: 6px;
+        }
+
+        .progress-text {
+            font-size: 0.75rem;
+            color: #888;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #statusMessage {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: #ff6b35;
+            min-height: 20px;
+            line-height: 1.4;
+            background: rgba(255,107,53,0.1);
+            padding: 6px;
+            border-radius: 6px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 18px;
+            color: #ff5555;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,85,85,0.2);
+            transform: scale(1.1);
+        }
+
+        /* MOBILE-OPTIMIZED OFFER BOXES - EXACT SAME AS YOUR PAGE */
+        .offers-section {
+            margin-top: 10px;
+        }
+
+        .offers-section h3 {
+            color: #ff6b35;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        #offersList {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .offer-card {
+            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
+            border: 1px solid #ff6b35;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(255,107,53,0.2);
+            min-height: 60px;
+        }
+
+        .offer-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff6b35, #ff8e53);
+        }
+
+        .offer-card:hover {
+            background: linear-gradient(145deg, #4a3a3a, #3a2a2a);
+            border-color: #ff8e53;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(255,107,53,0.3);
+        }
+
+        .offer-content {
+            flex: 1;
+            text-align: left;
+            min-width: 0;
+        }
+
+        .offer-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 4px;
+            line-height: 1.2;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .offer-details {
+            display: flex;
+            gap: 6px;
+            font-size: 0.65rem;
+            color: #888;
+            flex-wrap: wrap;
+        }
+
+        .offer-detail {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            white-space: nowrap;
+        }
+
+        .offer-badge {
+            background: linear-gradient(135deg, #00e5ff, #0099ff);
+            color: #000;
+            padding: 2px 5px;
+            border-radius: 10px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 1px 3px rgba(0,229,255,0.3);
+            flex-shrink: 0;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 0.65rem;
+            color: #888;
+        }
+
+        .trust-badge i {
+            color: #ff6b35;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 480px) {
+            .locker-box {
+                padding: 12px;
+                max-width: 95%;
+                margin: 10px;
+            }
+            
+            .locker-box h2 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+            
+            .game-preview-locker {
+                padding: 8px;
+                gap: 8px;
+            }
+            
+            .game-preview-locker img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .game-preview-content h3 {
+                font-size: 0.9rem;
+            }
+            
+            .offer-card {
+                padding: 8px;
+                gap: 6px;
+                min-height: 55px;
+            }
+            
+            .offer-title {
+                font-size: 0.75rem;
+                -webkit-line-clamp: 2;
+            }
+            
+            .offer-details {
+                font-size: 0.6rem;
+                gap: 4px;
+            }
+            
+            .trust-badges {
+                flex-direction: row;
+                gap: 6px;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            
+            .trust-badge {
+                font-size: 0.6rem;
+            }
+            
+            .cta-strong {
+                font-size: 0.8rem;
+                padding: 6px;
+                margin-bottom: 8px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .offer-details {
+                flex-direction: column;
+                gap: 2px;
+            }
+            
+            .offer-detail {
+                font-size: 0.55rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="select-title">MLB THE SHOW 25 STUBS GENERATOR</div>
+    <div class="content">
+        <div class="top-bar">
+            <div class="active-users-box">
+                <span>Active users :</span>
+                <span class="active-users-count" id="activeUsersCount"></span>
+            </div>
+        </div>
+        <div class="select-title">SELECT UP TO 3 REWARDS YOU WANT</div>
+
+        <div class="selection-controls">
+            <div id="selection-limit-message">You can only select up to 3 items.</div>
+        </div>
+
+        <div class="items-grid" id="itemsGrid">
+            <!-- Stubs Packages -->
+            <div class="items-row">
+                <div class="item-card">
+                    <img alt="150K Stubs" class="item-img" src="https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png" />
+                    <div class="item-name">150K Stubs Pack</div>
+                    <div class="stubs-amount">150,000 Stubs</div>
+                </div>
+                <div class="item-card">
+                    <img alt="67K Stubs" class="item-img" src="https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png" />
+                    <div class="item-name">67K Stubs Pack</div>
+                    <div class="stubs-amount">67,500 Stubs</div>
+                </div>
+                <div class="item-card">
+                    <img alt="24K Stubs" class="item-img" src="https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png" />
+                    <div class="item-name">24K Stubs Pack</div>
+                    <div class="stubs-amount">24,000 Stubs</div>
+                </div>
+            </div>
+
+            <div class="items-row">
+                <div class="item-card">
+                    <img alt="11K Stubs" class="item-img" src="https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png" />
+                    <div class="item-name">11K Stubs Pack</div>
+                    <div class="stubs-amount">11,000 Stubs</div>
+                </div>
+                <div class="item-card">
+                    <img alt="Deluxe Edition" class="item-img" src="https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png" />
+                    <div class="item-name">Digital Deluxe</div>
+                    <div class="stubs-amount">+50K Stubs</div>
+                </div>
+                <div class="item-card">
+                    <img alt="Anniversary Bundle" class="item-img" src="https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png" />
+                    <div class="item-name">20th Anniversary</div>
+                    <div class="stubs-amount">Special Bundle</div>
+                </div>
+            </div>
+
+            <div class="items-row">
+                <div class="item-card">
+                    <img alt="Diamond Pack" class="item-img" src="https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png" />
+                    <div class="item-name">Diamond Player</div>
+                    <div class="stubs-amount">+25K Stubs</div>
+                </div>
+                <div class="item-card">
+                    <img alt="Gold Pack" class="item-img" src="https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png" />
+                    <div class="item-name">Gold Player Pack</div>
+                    <div class="stubs-amount">+15K Stubs</div>
+                </div>
+                <div class="item-card">
+                    <img alt="Equipment Pack" class="item-img" src="https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png" />
+                    <div class="item-name">Equipment Bundle</div>
+                    <div class="stubs-amount">+10K Stubs</div>
+                </div>
+            </div>
+        </div>
+        
+        <button id="continue-btn">Continue</button>
+    </div>
+
+    <!-- Purchase Popup (Username & Profile Selection) -->
+    <div class="purchase-popup" id="purchase-popup">
+        <div class="popup-content"></div>
+    </div>
+
+    <!-- EXACT SAME LOCKER FROM YOUR BEAMNG PAGE -->
+    <div id="locker" class="locker-overlay">
+        <div class="locker-box">
+            <span class="close-btn" onclick="closeLocker()">×</span>
+            
+            <div class="locker-header">
+                <div class="locker-logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure Verification</span>
+                </div>
+            </div>
+            
+            <div class="game-preview-locker" id="gamePreviewLocker"></div>
+            
+            <h2>⚡ Stubs Verification</h2>
+            <p class="cta-strong">Complete one quick offer to unlock your selected Stubs + exclusive bonus content!</p>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-header">
+                    <span>Security Check</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span>Preparing your Stubs...</span>
+                    <span>Secure</span>
+                </div>
+            </div>
+            
+            <p id="statusMessage">🔄 Initializing secure verification...</p>
+            
+            <!-- Offers Section -->
+            <div id="offersSection" class="offers-section">
+                <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
+                <div id="offersList"></div>
+                
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-shield-check"></i>
+                        <span>100% Secure</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-clock"></i>
+                        <span>1-3 Minutes</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-download"></i>
+                        <span>Instant Access</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cliameds"></div>
+    
+    <audio id="dingSound" preload="auto">
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
+    </audio>
+    
+    <audio id="clickSound" preload="auto">
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_63c49c13c8.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // EXACT SAME API CONFIGURATION FROM YOUR BEAMNG PAGE
+        const API_KEY = "3b17a09c1ca2bba2d52ffadab4894374";
+        const USER_ID = "504359";
+
+        // Current selection state
+        let currentSelectedItems = [];
+        let currentUsername = "";
+        let progressInterval;
+
+        // Function to disable body scroll
+        function disableBodyScroll() {
+            document.body.style.overflow = "hidden";
+        }
+
+        // Function to enable body scroll
+        function enableBodyScroll() {
+            document.body.style.overflow = "auto";
+        }
+
+        // Active Users Counter
+        function randomUsers() {
+            return Math.floor(Math.random() * (900 - 90 + 1)) + 90;
+        }
+
+        function updateActiveUsers() {
+            document.getElementById('activeUsersCount').textContent = randomUsers();
+        }
+        updateActiveUsers();
+        setInterval(updateActiveUsers, 4500);
+
+        // Notifications System - MLB The Show themed
+        const avatars = [
+            'https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png',
+            'https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png',
+            'https://static.wikia.nocookie.net/logopedia/images/8/8c/MLB_The_Show_21_%28Logo%29.png'
+        ];
+        
+        const items = [
+            '150K Stubs Pack', '67K Stubs Pack', '24K Stubs Pack', '11K Stubs Pack', 
+            'Digital Deluxe Edition', '20th Anniversary Bundle', 'Diamond Player Pack'
+        ];
+        
+        const usernames = [
+            'MVP_Player22', 'DiamondHands99', 'AllStar_Gamer', 'HomeRun_King', 
+            'Fastball_Pro', 'SliderMaster', 'Curveball_Expert', 'Batting_Champ'
+        ];
+        
+        let notificationInterval;
+        let popupOpen = false;
+
+        function startNotifications() {
+            if (popupOpen) return;
+            notificationInterval = setInterval(function() {
+                if (popupOpen) return;
+                $(".cliameds").fadeIn();
+                var html = `
+                    <div class="message">
+                        <div class="img"><img src="${avatars[Math.floor(Math.random() * avatars.length)]}" alt=""></div>
+                        <div class="more">
+                            <div>${usernames[Math.floor(Math.random() * usernames.length)]}</div>
+                            <div> JUST CLAIMED '${items[Math.floor(Math.random() * items.length)]}'</div>
+                        </div>
+                    </div>
+                `;
+                $(".cliameds").html(html);
+                setTimeout(function() {
+                    $(".cliameds").fadeOut();
+                }, 3000);
+            }, 5000);
+        }
+
+        function stopNotifications() {
+            clearInterval(notificationInterval);
+            $(".cliameds").fadeOut();
+        }
+        startNotifications();
+
+        // Purchase Popup Functions (Username & Profile Selection)
+        const showPurchasePopup = (itemName, itemImages) => {
+            popupOpen = true;
+            stopNotifications();
+            disableBodyScroll();
+            
+            const popup = document.getElementById('purchase-popup');
+            const popupContent = popup.querySelector('.popup-content');
+
+            const selectedCount = itemImages.length;
+            const promptText = selectedCount > 1 ?
+                `Would you like to get these ${selectedCount} Stubs packages?` :
+                `Would you like to Get "<span>${itemName}</span>"?`;
+
+            let imagesHTML = '<div class="selected-images-container">';
+            itemImages.forEach(src => {
+                imagesHTML += `<img src="${src}" alt="Selected Item" class="item-popup-image-small">`;
+            });
+            imagesHTML += '</div>';
+
+            popupContent.innerHTML = `
+                <div class="popup-header">
+                    <h3>Get Stubs</h3>
+                </div>
+                ${imagesHTML}
+                <p class="item-confirm">${promptText}</p>
+                <div class="input-group">
+                    <input type="text" id="username-input" placeholder="Enter your PlayStation/Xbox Username">
+                </div>
+                <div class="user-error d-none">Please enter a valid username</div>
+                <div class="popup-buttons">
+                    <button class="cancel-btn">Cancel</button>
+                    <button class="free-btn" id="search-user-btn">
+                        <span class="free-badge">Continue</span>
+                    </button>
+                </div>
+            `;
+            
+            popupContent.querySelector('.cancel-btn').addEventListener('click', closePurchasePopup);
+            popupContent.querySelector('#search-user-btn').addEventListener('click', function() {
+                const clickSound = document.getElementById('clickSound');
+                clickSound.currentTime = 0;
+                clickSound.play();
+                const username = document.getElementById('username-input').value.trim();
+                if (!username) {
+                    document.querySelector('.user-error').classList.remove('d-none');
+                    return;
+                }
+                currentUsername = username;
+                showSearchingState(username, itemName, itemImages);
+            });
+            
+            popup.style.display = 'flex';
+            document.getElementById('username-input').focus();
+        };
+
+        const closePurchasePopup = () => {
+            document.getElementById('purchase-popup').style.display = 'none';
+            popupOpen = false;
+            enableBodyScroll();
+            startNotifications();
+        };
+
+        const showSearchingState = (username, itemName, itemImages) => {
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = `
+                <div class="popup-header">
+                    <h3>Get Stubs</h3>
+                </div>
+                <div style="text-align:center;padding:20px">
+                    <div class="folding">
+                        <div class="sk-cube1 sk-cube"></div>
+                        <div class="sk-cube2 sk-cube"></div>
+                        <div class="sk-cube4 sk-cube"></div>
+                        <div class="sk-cube3 sk-cube"></div>
+                    </div>
+                    <p class="searching-text">Verifying @${username}</p>
+                </div>
+            `;
+            
+            // Simulate API call to find user
+            setTimeout(() => {
+                showSuccessState(username, itemName, itemImages);
+            }, 2000);
+        };
+
+        const showSuccessState = (username, itemName, itemImages) => {
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = `
+                <div class="popup-header">
+                    <h3>Get Stubs</h3>
+                </div>
+                <div style="text-align:center;padding:20px">
+                    <div style="width: 100px; height: 100px; background: #FFD700; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 40px;">
+                        ⚾
+                    </div>
+                    <p class="result-username">@${username}</p>
+                    <button class="get-item-now-btn">Get Stubs Now</button>
+                </div>
+            `;
+            
+            popupContent.querySelector('.get-item-now-btn').addEventListener('click', function() {
+                const clickSound = document.getElementById('clickSound');
+                clickSound.currentTime = 0;
+                clickSound.play();
+                
+                // Store the selected items and open API locker
+                currentSelectedItems = {
+                    names: itemName,
+                    images: itemImages
+                };
+                
+                // Close purchase popup and open API locker
+                closePurchasePopup();
+                openLocker();
+            });
+        };
+
+        // EXACT SAME LOCKER FUNCTIONS FROM YOUR BEAMNG PAGE
+        function openLocker() {
+            disableBodyScroll();
+            document.getElementById("locker").style.display = "flex";
+            
+            // Hide offers section initially
+            document.getElementById("offersSection").style.display = "none";
+            
+            // Create preview of selected items
+            let previewHTML = '';
+            if (currentSelectedItems.images.length > 0) {
+                previewHTML = `<img src="${currentSelectedItems.images[0]}" alt="Selected Item" />`;
+            }
+            
+            const itemCount = currentSelectedItems.names.split(', ').length;
+            const itemsText = itemCount > 1 ? `${itemCount} selected Stubs packages` : currentSelectedItems.names;
+            
+            document.getElementById("gamePreviewLocker").innerHTML = `
+                ${previewHTML}
+                <div class="game-preview-content">
+                    <h3>${itemsText}</h3>
+                    <p class="file-info">👤 User: ${currentUsername}</p>
+                    <p class="file-info">🎮 MLB The Show 25 • 🕒 Instant Delivery</p>
+                </div>`;
+                
+            // Start progress bar
+            startOptimizedProgressBar();
+        }
+
+        function startOptimizedProgressBar(){
+            let currentProgress = 0;
+            let fill = document.getElementById("progressFill");
+            let percent = document.getElementById("progressPercent");
+            let status = document.getElementById("statusMessage");
+            
+            const messages = [
+                "🔄 Checking Stubs availability...",
+                "✅ Verifying user account...",
+                "🔐 Securing your Stubs...",
+                "⚡ Preparing instant delivery...",
+                "🎮 Setting up your Diamond Dynasty..."
+            ];
+            
+            clearInterval(progressInterval);
+            progressInterval = setInterval(() => {
+                if(currentProgress >= 100){
+                    clearInterval(progressInterval);
+                    fill.style.width = "100%";
+                    percent.textContent = "100%";
+                    status.innerHTML = "✅ <strong>Ready! Choose an offer to get your Stubs</strong>";
+                    
+                    // Show offers section when progress completes
+                    document.getElementById("offersSection").style.display = "block";
+                    
+                    // Load offers after progress completes
+                    loadOffers();
+                } else {
+                    // OPTIMIZED progress - completes in 3-4 seconds
+                    currentProgress += 4 + Math.random() * 5;
+                    if(currentProgress > 100) currentProgress = 100;
+                    fill.style.width = currentProgress + "%";
+                    percent.textContent = Math.round(currentProgress) + "%";
+                    
+                    // Show different messages at different progress points
+                    let msgIndex = Math.floor(currentProgress / 20);
+                    if(msgIndex < messages.length) {
+                        status.textContent = messages[msgIndex];
+                    }
+                }
+            }, 120);
+        }
+
+        // EXACT SAME OFFER LOADING FROM YOUR BEAMNG PAGE
+        function loadOffers() {
+            if (!currentSelectedItems) return;
+            
+            // Use platform-specific search term for better offers
+            const searchTerm = `mlb stubs ${currentSelectedItems.names}`;
+            
+            // Show loading state
+            document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
+            
+            // Use fetch with timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 8000);
+            
+            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=${encodeURIComponent(searchTerm)}`, {
+                signal: controller.signal
+            })
+            .then(res => res.json())
+            .then(offers => {
+                clearTimeout(timeoutId);
+                
+                if(!offers || !Array.isArray(offers) || offers.length === 0){
+                    // Show fallback offers if API fails
+                    showFallbackOffers();
+                    return;
+                }
+                
+                displayOffers(offers);
+            })
+            .catch(() => { 
+                clearTimeout(timeoutId);
+                // Show fallback offers on error
+                showFallbackOffers();
+            });
+        }
+
+        function showFallbackOffers() {
+            // ONLY 4 OFFERS AS REQUESTED
+            const fallbackOffers = [
+                {
+                    anchor: "Complete Quick Survey (1-2 minutes)",
+                    url: "https://example.com/survey1",
+                    type: "survey"
+                },
+                {
+                    anchor: "Watch Short Video Ad (45-60 seconds)", 
+                    url: "https://example.com/video1",
+                    type: "video"
+                },
+                {
+                    anchor: "Free App Trial (2-3 minutes)",
+                    url: "https://example.com/trial1",
+                    type: "trial"
+                },
+                {
+                    anchor: "Quick Registration (1-2 minutes)",
+                    url: "https://example.com/register1",
+                    type: "registration"
+                }
+            ];
+            
+            displayOffers(fallbackOffers);
+        }
+
+        function displayOffers(offers) {
+            let html = "";
+            const badges = ["Recommended", "Easy", "Popular", "Quick"];
+            
+            // ONLY SHOW FIRST 4 OFFERS
+            offers.slice(0,4).forEach((offer, index) => {
+                const timeOptions = [60, 90, 120, 150];
+                const timeEstimate = timeOptions[index] || 120;
+                const successRate = 85 + Math.floor(Math.random() * 10);
+                const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
+                const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
+                
+                html += `
+                <div class="offer-card" onclick="selectOffer('${offer.url}', 'MLB Stubs', 'stubs', '${offerType}', '${offer.anchor || "Quick Task"}')">
+                    <div class="offer-content">
+                        <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
+                        <div class="offer-details">
+                            <div class="offer-detail">✅ ${successRate}% Success</div>
+                            <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
+                            <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
+                        </div>
+                    </div>
+                    <div class="offer-badge">${badges[index] || "Special"}</div>
+                </div>`;
+            });
+            document.getElementById("offersList").innerHTML = html;
+        }
+
+        // EXACT SAME CONVERSION TRACKING FROM YOUR BEAMNG PAGE
+        function selectOffer(url, gameName, platform, offerType, offerTitle) {
+            console.log(`🎯 LEAD CAPTURED: MLB Stubs - ${platform} - ${offerType} - "${offerTitle}"`);
+            
+            // TRACK CONVERSION IN ADBLUEMEDIA DASHBOARD ONLY
+            trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle);
+            
+            // Add tracking parameters for the offer URL
+            const trackingParams = `&subid=${USER_ID}_mlbstubs_${platform}&game=MLB_The_Show_25&platform=${platform}&offer_type=${offerType}&source=stubs_generator`;
+            const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
+            
+            // Show immediate feedback
+            document.getElementById("statusMessage").innerHTML = 
+                "✅ <strong>Opening offer...</strong> Complete it to get your Stubs!";
+            
+            // Open offer in new tab with tracking
+            window.open(trackedUrl, '_blank');
+            
+            // Show completion message after short delay
+            setTimeout(() => {
+                document.getElementById("statusMessage").innerHTML = 
+                    "✅ <strong>Offer completed!</strong> Your Stubs are being delivered...";
+                
+                // Auto-close after 3 seconds
+                setTimeout(() => {
+                    alert(`🎉 Congratulations ${currentUsername}! Your selected Stubs packages have been added to your account!`);
+                    closeLocker();
+                }, 3000);
+            }, 1500);
+        }
+
+        // EXACT SAME ADBLUEMEDIA TRACKING FROM YOUR BEAMNG PAGE
+        function trackAdBlueMediaConversion(gameName, platform, offerType, offerTitle) {
+            const conversionData = {
+                user_id: USER_ID,
+                api_key: API_KEY,
+                game: gameName,
+                platform: platform,
+                offer_type: offerType,
+                offer_title: offerTitle,
+                source: 'stubs_generator',
+                campaign: 'mlb_the_show_25_stubs',
+                conversion_type: 'lead',
+                timestamp: Date.now(),
+                revenue: 0.15
+            };
+
+            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(conversionData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('✅ AdBlueMedia Conversion Tracked:', data);
+                console.log('🎮 Game: MLB The Show 25 Stubs');
+                console.log('💰 This lead will show in your AdBlueMedia dashboard');
+            })
+            .catch(error => {
+                console.log('⚠️ AdBlueMedia tracking failed:', error);
+            });
+        }
+
+        function closeLocker(){
+            document.getElementById("locker").style.display = "none";
+            document.getElementById("progressFill").style.width = "0%";
+            document.getElementById("progressPercent").textContent = "0%";
+            enableBodyScroll();
+            clearInterval(progressInterval);
+            currentSelectedItems = null;
+        }
+
+        // Item Selection Logic
+        $(document).ready(function() {
+            const dingSound = document.getElementById('dingSound');
+            const MAX_SELECTIONS = 3;
+            const $limitMessage = $('#selection-limit-message');
+
+            // Item Selection Logic
+            $('.item-card').click(function() {
+                const $this = $(this);
+                const isSelected = $this.hasClass('selected');
+                const selectedCount = $('.item-card.selected').length;
+
+                $limitMessage.hide();
+
+                if (isSelected) {
+                    $this.removeClass('selected');
+                } else {
+                    if (selectedCount < MAX_SELECTIONS) {
+                        $this.addClass('selected');
+                        dingSound.currentTime = 0;
+                        dingSound.play();
+                    } else {
+                        $limitMessage.show();
+                        setTimeout(() => {
+                            $limitMessage.fadeOut();
+                        }, 2500);
+                    }
+                }
+
+                if ($('.item-card.selected').length > 0) {
+                    $('#continue-btn').show();
+                } else {
+                    $('#continue-btn').hide();
+                }
+            });
+
+            // Continue Button Click Logic - Opens username popup FIRST
+            $('#continue-btn').click(function() {
+                const selectedItems = $('.item-card.selected');
+                if (selectedItems.length === 0) return;
+
+                const itemNames = selectedItems.map(function() {
+                    return $(this).find('.item-name').text().trim();
+                }).get().join(', ');
+
+                const itemImages = selectedItems.map(function() {
+                    return $(this).find('.item-img').attr('src');
+                }).get();
+
+                // Open username popup FIRST
+                showPurchasePopup(itemNames, itemImages);
+            });
+        });
+
+        // Exit intent prevention
+        document.getElementById('locker').addEventListener('click', function(e) {
+            if (e.target === this) {
+                document.getElementById("statusMessage").innerHTML = 
+                    "⚠️ <strong>Complete an offer to get your free Stubs!</strong>";
+            }
+        });
+    </script>
+</body>
+</html>
