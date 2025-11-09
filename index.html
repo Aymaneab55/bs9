@@ -1,57 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- VPN PROTECTION CODE - CORRECTED VERSION -->
+<!-- VPN PROTECTION CODE - ENHANCED VERSION -->
 <script>
 function checkVPN() {
     console.log("Starting VPN check...");
     
-    // ⚠️ REMOVED THE IP ADDRESS - NOW CHECKS VISITOR'S IP ⚠️
     const YOUR_API_URL = 'https://api.ipinfo.io/lite?token=38d22caf5880aa';
     
-    console.log("API URL:", YOUR_API_URL);
-    
     fetch(YOUR_API_URL)
-    .then(response => {
-        console.log("API Response status:", response.status);
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
         console.log("Full API Data:", data);
         
-        // Check for VPN/Hosting/Proxy using AS name
-        if (data.as_name) {
+        if (data.as_name && data.country_code) {
             console.log("AS Name:", data.as_name);
+            console.log("Country:", data.country_code);
             
+            const asNameLower = data.as_name.toLowerCase();
+            
+            // EXTENSIVE BLOCKLIST - Blocks all major hosting/VPN providers
             const isVPN = (
-                data.as_name.toLowerCase().includes('google') ||
-                data.as_name.toLowerCase().includes('amazon') ||
-                data.as_name.toLowerCase().includes('microsoft') ||
-                data.as_name.toLowerCase().includes('digitalocean') ||
-                data.as_name.toLowerCase().includes('linode') ||
-                data.as_name.toLowerCase().includes('ovh') ||
-                data.as_name.toLowerCase().includes('alibaba') ||
-                data.as_name.toLowerCase().includes('hosting') ||
-                data.as_name.toLowerCase().includes('vpn') ||
-                data.as_name.toLowerCase().includes('proxy') ||
-                data.as_name.toLowerCase().includes('server') ||
-                data.as_name.toLowerCase().includes('datacenter') ||
-                data.as_name.toLowerCase().includes('cloud')
+                // Cloud & Hosting Providers
+                asNameLower.includes('google') ||
+                asNameLower.includes('amazon') ||
+                asNameLower.includes('microsoft') ||
+                asNameLower.includes('digitalocean') ||
+                asNameLower.includes('linode') ||
+                asNameLower.includes('ovh') ||
+                asNameLower.includes('alibaba') ||
+                asNameLower.includes('vultr') ||
+                asNameLower.includes('hetzner') ||
+                asNameLower.includes('ibm') ||
+                asNameLower.includes('oracle') ||
+                asNameLower.includes('rackspace') ||
+                asNameLower.includes('joyent') ||
+                asNameLower.includes('packet') ||
+                asNameLower.includes('upcloud') ||
+                
+                // VPN & Proxy Keywords
+                asNameLower.includes('vpn') ||
+                asNameLower.includes('proxy') ||
+                asNameLower.includes('hosting') ||
+                asNameLower.includes('server') ||
+                asNameLower.includes('datacenter') ||
+                asNameLower.includes('cloud') ||
+                asNameLower.includes('data center') ||
+                asNameLower.includes('host') ||
+                
+                // Specific VPN Company Names
+                asNameLower.includes('expressvpn') ||
+                asNameLower.includes('nordvpn') ||
+                asNameLower.includes('surfshark') ||
+                asNameLower.includes('cyberghost') ||
+                asNameLower.includes('private internet access') ||
+                asNameLower.includes('ipvanish') ||
+                asNameLower.includes('windscribe') ||
+                asNameLower.includes('hide.me') ||
+                asNameLower.includes('proton') ||
+                asNameLower.includes('purevpn')
             );
             
             console.log("Is VPN/Hosting?", isVPN);
             
             if (isVPN) {
-                console.log("Redirecting to blocked page...");
+                console.log("BLOCKED: VPN/Proxy detected - Redirecting...");
                 window.location.href = "vpn-blocked.html";
+                return;
             }
+            
+            // Additional check: If we're not sure, check for suspicious patterns
+            console.log("Basic check passed, running additional checks...");
+            runAdditionalChecks(data);
+            
         } else {
-            console.log("No as_name data found in response");
+            console.log("Incomplete API data");
         }
     })
     .catch(error => {
         console.error("VPN check failed:", error);
     });
+}
+
+function runAdditionalChecks(ipData) {
+    // Check for common VPN patterns
+    const suspiciousPatterns = [
+        // Add any specific AS numbers or patterns you want to block
+    ];
+    
+    // If you want to be extra safe, you can block entire countries
+    // that are known for VPN traffic (optional - be careful with this)
+    const highRiskCountries = [
+        // 'ru', 'cn', 'ua', 'tr' // Example: Russia, China, Ukraine, Turkey
+    ];
+    
+    if (highRiskCountries.includes(ipData.country_code)) {
+        console.log("High-risk country detected, showing warning...");
+        showWarning();
+    }
+}
+
+function showWarning() {
+    const warning = document.createElement('div');
+    warning.style.cssText = `
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+        z-index: 1000;
+    `;
+    warning.innerHTML = '⚠️ Security Notice: Please disable any VPN or proxy service before completing offers.';
+    document.body.prepend(warning);
 }
 
 checkVPN();
