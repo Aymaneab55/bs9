@@ -1290,102 +1290,45 @@
         }
 
         function loadOffers() {
-            // Use your original search term
-            const searchTerm = `caravan camping travel`;
-            
             // Show loading state
             document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
             
-            // Use fetch with timeout - YOUR ORIGINAL API CALL
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 8000);
-            
-            fetch(`https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=${USER_ID}&api_key=${API_KEY}&s1=${encodeURIComponent(searchTerm)}`, {
-                signal: controller.signal
-            })
-            .then(res => res.json())
-            .then(offers => {
-                clearTimeout(timeoutId);
-                
-                if(!offers || !Array.isArray(offers) || offers.length === 0){
-                    // Show fallback offers if API fails
-                    showFallbackOffers();
-                    return;
-                }
-                
-                // Filter to only show email offers from your API
-                const emailOffers = offers.filter(offer => 
-                    offer.type === 'email' || 
-                    (offer.anchor && offer.anchor.toLowerCase().includes('email')) ||
-                    (offer.anchor && offer.anchor.toLowerCase().includes('newsletter')) ||
-                    (offer.anchor && offer.anchor.toLowerCase().includes('subscription')) ||
-                    (offer.anchor && offer.anchor.toLowerCase().includes('register'))
-                );
-                
-                if(emailOffers.length === 0) {
-                    // If no email offers, show regular offers but label them as email registration
-                    displayOffers(offers, true);
-                } else {
-                    displayOffers(emailOffers, false);
-                }
-            })
-            .catch(() => { 
-                clearTimeout(timeoutId);
-                // Show fallback offers on error
-                showFallbackOffers();
-            });
-        }
-
-        function showFallbackOffers() {
-            const fallbackOffers = [
+            // Use your specific offers directly
+            const offers = [
                 {
-                    anchor: "Complete Quick Survey (1-2 minutes)",
-                    url: "https://example.com/survey1",
-                    type: "survey"
+                    anchor: "CTConnect - Taco Bell $100",
+                    url: "https://smrturl.co/a/sac7b66fcac/91?s1=",
+                    type: "email"
                 },
                 {
-                    anchor: "Watch Short Video Ad (45-60 seconds)", 
-                    url: "https://example.com/video1",
-                    type: "video"
-                },
-                {
-                    anchor: "Free App Trial (2-3 minutes)",
-                    url: "https://example.com/trial1",
-                    type: "trial"
-                },
-                {
-                    anchor: "Quick Registration (1-2 minutes)",
-                    url: "https://example.com/register1",
-                    type: "registration"
+                    anchor: "Prizegrab - 7 Eleven Giftcard", 
+                    url: "https://smrturl.co/a/sac7b66fcac/62?s1=",
+                    type: "email"
                 }
             ];
             
-            displayOffers(fallbackOffers, true);
+            // Display the offers immediately
+            displayOffers(offers);
         }
 
-        function displayOffers(offers, forceEmailLabel = false) {
+        function displayOffers(offers) {
             let html = "";
-            const badges = ["Recommended", "Easy", "Popular", "Quick"];
+            const badges = ["Recommended", "Popular"];
             
-            // Only show first 4 offers
-            offers.slice(0,4).forEach((offer, index) => {
-                const timeOptions = [60, 90, 120, 150];
+            // Show both offers
+            offers.forEach((offer, index) => {
+                const timeOptions = [90, 120];
                 const timeEstimate = timeOptions[index] || 120;
                 const successRate = 85 + Math.floor(Math.random() * 10);
-                const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
-                const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
-                
-                // Force email label if needed
-                const displayType = forceEmailLabel ? 'email' : offerType;
                 
                 html += `
-                <div class="offer-card" onclick="selectOffer('${offer.url}', 'Luxury Caravan', '${displayType}', '${offer.anchor || "Quick Task"}')">
+                <div class="offer-card" onclick="selectOffer('${offer.url}', 'Luxury Caravan', '${offer.type}', '${offer.anchor}')">
                     <div class="offer-content">
-                        <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
+                        <div class="offer-title">${offer.anchor}</div>
                         <div class="offer-details">
                             <div class="offer-detail">✅ ${successRate}% Success</div>
                             <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
-                            <div class="offer-detail">${forceEmailLabel ? '📧 Email Registration' : '👥 ' + (usersCompleted/1000).toFixed(0) + 'K+ completed'}</div>
+                            <div class="offer-detail">📧 Email Registration</div>
                         </div>
                     </div>
                     <div class="offer-badge">${badges[index] || "Special"}</div>
@@ -1403,7 +1346,7 @@
             
             // Add tracking parameters for the offer URL
             const trackingParams = `&subid=${USER_ID}_caravan_giveaway&prize=Luxury_Caravan&offer_type=${offerType}&source=caravan-giveaway`;
-            const trackedUrl = url + (url.includes('?') ? '&' : '?') + trackingParams;
+            const trackedUrl = url + trackingParams;
             
             // Show immediate feedback
             document.getElementById("statusMessage").innerHTML = 
