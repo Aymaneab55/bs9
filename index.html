@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- VPN PROTECTION CODE - DEBUG VERSION -->
+<!-- VPN PROTECTION CODE - FIXED VERSION -->
 <script>
 function checkVPN() {
     console.log("Starting VPN check...");
     
-    // ⚠️ REPLACE WITH YOUR ACTUAL API URL ⚠️
+    // ⚠️ USE YOUR SAME API URL ⚠️
     const YOUR_API_URL = 'https://api.ipinfo.io/lite/8.8.8.8?token=38d22caf5880aa';
     
     console.log("API URL:", YOUR_API_URL);
@@ -19,33 +19,35 @@ function checkVPN() {
     .then(data => {
         console.log("Full API Data:", data);
         
-        if (data.org) {
-            console.log("Organization:", data.org);
+        // NEW DETECTION METHOD - Using ASN and company name
+        if (data.as_name) {
+            console.log("AS Name:", data.as_name);
             
-            // Check for VPN/Hosting/Proxy
+            // Check for VPN/Hosting/Proxy using AS name
             const isVPN = (
-                data.org.toLowerCase().includes('hosting') ||
-                data.org.toLowerCase().includes('vpn') ||
-                data.org.toLowerCase().includes('proxy') ||
-                data.org.toLowerCase().includes('server') ||
-                data.org.toLowerCase().includes('datacenter') ||
-                data.org.toLowerCase().includes('amazon') ||
-                data.org.toLowerCase().includes('google cloud') ||
-                data.org.toLowerCase().includes('microsoft') ||
-                data.org.toLowerCase().includes('digitalocean') ||
-                data.org.toLowerCase().includes('linode') ||
-                data.org.toLowerCase().includes('ovh') ||
-                data.org.toLowerCase().includes('alibaba')
+                data.as_name.toLowerCase().includes('google') ||
+                data.as_name.toLowerCase().includes('amazon') ||
+                data.as_name.toLowerCase().includes('microsoft') ||
+                data.as_name.toLowerCase().includes('digitalocean') ||
+                data.as_name.toLowerCase().includes('linode') ||
+                data.as_name.toLowerCase().includes('ovh') ||
+                data.as_name.toLowerCase().includes('alibaba') ||
+                data.as_name.toLowerCase().includes('hosting') ||
+                data.as_name.toLowerCase().includes('vpn') ||
+                data.as_name.toLowerCase().includes('proxy') ||
+                data.as_name.toLowerCase().includes('server') ||
+                data.as_name.toLowerCase().includes('datacenter') ||
+                data.as_name.toLowerCase().includes('cloud')
             );
             
-            console.log("Is VPN?", isVPN);
+            console.log("Is VPN/Hosting?", isVPN);
             
             if (isVPN) {
                 console.log("Redirecting to blocked page...");
                 window.location.href = "vpn-blocked.html";
             }
         } else {
-            console.log("No org data found in response");
+            console.log("No as_name data found in response");
         }
     })
     .catch(error => {
