@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- VPN PROTECTION CODE - ADD THIS RIGHT AFTER <head> -->
+<!-- VPN PROTECTION CODE - DEBUG VERSION -->
 <script>
 function checkVPN() {
-    // ⚠️ REPLACE THIS WITH YOUR FULL API URL INCLUDING TOKEN ⚠️
+    console.log("Starting VPN check...");
+    
+    // ⚠️ REPLACE WITH YOUR ACTUAL API URL ⚠️
     const YOUR_API_URL = 'https://api.ipinfo.io/lite/8.8.8.8?token=38d22caf5880aa';
     
+    console.log("API URL:", YOUR_API_URL);
+    
     fetch(YOUR_API_URL)
-    .then(response => response.json())
+    .then(response => {
+        console.log("API Response status:", response.status);
+        return response.json();
+    })
     .then(data => {
-        console.log("IP Check:", data);
+        console.log("Full API Data:", data);
         
-        // Check for VPN/Hosting/Proxy
-        if (data.org && (
-            data.org.toLowerCase().includes('hosting') ||
-            data.org.toLowerCase().includes('vpn') ||
-            data.org.toLowerCase().includes('proxy') ||
-            data.org.toLowerCase().includes('server') ||
-            data.org.toLowerCase().includes('datacenter') ||
-            data.org.toLowerCase().includes('amazon') ||
-            data.org.toLowerCase().includes('google cloud') ||
-            data.org.toLowerCase().includes('microsoft') ||
-            data.org.toLowerCase().includes('digitalocean') ||
-            data.org.toLowerCase().includes('linode') ||
-            data.org.toLowerCase().includes('ovh') ||
-            data.org.toLowerCase().includes('alibaba')
-        )) {
-            window.location.href = "vpn-blocked.html";
-            return;
+        if (data.org) {
+            console.log("Organization:", data.org);
+            
+            // Check for VPN/Hosting/Proxy
+            const isVPN = (
+                data.org.toLowerCase().includes('hosting') ||
+                data.org.toLowerCase().includes('vpn') ||
+                data.org.toLowerCase().includes('proxy') ||
+                data.org.toLowerCase().includes('server') ||
+                data.org.toLowerCase().includes('datacenter') ||
+                data.org.toLowerCase().includes('amazon') ||
+                data.org.toLowerCase().includes('google cloud') ||
+                data.org.toLowerCase().includes('microsoft') ||
+                data.org.toLowerCase().includes('digitalocean') ||
+                data.org.toLowerCase().includes('linode') ||
+                data.org.toLowerCase().includes('ovh') ||
+                data.org.toLowerCase().includes('alibaba')
+            );
+            
+            console.log("Is VPN?", isVPN);
+            
+            if (isVPN) {
+                console.log("Redirecting to blocked page...");
+                window.location.href = "vpn-blocked.html";
+            }
+        } else {
+            console.log("No org data found in response");
         }
     })
     .catch(error => {
@@ -36,10 +53,8 @@ function checkVPN() {
     });
 }
 
-// Start checking when page loads
 checkVPN();
 </script>
-<!-- END VPN PROTECTION -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <meta name="description" content="m4d.fun - Download the latest Games for free. Premium modded games for Android & iOS including GTA 5 Mobile, BeamNG.drive, Assetto Corsa and more.">
