@@ -874,6 +874,27 @@
                 font-size: 0.55rem;
             }
         }
+        
+        /* Registration requirement message */
+        .registration-requirement {
+            background: rgba(255, 107, 53, 0.15);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .registration-requirement h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .registration-requirement p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -911,10 +932,16 @@
       </div>
     </div>
     
+    <!-- Registration Requirement Message -->
+    <div class="registration-requirement">
+      <h3><i class="fas fa-exclamation-circle"></i> Important: Registration Required</h3>
+      <p>To enter this exclusive caravan giveaway, you must register for one of our sponsored email offers. These offers require valid information to qualify. Complete registration with accurate details to secure your entry into the contest and be eligible to win the luxury campervan.</p>
+    </div>
+    
     <!-- Entry Button -->
     <div class="entry-section">
       <button onclick="openLocker()" class="entry-btn">ENTER GIVEAWAY NOW</button>
-      <p>Complete a quick offer to enter the draw - No purchase necessary!</p>
+      <p>Complete a quick email offer to enter the draw - No purchase necessary!</p>
     </div>
     
     <!-- Specs Grid -->
@@ -972,7 +999,7 @@
           <div class="testimonial-author">- Sarah M., Last Month's Winner</div>
         </div>
         <div class="testimonial-item">
-          <div class="testimonial-text">"The process was so simple - just complete a quick survey and you're entered. Winning this caravan has been a dream come true for our retirement travels."</div>
+          <div class="testimonial-text">"The process was so simple - just complete a quick email registration and you're entered. Winning this caravan has been a dream come true for our retirement travels."</div>
           <div class="testimonial-author">- Robert T., April Winner</div>
         </div>
       </div>
@@ -1037,7 +1064,13 @@
       <div class="prize-preview-locker" id="prizePreviewLocker"></div>
       
       <h2>⚡ Giveaway Verification</h2>
-      <p class="cta-strong">Complete one quick offer to enter the caravan giveaway + get bonus entries!</p>
+      <p class="cta-strong">Complete one email offer to enter the caravan giveaway + get bonus entries!</p>
+      
+      <!-- Registration Requirement in Locker -->
+      <div class="registration-requirement" style="margin: 10px 0; padding: 10px;">
+        <h3 style="font-size: 1rem; margin-bottom: 8px;"><i class="fas fa-envelope"></i> Email Registration Required</h3>
+        <p style="font-size: 0.8rem;">You must register for one of our email offers with valid information to enter the contest and win the luxury campervan.</p>
+      </div>
       
       <!-- Progress Bar - OPTIMIZED timing -->
       <div class="progress-container">
@@ -1058,7 +1091,7 @@
       
       <!-- Offers Section (Shows after progress) -->
       <div id="offersSection" class="offers-section">
-        <h3><i class="fas fa-gift"></i> Choose Your Offer</h3>
+        <h3><i class="fas fa-envelope"></i> Choose Your Email Offer</h3>
         <div id="offersList"></div>
         
         <div class="trust-badges">
@@ -1087,9 +1120,9 @@
         // Current selection state
         let progressInterval;
 
-        // Enhanced AdBlueMedia lead tracking
-        function trackAdBlueMediaConversion(prizeName, offerType, offerTitle) {
-            // Create conversion tracking for AdBlueMedia dashboard
+        // Enhanced lead tracking
+        function trackConversion(prizeName, offerType, offerTitle) {
+            // Create conversion tracking for dashboard
             const conversionData = {
                 user_id: USER_ID,
                 api_key: API_KEY,
@@ -1103,7 +1136,7 @@
                 revenue: 0.25
             };
 
-            // Send conversion to AdBlueMedia
+            // Send conversion
             fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
                 method: 'POST',
                 headers: {
@@ -1113,12 +1146,12 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log('✅ AdBlueMedia Conversion Tracked:', data);
+                console.log('✅ Conversion Tracked:', data);
                 console.log('🎁 Prize: Luxury Caravan');
-                console.log('💰 This lead will show in your AdBlueMedia dashboard');
+                console.log('💰 This lead will show in your dashboard');
             })
             .catch(error => {
-                console.log('⚠️ AdBlueMedia tracking failed, using fallback:', error);
+                console.log('⚠️ Tracking failed, using fallback:', error);
                 // Fallback tracking
                 trackFallbackConversion(prizeName, offerType);
             });
@@ -1192,8 +1225,9 @@
             screenshotGrid.scrollLeft = scrollLeft - walk;
         });
 
-        // IMPROVED Locker functions
+        // IMPROVED Locker functions - FIXED
         function openLocker() {
+            console.log("Button clicked - opening locker");
             document.body.style.overflow = "hidden";
             document.getElementById("locker").style.display = "flex";
             
@@ -1205,7 +1239,7 @@
                 <div class="prize-preview-content">
                     <h3>Luxury Caravan Giveaway</h3>
                     <p class="file-info">🎁 Value: $45,000 • 🕒 Ends: Soon</p>
-                    <div class="platform-badge">FREE ENTRY</div>
+                    <div class="platform-badge">EMAIL REGISTRATION REQUIRED</div>
                 </div>`;
                 
             // Start IMPROVED progress bar
@@ -1232,7 +1266,7 @@
                     clearInterval(progressInterval);
                     fill.style.width = "100%";
                     percent.textContent = "100%";
-                    status.innerHTML = "✅ <strong>Ready! Choose an offer to enter the giveaway</strong>";
+                    status.innerHTML = "✅ <strong>Ready! Choose an email offer to enter the giveaway</strong>";
                     
                     // Show offers section when progress completes
                     document.getElementById("offersSection").style.display = "block";
@@ -1256,13 +1290,13 @@
         }
 
         function loadOffers() {
-            // Use caravan-related search term for better offers
+            // Use your original search term
             const searchTerm = `caravan camping travel`;
             
             // Show loading state
             document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
             
-            // Use fetch with timeout
+            // Use fetch with timeout - YOUR ORIGINAL API CALL
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 8000);
             
@@ -1279,7 +1313,21 @@
                     return;
                 }
                 
-                displayOffers(offers);
+                // Filter to only show email offers from your API
+                const emailOffers = offers.filter(offer => 
+                    offer.type === 'email' || 
+                    (offer.anchor && offer.anchor.toLowerCase().includes('email')) ||
+                    (offer.anchor && offer.anchor.toLowerCase().includes('newsletter')) ||
+                    (offer.anchor && offer.anchor.toLowerCase().includes('subscription')) ||
+                    (offer.anchor && offer.anchor.toLowerCase().includes('register'))
+                );
+                
+                if(emailOffers.length === 0) {
+                    // If no email offers, show regular offers but label them as email registration
+                    displayOffers(offers, true);
+                } else {
+                    displayOffers(emailOffers, false);
+                }
             })
             .catch(() => { 
                 clearTimeout(timeoutId);
@@ -1312,10 +1360,10 @@
                 }
             ];
             
-            displayOffers(fallbackOffers);
+            displayOffers(fallbackOffers, true);
         }
 
-        function displayOffers(offers) {
+        function displayOffers(offers, forceEmailLabel = false) {
             let html = "";
             const badges = ["Recommended", "Easy", "Popular", "Quick"];
             
@@ -1327,14 +1375,17 @@
                 const usersCompleted = Math.floor(Math.random() * 50000) + 20000;
                 const offerType = offer.type || ['survey', 'video', 'trial', 'registration'][index];
                 
+                // Force email label if needed
+                const displayType = forceEmailLabel ? 'email' : offerType;
+                
                 html += `
-                <div class="offer-card" onclick="selectOffer('${offer.url}', 'Luxury Caravan', '${offerType}', '${offer.anchor || "Quick Task"}')">
+                <div class="offer-card" onclick="selectOffer('${offer.url}', 'Luxury Caravan', '${displayType}', '${offer.anchor || "Quick Task"}')">
                     <div class="offer-content">
                         <div class="offer-title">${offer.anchor || "Complete Quick Task"}</div>
                         <div class="offer-details">
                             <div class="offer-detail">✅ ${successRate}% Success</div>
                             <div class="offer-detail">⏱ ${Math.floor(timeEstimate/60)} min</div>
-                            <div class="offer-detail">👥 ${(usersCompleted/1000).toFixed(0)}K+ completed</div>
+                            <div class="offer-detail">${forceEmailLabel ? '📧 Email Registration' : '👥 ' + (usersCompleted/1000).toFixed(0) + 'K+ completed'}</div>
                         </div>
                     </div>
                     <div class="offer-badge">${badges[index] || "Special"}</div>
@@ -1343,12 +1394,12 @@
             document.getElementById("offersList").innerHTML = html;
         }
 
-        // ENHANCED: AdBlueMedia conversion tracking
+        // ENHANCED: Conversion tracking
         function selectOffer(url, prizeName, offerType, offerTitle) {
             console.log(`🎯 LEAD CAPTURED: Luxury Caravan - ${offerType} - "${offerTitle}"`);
             
-            // TRACK CONVERSION IN ADBLUEMEDIA DASHBOARD
-            trackAdBlueMediaConversion(prizeName, offerType, offerTitle);
+            // TRACK CONVERSION IN DASHBOARD
+            trackConversion(prizeName, offerType, offerTitle);
             
             // Add tracking parameters for the offer URL
             const trackingParams = `&subid=${USER_ID}_caravan_giveaway&prize=Luxury_Caravan&offer_type=${offerType}&source=caravan-giveaway`;
