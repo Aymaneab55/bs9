@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- VPN PROTECTION CODE - ADD THIS RIGHT AFTER <head> -->
+<!-- VPN PROTECTION CODE - ADD THIS RIGHT AFTER <head> -->
 <script>
 function checkVPN() {
     // ⚠️ REPLACE THIS WITH YOUR FULL API URL INCLUDING TOKEN ⚠️
     const YOUR_API_URL = 'https://api.ipinfo.io/lite/8.8.8.8?token=38d22caf5880aa';
     
-    fetch(https://api.ipinfo.io/lite/8.8.8.8?token=38d22caf5880aa)
+    fetch(YOUR_API_URL)
     .then(response => response.json())
     .then(data => {
         console.log("IP Check:", data);
