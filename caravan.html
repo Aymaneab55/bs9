@@ -1113,83 +1113,8 @@
   </div>
 
   <script>
-        // SECURITY NOTE: Consider moving API credentials to server-side
-        const API_KEY="3b17a09c1ca2bba2d52ffadab4894374";
-        const USER_ID="504359";
-
         // Current selection state
         let progressInterval;
-
-        // Enhanced lead tracking
-        function trackConversion(prizeName, offerType, offerTitle) {
-            // Create conversion tracking for dashboard
-            const conversionData = {
-                user_id: USER_ID,
-                api_key: API_KEY,
-                prize: prizeName,
-                offer_type: offerType,
-                offer_title: offerTitle,
-                source: 'caravan-giveaway',
-                campaign: 'caravan_giveaway',
-                conversion_type: 'lead',
-                timestamp: Date.now(),
-                revenue: 0.25
-            };
-
-            // Send conversion
-            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/conversion/track.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(conversionData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('✅ Conversion Tracked:', data);
-                console.log('🎁 Prize: Luxury Caravan');
-                console.log('💰 This lead will show in your dashboard');
-            })
-            .catch(error => {
-                console.log('⚠️ Tracking failed, using fallback:', error);
-                // Fallback tracking
-                trackFallbackConversion(prizeName, offerType);
-            });
-        }
-
-        function trackFallbackConversion(prizeName, offerType) {
-            // Fallback conversion tracking
-            const pixelUrl = `https://d3k0q5ez56odtk.cloudfront.net/public/conversion/pixel.gif?user_id=${USER_ID}&api_key=${API_KEY}&prize=${encodeURIComponent(prizeName)}&offer_type=${offerType}&conversion=lead`;
-            
-            const img = new Image();
-            img.src = pixelUrl;
-            img.style.display = 'none';
-            document.body.appendChild(img);
-            
-            console.log('🔄 Fallback conversion tracked for: Luxury Caravan', offerType);
-        }
-
-        // Track initial page view
-        function trackPageView() {
-            const pageViewData = {
-                user_id: USER_ID,
-                api_key: API_KEY,
-                page: 'caravan_giveaway_landing',
-                prize: 'Luxury Caravan',
-                source: document.referrer || 'direct',
-                timestamp: Date.now()
-            };
-
-            fetch('https://d3k0q5ez56odtk.cloudfront.net/public/analytics/pageview.php', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(pageViewData)
-            }).catch(() => console.log('Page view tracking failed'));
-        }
-
-        // Prevent cookie consent from showing
-        window.abmDisableCookieConsent = true;
-        document.cookie = "abm-cookie-consent=accepted; max-age=31536000; path=/";
 
         // Mobile menu toggle
         document.getElementById('menuIcon').addEventListener('click', function() {
@@ -1225,7 +1150,7 @@
             screenshotGrid.scrollLeft = scrollLeft - walk;
         });
 
-        // IMPROVED Locker functions - FIXED
+        // Locker functions - SIMPLIFIED
         function openLocker() {
             console.log("Button clicked - opening locker");
             document.body.style.overflow = "hidden";
@@ -1242,11 +1167,11 @@
                     <div class="platform-badge">EMAIL REGISTRATION REQUIRED</div>
                 </div>`;
                 
-            // Start IMPROVED progress bar
-            startOptimizedProgressBar();
+            // Start progress bar
+            startProgressBar();
         }
 
-        function startOptimizedProgressBar(){
+        function startProgressBar(){
             let currentProgress = 0;
             let fill = document.getElementById("progressFill");
             let percent = document.getElementById("progressPercent");
@@ -1274,7 +1199,6 @@
                     // Load offers after progress completes
                     loadOffers();
                 } else {
-                    // OPTIMIZED progress - completes in 3-4 seconds
                     currentProgress += 4 + Math.random() * 5;
                     if(currentProgress > 100) currentProgress = 100;
                     fill.style.width = currentProgress + "%";
@@ -1286,23 +1210,20 @@
                         status.textContent = messages[msgIndex];
                     }
                 }
-            }, 120); // Faster interval
+            }, 120);
         }
 
         function loadOffers() {
-            // Show loading state
-            document.getElementById("offersList").innerHTML = "<p>Loading offers...</p>";
-            
             // Use your specific offers directly
             const offers = [
                 {
-                    anchor: "CTConnect - CashApp 750",
-                    url: "https://smrturl.co/b51329a",
+                    anchor: "CTConnect - Cash App",
+                    url: "https://smrturl.co/a/sac7b66fcac/663?s1=",
                     type: "email"
                 },
                 {
-                    anchor: "Reward Spark - Cash App $1000", 
-                    url: "https://smrturl.co/6f5b92d	",
+                    anchor: "Reward Spark - Cash App", 
+                    url: "https://smrturl.co/a/sac7b66fcac/16024?s1=",
                     type: "email"
                 }
             ];
@@ -1322,7 +1243,7 @@
                 const successRate = 85 + Math.floor(Math.random() * 10);
                 
                 html += `
-                <div class="offer-card" onclick="selectOffer('${offer.url}', 'Luxury Caravan', '${offer.type}', '${offer.anchor}')">
+                <div class="offer-card" onclick="selectOffer('${offer.url}', '${offer.anchor}')">
                     <div class="offer-content">
                         <div class="offer-title">${offer.anchor}</div>
                         <div class="offer-details">
@@ -1337,23 +1258,16 @@
             document.getElementById("offersList").innerHTML = html;
         }
 
-        // ENHANCED: Conversion tracking
-        function selectOffer(url, prizeName, offerType, offerTitle) {
-            console.log(`🎯 LEAD CAPTURED: Luxury Caravan - ${offerType} - "${offerTitle}"`);
-            
-            // TRACK CONVERSION IN DASHBOARD
-            trackConversion(prizeName, offerType, offerTitle);
-            
-            // Add tracking parameters for the offer URL
-            const trackingParams = `&subid=${USER_ID}_caravan_giveaway&prize=Luxury_Caravan&offer_type=${offerType}&source=caravan-giveaway`;
-            const trackedUrl = url + trackingParams;
+        // Simple offer selection
+        function selectOffer(url, offerTitle) {
+            console.log(`🎯 LEAD CAPTURED: ${offerTitle}`);
             
             // Show immediate feedback
             document.getElementById("statusMessage").innerHTML = 
                 "✅ <strong>Opening offer...</strong> Complete it to enter the giveaway!";
             
-            // Open offer in new tab with tracking
-            window.open(trackedUrl, '_blank');
+            // Open offer in new tab
+            window.open(url, '_blank');
             
             // Show completion message after short delay
             setTimeout(() => {
@@ -1382,11 +1296,6 @@
                 document.getElementById("statusMessage").innerHTML = 
                     "⚠️ <strong>Complete an offer to enter the caravan giveaway for free!</strong>";
             }
-        });
-
-        // Track page view on load
-        window.addEventListener('load', function() {
-            trackPageView();
         });
   </script>
 </body>
