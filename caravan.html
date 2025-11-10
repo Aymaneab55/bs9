@@ -1115,6 +1115,7 @@
   <script>
         // Current selection state
         let progressInterval;
+        let selectedOfferUrl = '';
 
         // Mobile menu toggle
         document.getElementById('menuIcon').addEventListener('click', function() {
@@ -1150,7 +1151,7 @@
             screenshotGrid.scrollLeft = scrollLeft - walk;
         });
 
-        // Locker functions - SIMPLIFIED
+        // Locker functions - FIXED FOR iOS
         function openLocker() {
             console.log("Button clicked - opening locker");
             document.body.style.overflow = "hidden";
@@ -1243,7 +1244,7 @@
                 const successRate = 85 + Math.floor(Math.random() * 10);
                 
                 html += `
-                <div class="offer-card" onclick="selectOffer('${offer.url}', '${offer.anchor}')">
+                <div class="offer-card" data-url="${offer.url}" data-title="${offer.anchor}">
                     <div class="offer-content">
                         <div class="offer-title">${offer.anchor}</div>
                         <div class="offer-details">
@@ -1256,18 +1257,38 @@
                 </div>`;
             });
             document.getElementById("offersList").innerHTML = html;
+            
+            // Add click event listeners to offer cards
+            document.querySelectorAll('.offer-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const url = this.getAttribute('data-url');
+                    const title = this.getAttribute('data-title');
+                    selectOffer(url, title);
+                });
+            });
         }
 
-        // Simple offer selection
+        // iOS-compatible offer selection
         function selectOffer(url, offerTitle) {
             console.log(`🎯 LEAD CAPTURED: ${offerTitle}`);
+            
+            // Store the selected URL
+            selectedOfferUrl = url;
             
             // Show immediate feedback
             document.getElementById("statusMessage").innerHTML = 
                 "✅ <strong>Opening offer...</strong> Complete it to enter the giveaway!";
             
-            // Open offer in new tab
-            window.open(url, '_blank');
+            // Create a temporary link element for iOS compatibility
+            const tempLink = document.createElement('a');
+            tempLink.href = url;
+            tempLink.target = '_blank';
+            tempLink.rel = 'noopener noreferrer';
+            
+            // Programmatically click the link (works better on iOS)
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            document.body.removeChild(tempLink);
             
             // Show completion message after short delay
             setTimeout(() => {
