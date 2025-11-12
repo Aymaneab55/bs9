@@ -42,6 +42,7 @@
             --offer-border: #444;
             --offer-highlight: #4a3a3a;
             --success: #4CAF50;
+            --text-muted: #a0a0a0;
         }
 
         body {
@@ -607,18 +608,20 @@
             margin-top: 4px;
         }
 
+        /* FIXED Locker Progress Section */
         .progress-container {
-            margin: 12px 0;
+            margin: 15px 0; /* Added more margin for separation */
             background: rgba(0,0,0,0.3);
-            padding: 10px;
+            padding: 12px;
             border-radius: 8px;
+            border: 1px solid rgba(255,107,53,0.2); /* Added subtle border */
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 6px;
-            font-size: 0.8rem;
+            margin-bottom: 8px;
+            font-size: 0.75rem; /* Reduced font size */
             color: var(--text-muted);
         }
 
@@ -629,7 +632,7 @@
             border-radius: 6px;
             overflow: hidden;
             box-shadow: 0 0 10px rgba(255,107,53,0.1) inset;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         #progressFill {
@@ -641,22 +644,24 @@
         }
 
         .progress-text {
-            font-size: 0.75rem;
+            font-size: 0.7rem; /* Reduced font size */
             color: var(--text-muted);
             display: flex;
             justify-content: space-between;
         }
 
         #statusMessage {
-            margin-top: 10px;
+            margin-top: 12px; /* Added more space above */
+            margin-bottom: 15px; /* Added space below to separate from offers */
             font-weight: bold;
-            font-size: 0.8rem;
+            font-size: 0.75rem; /* Reduced font size */
             color: var(--primary);
             min-height: 20px;
             line-height: 1.4;
             background: rgba(255,107,53,0.1);
-            padding: 6px;
+            padding: 8px;
             border-radius: 6px;
+            border-left: 3px solid var(--primary); /* Added accent border */
         }
 
         .close-btn {
@@ -681,15 +686,17 @@
             transform: scale(1.1);
         }
 
-        /* IMPROVED OFFER BOXES - FORZA COLORS - MOBILE OPTIMIZED */
+        /* FIXED Offers Section - Proper spacing */
         .offers-section {
-            margin-top: 10px;
+            margin-top: 20px; /* Increased margin for better separation */
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1); /* Added visual separator */
         }
 
         .offers-section h3 {
             color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 1rem;
+            margin-bottom: 12px;
+            font-size: 0.9rem; /* Reduced font size */
             display: flex;
             align-items: center;
             gap: 6px;
@@ -699,25 +706,25 @@
         #offersList {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px; /* Slightly increased gap between offer cards */
         }
 
         /* MOBILE-OPTIMIZED Offer Cards */
-.offer-card {
-    background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
-    border: 1px solid var(--primary);
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(255,107,53,0.2);
-    min-height: 60px;
-}
+        .offer-card {
+            background: linear-gradient(145deg, #3a2a2a, #2a1a1a);
+            border: 1px solid var(--primary);
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(255,107,53,0.2);
+            min-height: 60px;
+        }
 
         .offer-card::before {
             content: "";
@@ -860,6 +867,36 @@
                 font-size: 0.8rem;
                 padding: 6px;
                 margin-bottom: 8px;
+            }
+            
+            /* Enhanced Mobile Responsiveness for Fixed Sections */
+            .progress-container {
+                margin: 12px 0;
+                padding: 10px;
+            }
+            
+            .progress-header {
+                font-size: 0.7rem; /* Even smaller on mobile */
+            }
+            
+            .progress-text {
+                font-size: 0.65rem; /* Even smaller on mobile */
+            }
+            
+            #statusMessage {
+                font-size: 0.7rem; /* Even smaller on mobile */
+                margin-top: 10px;
+                margin-bottom: 12px;
+                padding: 6px;
+            }
+            
+            .offers-section {
+                margin-top: 15px;
+                padding-top: 12px;
+            }
+            
+            .offers-section h3 {
+                font-size: 0.85rem; /* Smaller on mobile */
             }
         }
 
@@ -1192,7 +1229,7 @@
                     clearInterval(progressInterval);
                     fill.style.width = "100%";
                     percent.textContent = "100%";
-                    status.innerHTML = "✅ <strong>Ready! Choose an our sponsor survey and compelte it with ur valid info</strong>";
+                    status.innerHTML = "✅ <strong>Ready! Choose an our sponsor survey and complete it with ur valid info</strong>";
                     
                     // Show offers section when progress completes
                     document.getElementById("offersSection").style.display = "block";
