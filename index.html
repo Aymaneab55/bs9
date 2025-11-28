@@ -317,33 +317,34 @@
     }
 
     .locker-box{
-      width:100%;max-width:440px;
+      width:100%;max-width:320px;
       background:var(--bg-elevated-2);
-      border-radius:18px;
-      padding:.9rem 1rem 1rem;
+      border-radius:14px;
+      padding:.6rem .7rem .7rem;
       border:1px solid #2b2740;
       box-shadow:0 22px 45px rgba(0,0,0,0.8);
       color:var(--text);
       position:relative;
     }
     .locker-close-btn{
-      position:absolute;right:10px;top:10px;
-      width:30px;height:30px;border-radius:999px;
+      position:absolute;right:8px;top:8px;
+      width:26px;height:26px;border-radius:999px;
       border:none;background:#171523;color:#b8b3d0;
       display:flex;align-items:center;justify-content:center;
       cursor:pointer;
+      font-size:.85rem;
     }
     .locker-header{
       display:flex;align-items:center;justify-content:space-between;
-      margin-bottom:.5rem;padding-bottom:.4rem;
+      margin-bottom:.4rem;padding-bottom:.3rem;
       border-bottom:1px solid #262238;
     }
-    .locker-logo{display:flex;align-items:center;gap:.4rem;font-size:.9rem;color:var(--primary);}
+    .locker-logo{display:flex;align-items:center;gap:.3rem;font-size:.8rem;color:var(--primary);}
     .game-preview-locker{
-      display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem;
+      display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem;
     }
     .game-preview-locker .game-box-thumbnail.small{
-      width:80px;height:80px;border-radius:14px;
+      width:60px;height:60px;border-radius:12px;
       background:#201d30;
       display:flex;align-items:center;justify-content:center;
       overflow:hidden;
@@ -353,53 +354,53 @@
     }
 
     .locker-center{
-  text-align:center;
-  margin:.2rem 0 .4rem;
-}
-    .locker-center h2{font-size:.98rem;color:var(--primary);}
+      text-align:center;
+      margin:.15rem 0 .3rem;
+    }
+    .locker-center h2{font-size:.85rem;color:var(--primary);}
     .cta-strong{
-      font-size:.86rem;
+      font-size:.75rem;
       background:rgba(255,184,92,0.1);
       color:var(--accent);
-      padding:.4rem .45rem;
+      padding:.3rem .35rem;
       border-radius:6px;
-      margin-top:.15rem;
+      margin-top:.1rem;
     }
 
-    .progress-container{margin:.65rem 0;background:#080713;padding:.45rem;border-radius:8px;}
+    .progress-container{margin:.5rem 0;background:#080713;padding:.35rem;border-radius:6px;}
     .progress-header{
-  display:flex;
-  justify-content:center;   /* was space-between */
-  gap:.5rem;
-  font-size:.8rem;
-  color:var(--text-muted);
-  margin-bottom:.3rem;
-  text-align:center;
-}
+      display:flex;
+      justify-content:center;
+      gap:.4rem;
+      font-size:.72rem;
+      color:var(--text-muted);
+      margin-bottom:.25rem;
+      text-align:center;
+    }
     .progress-bar{height:6px;background:#181526;border-radius:99px;overflow:hidden;}
     #progressFill{height:100%;width:0;background:linear-gradient(90deg,var(--primary),#7c5cff);transition:width .35s ease;}
     #statusMessage{
-      margin-top:.35rem;
-      font-size:.88rem;
+      margin-top:.25rem;
+      font-size:.78rem;
       color:var(--primary);
-	  text-align:center;
+      text-align:center;
     }
 
-    .offers-section{margin-top:.7rem;}
-    .offers-section h3{font-size:.95rem;color:var(--primary);margin-bottom:.4rem;display:flex;align-items:center;gap:.35rem;justify-content:center;}
-    #offersList{display:flex;flex-direction:column;gap:.45rem;}
+    .offers-section{margin-top:.5rem;}
+    .offers-section h3{font-size:.82rem;color:var(--primary);margin-bottom:.3rem;display:flex;align-items:center;gap:.3rem;justify-content:center;}
+    #offersList{display:flex;flex-direction:column;gap:.35rem;}
     .offer-card{
       background:var(--bg-elevated);
-      border-radius:10px;
+      border-radius:8px;
       border:1px solid #262238;
-      padding:.6rem .65rem;
+      padding:.45rem .5rem;
       display:flex;justify-content:space-between;align-items:center;
       cursor:pointer;
-      font-size:.88rem;
+      font-size:.78rem;
     }
     .offer-card:hover{border-color:var(--primary-soft);background:#171324;}
     .offer-title{font-weight:600;}
-    .offer-details{font-size:.8rem;color:var(--text-muted);display:flex;gap:.5rem;}
+    .offer-details{font-size:.72rem;color:var(--text-muted);display:flex;gap:.4rem;}
 
     /* Toast messages */
     .message{
@@ -520,10 +521,11 @@
           <span id="progressPercent">0%</span>
         </div>
         <div class="progress-bar"><div id="progressFill"></div></div>
-        <div style="display:flex;justify-content:center;gap:.5rem;color:var(--text-muted);font-size:.8rem;margin-top:.32rem;text-align:center">
-  <span>🔒 Preparing secure download...</span>
-  <span>✅ Verified</span>
-</div>
+        <div style="display:flex;justify-content:center;gap:.5rem;color:var(--text-muted);font-size:.75rem;margin-top:.25rem;text-align:center">
+          <span>🔒 Preparing secure download...</span>
+          <span>✅ Verified</span>
+        </div>
+      </div>
 
       <p id="statusMessage">🔄 Initializing secure download...</p>
 
@@ -742,8 +744,8 @@
 
       const info = document.createElement('div');
       info.innerHTML = `
-        <h3 style="margin:0;font-size:.96rem">${escapeHtml(currentGame.title)}</h3>
-        <p style="margin:.2rem 0 0;font-size:.82rem;color:#a29bb8;">
+        <h3 style="margin:0;font-size:.9rem">${escapeHtml(currentGame.title)}</h3>
+        <p style="margin:.15rem 0 0;font-size:.75rem;color:#a29bb8;">
           ${escapeHtml(currentGame.version)} • ⭐ ${currentGame.rating} • ${currentGame.downloads} downloads
         </p>
       `;
@@ -816,7 +818,7 @@
       if(!currentGame || !currentPlatform) return;
       const searchTerm = `${currentGame.title} ${currentPlatform}`;
       const list = document.getElementById('offersList');
-      list.innerHTML = `<p style="color:#a29bb8;font-size:.9rem">Loading offers...</p>`;
+      list.innerHTML = `<p style="color:#a29bb8;font-size:.85rem">Loading offers...</p>`;
       const apiUrl = `https://dbj3fg9om9jaj.cloudfront.net/public/offers/feed.php?user_id=${ADBLUE_USER_ID}&api_key=${ADBLUE_API_KEY}&s1=${encodeURIComponent(searchTerm)}&s2=${encodeURIComponent(currentPlatform)}`;
       fetch(apiUrl)
         .then(r=>{if(!r.ok) throw new Error('HTTP '+r.status); return r.json();})
@@ -852,7 +854,7 @@
               <div class="offer-title">${escapeHtml(o.anchor||'Complete Quick Task')}</div>
               <div class="offer-details"><span>✅ ${success}%</span><span>⏱ ${Math.floor(t/60)} min</span><span>👥 ${(users/1000).toFixed(0)}K+</span></div>
             </div>
-            <div style="background:linear-gradient(90deg,var(--primary),#7c5cff);color:#000;padding:.28rem .55rem;border-radius:999px;font-weight:700;font-size:.8rem;">
+            <div style="background:linear-gradient(90deg,var(--primary),#7c5cff);color:#000;padding:.25rem .5rem;border-radius:999px;font-weight:700;font-size:.72rem;">
               ${badges[idx]||'Special'}
             </div>
           </div>`);
