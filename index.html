@@ -34,6 +34,10 @@
       color:var(--text);
       -webkit-text-size-adjust:100%;
       line-height:1.6;
+      -webkit-user-select:none;
+      -moz-user-select:none;
+      -ms-user-select:none;
+      user-select:none;
     }
 
     html.modal-open,
@@ -130,6 +134,10 @@
       background:#07060d;
       color:var(--text);
       font-size:.95rem;
+      -webkit-user-select:text;
+      -moz-user-select:text;
+      -ms-user-select:text;
+      user-select:text;
     }
     #searchInput:focus{outline:none;border-color:var(--primary-soft);}
     .search-icon{
@@ -582,6 +590,41 @@
     document.addEventListener('DOMContentLoaded', () => {
       renderGames();
       attachListeners();
+    });
+
+    // Disable right-click
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      return false;
+    });
+
+    // Disable common keyboard shortcuts (F12, Ctrl+Shift+I, Ctrl+U, etc.)
+    document.addEventListener('keydown', (e) => {
+      // Disable F12
+      if(e.key === 'F12') {
+        e.preventDefault();
+        return false;
+      }
+      // Disable Ctrl+Shift+I (DevTools)
+      if(e.ctrlKey && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+        return false;
+      }
+      // Disable Ctrl+Shift+J (Console)
+      if(e.ctrlKey && e.shiftKey && e.key === 'J') {
+        e.preventDefault();
+        return false;
+      }
+      // Disable Ctrl+U (View Source)
+      if(e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+        return false;
+      }
+      // Disable Ctrl+S (Save Page)
+      if(e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+        return false;
+      }
     });
 
     function setScrollLock(on){
