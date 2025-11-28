@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
   <title>m4d.fun | Premium Mobile Games</title>
 
   <!-- Favicon: put your logo file as logo.png in same folder -->
@@ -38,6 +38,8 @@
       -moz-user-select:none;
       -ms-user-select:none;
       user-select:none;
+      touch-action:manipulation;
+      -webkit-tap-highlight-color:transparent;
     }
 
     html.modal-open,
@@ -594,6 +596,21 @@
 
     // Disable right-click
     document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      return false;
+    });
+
+    // Disable double-click zoom
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (e) => {
+      const now = Date.now();
+      if(now - lastTouchEnd <= 300) {
+        e.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+
+    document.addEventListener('dblclick', (e) => {
       e.preventDefault();
       return false;
     });
