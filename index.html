@@ -769,6 +769,9 @@
     </style>
 </head>
 <body>
+    <!-- Adbluemedia Tracking Pixel (Hidden) -->
+    <img src="https://track.adbluemedia.com/imp?clickid=__CLICK_ID__&campaignid=__CAMPAIGN_ID__&subid=__SUB1__" width="1" height="1" style="display:none;">
+    
     <div class="container">
         <div class="header">
             <div class="logo-section">
@@ -868,6 +871,95 @@
     </div>
 
     <script>
+        // ==============================
+        // ADBLUEMEDIA TRACKING SETUP
+        // ==============================
+        
+        // Function to extract URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            var results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        
+        // Get tracking parameters from URL
+        // You'll get these from your Adbluemedia campaign link
+        // Example: https://your-domain.com/?clickid=123&campaignid=456&subid=test
+        let clickId = getUrlParameter('clickid') || '';
+        let campaignId = getUrlParameter('campaignid') || '';
+        let subId = getUrlParameter('subid') || 'direct';
+        
+        // Store tracking data in localStorage for session persistence
+        if (clickId) localStorage.setItem('abm_clickid', clickId);
+        if (campaignId) localStorage.setItem('abm_campaignid', campaignId);
+        if (subId) localStorage.setItem('abm_subid', subId);
+        
+        // Retrieve from localStorage if URL params are empty
+        clickId = clickId || localStorage.getItem('abm_clickid') || '';
+        campaignId = campaignId || localStorage.getItem('abm_campaignid') || '';
+        subId = subId || localStorage.getItem('abm_subid') || 'direct';
+        
+        // Fire Adbluemedia impression pixel on page load
+        function fireImpressionPixel() {
+            if (clickId && campaignId) {
+                var pixelUrl = `https://track.adbluemedia.com/imp?clickid=${encodeURIComponent(clickId)}&campaignid=${encodeURIComponent(campaignId)}&subid=${encodeURIComponent(subId)}`;
+                
+                var pixel = new Image();
+                pixel.src = pixelUrl;
+                console.log('Adbluemedia impression pixel fired:', pixelUrl);
+            }
+        }
+        
+        // Track game click with sub1 parameter
+        function trackGameClick(gameName) {
+            // Update subId with game name for better tracking
+            let gameSubId = `${subId}_${gameName.replace(/[^a-zA-Z0-9]/g, '_')}`;
+            
+            // Store in localStorage
+            localStorage.setItem('abm_subid_game', gameSubId);
+            
+            // Fire click tracking pixel
+            if (clickId && campaignId) {
+                var clickPixelUrl = `https://track.adbluemedia.com/click?clickid=${encodeURIComponent(clickId)}&campaignid=${encodeURIComponent(campaignId)}&subid=${encodeURIComponent(gameSubId)}`;
+                
+                var pixel = new Image();
+                pixel.src = clickPixelUrl;
+                console.log('Game click tracked:', gameName, 'subid:', gameSubId);
+            }
+            
+            return gameSubId;
+        }
+        
+        // Track offer click
+        function trackOfferClick(offerUrl, gameName) {
+            let gameSubId = localStorage.getItem('abm_subid_game') || subId;
+            
+            // Add tracking parameters to offer URL
+            let trackedUrl = offerUrl;
+            if (clickId && campaignId && gameSubId) {
+                const separator = offerUrl.includes('?') ? '&' : '?';
+                trackedUrl = `${offerUrl}${separator}clickid=${encodeURIComponent(clickId)}&campaignid=${encodeURIComponent(campaignId)}&sub1=${encodeURIComponent(gameSubId)}`;
+            }
+            
+            // Fire conversion pixel
+            if (clickId && campaignId) {
+                var conversionPixelUrl = `https://track.adbluemedia.com/conv?clickid=${encodeURIComponent(clickId)}&campaignid=${encodeURIComponent(campaignId)}&subid=${encodeURIComponent(gameSubId)}&payout=0.00`;
+                
+                var pixel = new Image();
+                pixel.src = conversionPixelUrl;
+                console.log('Conversion pixel fired for:', gameName);
+            }
+            
+            return trackedUrl;
+        }
+        
+        // ==============================
+        // GAMES DATA AND FUNCTIONALITY
+        // ==============================
+        
         const gamesData = [
             { id: 1, title: "BeamNG.drive Mobile", image: "https://avatars.githubusercontent.com/u/6404024?s=280&v=4", version: "v0.32.0.0", rating: 4.8, downloads: "50K+" },
             { id: 2, title: "GTA V Mobile", image: "https://i.pinimg.com/736x/8f/01/03/8f010359c57da7850e723fa17a53b55e.jpg", version: "v1.0.3095/1.68", rating: 4.9, downloads: "120K+" },
@@ -1017,6 +1109,10 @@
         // Open platform modal
         function openPlatformModal(game) {
             currentGame = game;
+            
+            // Track game click with Adbluemedia
+            trackGameClick(game.title);
+            
             const modal = document.getElementById('platformModal');
             const icon = document.getElementById('platformGameIcon');
             const title = document.getElementById('platformGameTitle');
@@ -1076,7 +1172,6 @@
         // Display offers
         function displayOffers() {
             const offersList = document.getElementById('offersList');
-            const gameName = currentGame ? encodeURIComponent(currentGame.title) : '';
             
             if (!allOffers || allOffers.length === 0) {
                 offersList.innerHTML = '<div class="no-offers">No offers available at the moment. Please try again later.</div>';
@@ -1101,22 +1196,25 @@
                     <span class="offer-text">${offerText}</span>
                 `;
                 
-                // Add sub1 parameter to track game name
                 let offerUrl = offer.url || offer.link || '#';
-                if (offerUrl !== '#') {
-                    const separator = offerUrl.includes('?') ? '&' : '?';
-                    offerUrl = `${offerUrl}${separator}sub1=${gameName}`;
-                }
-                
                 button.onclick = () => openOffer(offerUrl);
                 offersList.appendChild(button);
             });
         }
 
-        // Open offer
+        // Open offer with Adbluemedia tracking
         function openOffer(url) {
             if (url && url !== '#') {
-                window.open(url, '_blank');
+                // Track offer click with Adbluemedia
+                const trackedUrl = trackOfferClick(url, currentGame ? currentGame.title : 'unknown');
+                
+                // Open the tracked URL in new tab
+                window.open(trackedUrl, '_blank');
+                
+                // Optional: Show success message
+                setTimeout(() => {
+                    alert('Thank you! Your download will start automatically after completing the offer.');
+                }, 500);
             }
         }
 
@@ -1176,11 +1274,21 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
+            // Fire Adbluemedia impression pixel
+            fireImpressionPixel();
+            
+            // Fetch offers and render games
             fetchOffers().then(() => {
                 renderGames();
+            });
+            
+            // Log tracking data for debugging
+            console.log('Adbluemedia Tracking Data:', {
+                clickId: clickId,
+                campaignId: campaignId,
+                subId: subId
             });
         });
     </script>
 </body>
 </html>
-
