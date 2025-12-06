@@ -769,8 +769,8 @@
     </style>
 </head>
 <body>
-    <!-- Adbluemedia Tracking Pixel (Hidden) -->
-    <img src="https://track.adbluemedia.com/imp?clickid=__CLICK_ID__&campaignid=__CAMPAIGN_ID__&subid=__SUB1__" width="1" height="1" style="display:none;">
+    <!-- Hidden tracking elements -->
+    <div id="trackingData" style="display: none;"></div>
     
     <div class="container">
         <div class="header">
@@ -872,8 +872,13 @@
 
     <script>
         // ==============================
-        // ADBLUEMEDIA TRACKING SETUP
+        // ADBLUEMEDIA POSTBACK TRACKING
         // ==============================
+        
+        // Configuration - CHANGE THESE VALUES
+        const POSTBACK_URL = 'http://m4dfu.free.nf/postback.php';
+        const DEFAULT_PAYOUT = '0.15'; // Default payout per conversion
+        const TRACKING_PIXEL = 'https://track.adbluemedia.com/imp?clickid={CLICKID}&campaignid={CAMPAIGNID}&subid={SUBID}';
         
         // Function to extract URL parameters
         function getUrlParameter(name) {
@@ -885,75 +890,215 @@
             return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
         
-        // Get tracking parameters from URL
-        // You'll get these from your Adbluemedia campaign link
-        // Example: https://your-domain.com/?clickid=123&campaignid=456&subid=test
-        let clickId = getUrlParameter('clickid') || '';
-        let campaignId = getUrlParameter('campaignid') || '';
-        let subId = getUrlParameter('subid') || 'direct';
-        
-        // Store tracking data in localStorage for session persistence
-        if (clickId) localStorage.setItem('abm_clickid', clickId);
-        if (campaignId) localStorage.setItem('abm_campaignid', campaignId);
-        if (subId) localStorage.setItem('abm_subid', subId);
-        
-        // Retrieve from localStorage if URL params are empty
-        clickId = clickId || localStorage.getItem('abm_clickid') || '';
-        campaignId = campaignId || localStorage.getItem('abm_campaignid') || '';
-        subId = subId || localStorage.getItem('abm_subid') || 'direct';
-        
-        // Fire Adbluemedia impression pixel on page load
-        function fireImpressionPixel() {
-            if (clickId && campaignId) {
-                var pixelUrl = `https://track.adbluemedia.com/imp?clickid=${encodeURIComponent(clickId)}&campaignid=${encodeURIComponent(campaignId)}&subid=${encodeURIComponent(subId)}`;
-                
-                var pixel = new Image();
-                pixel.src = pixelUrl;
-                console.log('Adbluemedia impression pixel fired:', pixelUrl);
+        // Get visitor IP (using a free IP API)
+        async function getVisitorIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip || '0.0.0.0';
+            } catch (error) {
+                console.error('Error getting IP:', error);
+                return '0.0.0.0';
             }
         }
         
-        // Track game click with sub1 parameter
-        function trackGameClick(gameName) {
-            // Update subId with game name for better tracking
-            let gameSubId = `${subId}_${gameName.replace(/[^a-zA-Z0-9]/g, '_')}`;
-            
-            // Store in localStorage
-            localStorage.setItem('abm_subid_game', gameSubId);
-            
-            // Fire click tracking pixel
-            if (clickId && campaignId) {
-                var clickPixelUrl = `https://track.adbluemedia.com/click?clickid=${encodeURIComponent(clickId)}&campaignid=${encodeURIComponent(campaignId)}&subid=${encodeURIComponent(gameSubId)}`;
-                
-                var pixel = new Image();
-                pixel.src = clickPixelUrl;
-                console.log('Game click tracked:', gameName, 'subid:', gameSubId);
+        // Get visitor country
+        async function getVisitorCountry(ip) {
+            try {
+                const response = await fetch(`https://ipapi.co/${ip}/json/`);
+                const data = await response.json();
+                return data.country_name || data.country_code || 'Unknown';
+            } catch (error) {
+                console.error('Error getting country:', error);
+                return 'Unknown';
             }
+        }
+        
+        // Get tracking parameters from URL
+        // Your Adbluemedia link should look like:
+        // http://your-domain.com/?clickid=123&campaignid=456&subid=test&payout=0.15
+        let clickId = getUrlParameter('clickid') || '';
+        let campaignId = getUrlParameter('campaignid') || '';
+        let subId = getUrlParameter('subid') || 'direct';
+        let payoutParam = getUrlParameter('payout') || DEFAULT_PAYOUT;
+        
+        // Store tracking data
+        let trackingData = {
+            clickid: clickId,
+            campaignid: campaignId,
+            subid: subId,
+            payout: payoutParam,
+            status: 'pending',
+            ip: '',
+            country: '',
+            game_name: '',
+            platform: '',
+            timestamp: Date.now()
+        };
+        
+        // Save to localStorage for session persistence
+        function saveTrackingData() {
+            localStorage.setItem('abm_tracking_data', JSON.stringify(trackingData));
+        }
+        
+        // Load from localStorage
+        function loadTrackingData() {
+            const saved = localStorage.getItem('abm_tracking_data');
+            if (saved) {
+                const data = JSON.parse(saved);
+                trackingData = { ...trackingData, ...data };
+                
+                // Update variables
+                clickId = trackingData.clickid;
+                campaignId = trackingData.campaignid;
+                subId = trackingData.subid;
+            }
+        }
+        
+        // Fire Adbluemedia tracking pixel
+        function fireTrackingPixel() {
+            if (clickId && campaignId) {
+                const pixelUrl = TRACKING_PIXEL
+                    .replace('{CLICKID}', encodeURIComponent(clickId))
+                    .replace('{CAMPAIGNID}', encodeURIComponent(campaignId))
+                    .replace('{SUBID}', encodeURIComponent(subId));
+                
+                const pixel = new Image();
+                pixel.src = pixelUrl;
+                console.log('Tracking pixel fired:', pixelUrl);
+            }
+        }
+        
+        // Send postback to your tracking script
+        async function sendPostback(status = 'conversion', gameName = '', platform = '') {
+            // Get IP and country if not already set
+            if (!trackingData.ip || trackingData.ip === '') {
+                trackingData.ip = await getVisitorIP();
+            }
+            
+            if (!trackingData.country || trackingData.country === '') {
+                trackingData.country = await getVisitorCountry(trackingData.ip);
+            }
+            
+            // Update tracking data
+            trackingData.status = status;
+            trackingData.game_name = gameName || trackingData.game_name;
+            trackingData.platform = platform || trackingData.platform;
+            trackingData.timestamp = Date.now();
+            
+            // Save updated data
+            saveTrackingData();
+            
+            // Prepare postback URL
+            const postbackParams = new URLSearchParams({
+                clickid: trackingData.clickid,
+                campaignid: trackingData.campaignid,
+                subid: trackingData.subid,
+                sub1: gameName || trackingData.subid, // Game name as sub1
+                payout: trackingData.payout,
+                status: status,
+                ip: trackingData.ip,
+                country: trackingData.country,
+                game: gameName || '',
+                platform: platform || '',
+                timestamp: trackingData.timestamp
+            });
+            
+            const postbackUrl = `${POSTBACK_URL}?${postbackParams.toString()}`;
+            
+            // Send postback using fetch
+            try {
+                const response = await fetch(postbackUrl, {
+                    method: 'GET',
+                    mode: 'no-cors' // Important for cross-domain requests
+                });
+                
+                console.log('Postback sent:', {
+                    status: status,
+                    game: gameName,
+                    url: postbackUrl
+                });
+                
+                // Also log to console for debugging
+                console.log('Postback URL:', postbackUrl);
+                
+            } catch (error) {
+                console.error('Error sending postback:', error);
+                
+                // Fallback: use image pixel
+                const fallbackPixel = new Image();
+                fallbackPixel.src = postbackUrl;
+            }
+            
+            return postbackUrl;
+        }
+        
+        // Track game click (when user selects a game)
+        async function trackGameClick(gameName, platform = '') {
+            // Update subid with game name for better tracking
+            const gameSubId = `${subId}_${gameName.replace(/[^a-zA-Z0-9]/g, '_')}`;
+            trackingData.subid = gameSubId;
+            trackingData.game_name = gameName;
+            trackingData.platform = platform;
+            
+            // Save updated data
+            saveTrackingData();
+            
+            // Send click postback
+            await sendPostback('click', gameName, platform);
+            
+            // Fire tracking pixel
+            fireTrackingPixel();
+            
+            console.log('Game click tracked:', {
+                game: gameName,
+                platform: platform,
+                subid: gameSubId
+            });
             
             return gameSubId;
         }
         
-        // Track offer click
-        function trackOfferClick(offerUrl, gameName) {
-            let gameSubId = localStorage.getItem('abm_subid_game') || subId;
+        // Track offer click (conversion)
+        async function trackOfferClick(gameName, platform = '', offerName = '') {
+            // Send conversion postback
+            const postbackUrl = await sendPostback('conversion', gameName, platform);
             
-            // Add tracking parameters to offer URL
-            let trackedUrl = offerUrl;
-            if (clickId && campaignId && gameSubId) {
-                const separator = offerUrl.includes('?') ? '&' : '?';
-                trackedUrl = `${offerUrl}${separator}clickid=${encodeURIComponent(clickId)}&campaignid=${encodeURIComponent(campaignId)}&sub1=${encodeURIComponent(gameSubId)}`;
-            }
+            console.log('Offer click tracked (conversion):', {
+                game: gameName,
+                platform: platform,
+                offer: offerName,
+                payout: trackingData.payout
+            });
             
-            // Fire conversion pixel
-            if (clickId && campaignId) {
-                var conversionPixelUrl = `https://track.adbluemedia.com/conv?clickid=${encodeURIComponent(clickId)}&campaignid=${encodeURIComponent(campaignId)}&subid=${encodeURIComponent(gameSubId)}&payout=0.00`;
-                
-                var pixel = new Image();
-                pixel.src = conversionPixelUrl;
-                console.log('Conversion pixel fired for:', gameName);
-            }
+            // Display tracking data for debugging
+            document.getElementById('trackingData').innerHTML = `
+                <p>Conversion tracked for: ${gameName}</p>
+                <p>SubID: ${trackingData.subid}</p>
+                <p>Payout: $${trackingData.payout}</p>
+                <p>Status: ${trackingData.status}</p>
+            `;
             
-            return trackedUrl;
+            return postbackUrl;
+        }
+        
+        // Initialize tracking
+        async function initTracking() {
+            // Load saved tracking data
+            loadTrackingData();
+            
+            // Get visitor IP and country
+            trackingData.ip = await getVisitorIP();
+            trackingData.country = await getVisitorCountry(trackingData.ip);
+            
+            // Send initial visit postback
+            await sendPostback('visit', '', '');
+            
+            // Fire tracking pixel
+            fireTrackingPixel();
+            
+            // Log for debugging
+            console.log('Tracking initialized:', trackingData);
         }
         
         // ==============================
@@ -1111,7 +1256,7 @@
             currentGame = game;
             
             // Track game click with Adbluemedia
-            trackGameClick(game.title);
+            trackGameClick(game.title, '');
             
             const modal = document.getElementById('platformModal');
             const icon = document.getElementById('platformGameIcon');
@@ -1137,6 +1282,12 @@
         // Select platform
         function selectPlatform(platform) {
             currentPlatform = platform;
+            
+            // Update tracking with platform
+            if (currentGame) {
+                trackGameClick(currentGame.title, platform);
+            }
+            
             closePlatformModal();
             setTimeout(() => {
                 openLocker();
@@ -1197,21 +1348,30 @@
                 `;
                 
                 let offerUrl = offer.url || offer.link || '#';
-                button.onclick = () => openOffer(offerUrl);
+                button.onclick = () => openOffer(offerUrl, offerText);
                 offersList.appendChild(button);
             });
         }
 
         // Open offer with Adbluemedia tracking
-        function openOffer(url) {
+        async function openOffer(url, offerName) {
             if (url && url !== '#') {
-                // Track offer click with Adbluemedia
-                const trackedUrl = trackOfferClick(url, currentGame ? currentGame.title : 'unknown');
+                // Track offer click (conversion)
+                if (currentGame) {
+                    await trackOfferClick(currentGame.title, currentPlatform, offerName);
+                }
+                
+                // Add tracking parameters to offer URL
+                let trackedUrl = url;
+                if (clickId && campaignId && trackingData.subid) {
+                    const separator = url.includes('?') ? '&' : '?';
+                    trackedUrl = `${url}${separator}clickid=${encodeURIComponent(clickId)}&campaignid=${encodeURIComponent(campaignId)}&sub1=${encodeURIComponent(trackingData.subid)}`;
+                }
                 
                 // Open the tracked URL in new tab
                 window.open(trackedUrl, '_blank');
                 
-                // Optional: Show success message
+                // Show success message
                 setTimeout(() => {
                     alert('Thank you! Your download will start automatically after completing the offer.');
                 }, 500);
@@ -1273,21 +1433,26 @@
         }, false);
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fire Adbluemedia impression pixel
-            fireImpressionPixel();
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Initialize tracking
+            await initTracking();
             
             // Fetch offers and render games
-            fetchOffers().then(() => {
-                renderGames();
-            });
+            await fetchOffers();
+            renderGames();
             
             // Log tracking data for debugging
-            console.log('Adbluemedia Tracking Data:', {
-                clickId: clickId,
-                campaignId: campaignId,
-                subId: subId
-            });
+            console.log('Adbluemedia Tracking Data:', trackingData);
+            
+            // Display tracking info (for debugging)
+            document.getElementById('trackingData').innerHTML = `
+                <div style="background: #1a1a1a; padding: 10px; margin: 10px; border-radius: 5px;">
+                    <h4 style="color: #00ff88; margin-bottom: 5px;">Tracking Active</h4>
+                    <p style="font-size: 12px; margin: 2px 0;">ClickID: ${clickId || 'Not set'}</p>
+                    <p style="font-size: 12px; margin: 2px 0;">SubID: ${subId || 'Not set'}</p>
+                    <p style="font-size: 12px; margin: 2px 0;">Payout: $${payoutParam}</p>
+                </div>
+            `;
         });
     </script>
 </body>
