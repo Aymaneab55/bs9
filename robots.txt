@@ -1,16 +1,11 @@
+# robots.txt for m4d.fun
+# Allow all search engines to crawl the site
+
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemap location - IMPORTANT: Use www.m4d.fun (not ww.m4d.fun)
 Sitemap: https://www.m4d.fun/sitemap.xml
 
-# Allow all search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-# Crawl delay (optional - helps prevent server overload)
+# Crawl-delay (optional, helps prevent server overload)
 Crawl-delay: 1
-
