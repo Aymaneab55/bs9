@@ -1,6 +1,5 @@
 const gamesData = [
   { id: 1, title: "BeamNG.drive Mobile", image: "https://avatars.githubusercontent.com/u/6404024?s=280&v=4", version: "v0.32.0.0", rating: 4.8, downloads: "50K+" },
-  { id: 1, title: "Hotline Miami 2: Wrong Number", image: "https://i.postimg.cc/1t7Z3YRP/art-im-VGu2fm-S-2e16d0ba-fill-308x308-format-webp-webpquality-50.webp", version: "v1.2", rating: 4.9, downloads: "100K+" },
   { id: 2, title: "GTA V Mobile", image: "https://i.pinimg.com/736x/8f/01/03/8f010359c57da7850e723fa17a53b55e.jpg", version: "v1.0.3095/1.68", rating: 4.9, downloads: "120K+" },
   { id: 19, title: "Speed Stars Mod", image: "https://i.postimg.cc/q7LSqhJv/Hard.png", version: "v2.1.0", rating: 4.2, downloads: "24K+" },
   { id: 3, title: "Forza Horizon Mobile", image: "https://images.seeklogo.com/logo-png/40/1/forza-horizon-5-logo-png_seeklogo-406612.png", version: "v2.0.1", rating: 4.7, downloads: "55K+" },
