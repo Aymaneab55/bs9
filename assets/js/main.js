@@ -18,7 +18,7 @@ const gamesData = [
   { id: 16, title: "CarX Street", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4pqJlpezWAKhl0bwwWy1GIc_zVOGXjHvz9Q&s", version: "v1.2.3", rating: 4.5, downloads: "42K+" },
   { id: 17, title: "Baseball 9 Mod", image: "https://i.postimg.cc/j254nVy3/e21d66a4-4e0a-4a5b-9521-397d4cb5d383.png", version: "v3.8.0", rating: 4.3, downloads: "28K+" },
   { id: 18, title: "Hollow Knight Mobile", image: "https://i.postimg.cc/Vvj4G8nC/icon.webp", version: "v1.5.78", rating: 4.8, downloads: "38K+" },
-  { id: 20, title: "Lamar Idle Vlogger", image: "https://i.postimg.cc/RFv1XQFq/Lamar-Idle-Vlogger-Mod-APK.webp", version: "v1.4.2", rating: 4.4, downloads: "19K+" },
+  { id: 20, title: "Lamar Idle Vlogger Mod APK (Unlimited Money)", image: "https://i.postimg.cc/RFv1XQFq/Lamar-Idle-Vlogger-Mod-APK.webp", Version 234.3.0", rating: 4.4, downloads: "19K+" },
   { id: 21, title: "Snake Clash", image: "https://i.postimg.cc/ZqFX5FJT/71dded537746e75207450ca40f71d089ff02df7c47300f91f5a7522ec910bdc3_200.webp", version: "v3.7.1", rating: 4.1, downloads: "31K+" },
   { id: 22, title: "Racing Ultimate", image: "https://images.unsplash.com/photo-1551103782-8ab07afd45c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80", version: "v2.0.5", rating: 4.3, downloads: "26K+" },
   { id: 23, title: "Project Brutality Doom", image: "https://static.doomworld.com/monthly_2023_06/51f3b0e3dcd1cf493fe29ac632aeec39.jpg.88231b2c110b31f13555d274b67c763e.jpg", version: "v0.1.0", rating: 4.7, downloads: "15K+" }
